@@ -1,12 +1,3 @@
-# Programsko inženjerstvo
-
-> Ime projekta u naslovu ima cilj opisati namjenu projekta te pomoći u podizanju početnog interesa za projekt prezentirajući osnovnu svrhu projekta.
-> Isključivo ovisi o Vama!
->
-> Naravno, nijedan predložak nije idealan za sve projekte jer su potrebe i ciljevi različiti. Ne bojte se naglasiti Vaš cilj u ovoj početnoj stranici projekta, podržat ćemo ga bez obzira usredotočili se Vi više na tenologiju ili marketing.
->
-> Zašto ovaj dokument? Samo manji dio timova je do sada propoznao potrebu (a i meni je lakše pratiti Vaš rad).
-
 # Opis projekta
 
 Razvoj platforme čiji je cilj rezervacija i plaćanje terena za igranje padela. Platforma također služi za promociju padela kao sporta, te se igrači mogu prijaviti na turnire i pratiti rezultate prošlih turnira.
