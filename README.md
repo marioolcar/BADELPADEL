@@ -9,13 +9,9 @@
 
 # Opis projekta
 
+Razvoj platforme čiji je cilj rezervacija i plaćanje terena za igranje padela. Platforma također služi za promociju padela kao sporta, te se igrači mogu prijaviti na turnire i pratiti rezultate prošlih turnira.
+
 Ovaj projekt je reultat timskog rada u sklopu projeknog zadatka kolegija [Programsko inženjerstvo](https://www.fer.unizg.hr/predmet/proinz) na Fakultetu elektrotehnike i računarstva Sveučilišta u Zagrebu.
-
-Kratko opisati cilj Vašeg projekta. Vaša motivacija?  (Napomena: odgovor nije »Zato što je to bio zadatak i nismo imali ideje za drugo.«). Koji problem rješavate?
-
-> Obzirom da je ovo zadani projekt navedite i što želite/jeste novo  naučili.
-
-> Dobro izrađen opis omogućuje vam da pokažete svoj rad drugim programerima, kao i potencijalnim poslodavcima. Ne samo da prvi dojam na stranici opisa često razlikuje dobar projekt od lošeg projekta već i predstavlja dobru praksu koju morate savladati.
 
 # Funkcijski zahtjevi
 
