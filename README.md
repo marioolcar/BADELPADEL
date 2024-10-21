@@ -4,7 +4,7 @@ Razvoj platforme čiji je cilj rezervacija i plaćanje terena za igranje padela.
 
 Ovaj projekt je reultat timskog rada u sklopu projeknog zadatka kolegija [Programsko inženjerstvo](https://www.fer.unizg.hr/predmet/proinz) na Fakultetu elektrotehnike i računarstva Sveučilišta u Zagrebu.
 
-# Funkcijski zahtjevi
+# Funkcionalni zahtjevi
 
 1. **Registracija korisnika**:
 
