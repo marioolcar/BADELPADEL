@@ -22,7 +22,8 @@ Kratko opisati cilj Vašeg projekta. Vaša motivacija?  (Napomena: odgovor nije 
 1. **Registracija korisnika**:
 
    - Korisnici se moraju registrirati kao **igrači** ili **vlasnici terena**.
-   - Igrači koriste platformu besplatno, dok vlasnici terena plaćaju godišnju članarinu.
+      - Igrači koriste platformu besplatno
+      - Vlasnici terena plaćaju godišnju članarinu
 2. **Podjela korisnika na vlasnike terena i igrače**:
 
    - Vlasnici terena imaju javni profil koji sadrži osnovne informacije (naziv, adresa, kontakt telefon).
