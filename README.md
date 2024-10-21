@@ -19,40 +19,26 @@ Kratko opisati cilj Vašeg projekta. Vaša motivacija?  (Napomena: odgovor nije 
 
 # Funkcijski zahtjevi
 
-
 1. **Registracija korisnika**:
 
    - Korisnici se moraju registrirati kao **igrači** ili **vlasnici terena**.
    - Igrači koriste platformu besplatno, dok vlasnici terena plaćaju godišnju članarinu.
-2. **Profil vlasnika dvorana**:
+2. **Podjela korisnika na vlasnike terena i igrače**:
 
    - Vlasnici terena imaju javni profil koji sadrži osnovne informacije (naziv, adresa, kontakt telefon).
    - Vlasnici mogu oglašavati terene i turnire na svojim profilima.
-3. **Upravljanje terenima**:
+   - Igrači mogu objavljivati komentare i slike turnira na kojima su sudjelovali
+3. **Upravljanje i rezervacija terena**:
 
    - Vlasnici mogu postaviti detalje za svaki teren (lokacija, slika, tip terena, termini, cijena).
-   - Kalendar rezervacija koristi vanjske usluge poput Google kalendara ili Calendar.online.
-4. **Rezervacija terena**:
-
+   - Kalendar rezervacija koristi vanjske usluge Google kalendara
    - Igrači mogu pregledavati dostupne termine i rezervirati teren putem platforme.
    - Plaćanje može biti gotovinom, PayPal-om ili kreditnom karticom.
    - Moguće je otkazati rezervaciju do 24 sata prije početka termina.
-5. **Organizacija turnira**:
-
-   - Vlasnici terena mogu organizirati turnire, postavljajući naziv, lokaciju, datum, kotizaciju, nagrade i opis.
-   - Igrači mogu pregledavati turnire prema kategorijama (cijena, razina igrača, nagrade).
-   - Igrači se mogu prijaviti na turnire, a vlasnici dvorana odobravaju prijave.
-6. **Praćenje rezultata i događaja**:
+4. **Praćenje rezultata i događaja**:
 
    - Vlasnici terena mogu unijeti rezultate završenih turnira te postaviti fotografije s turnira.
    - Igrači mogu postavljati komentare i slike vezane uz odigrane mečeve.
-7. **Obavijesti o turnirima**:
-
-   - Igrači mogu primati obavijesti o novim turnirima na koje su pretplaćeni.
-8. **Administracija sustava**:
-
-   - Administratori postavljaju cijenu članstva za vlasnike dvorana.
-   - Administratori upravljaju korisnicima (dodavanje, uklanjanje, izmjene).
 
 # Nefunkcionalni zahtjevi
 
@@ -127,7 +113,7 @@ Kodeks ponašanja skup je provedivih pravila koja služe za jasnu komunikaciju o
 # 📝 Licenca
 
 Važeča (1)
-[![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
+[CC BY-NC-SA 4.0][cc-by-nc-sa]
 
 Ovaj repozitorij sadrži otvoreni obrazovni sadržaji (eng. Open Educational Resources)  i licenciran je prema pravilima Creative Commons licencije koja omogućava da preuzmete djelo, podijelite ga s drugima uz
 uvjet da navođenja autora, ne upotrebljavate ga u komercijalne svrhe te dijelite pod istim uvjetima [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License HR][cc-by-nc-sa].
@@ -137,11 +123,7 @@ uvjet da navođenja autora, ne upotrebljavate ga u komercijalne svrhe te dijelit
 > Svi paketi distribuiraju se pod vlastitim licencama.
 > Svi upotrijebleni materijali  (slike, modeli, animacije, ...) distribuiraju se pod vlastitim licencama.
 
-[![CC BY-NC-SA 4.0][cc-by-nc-sa-image]][cc-by-nc-sa]
-
-[cc-by-nc-sa]: https://creativecommons.org/licenses/by-nc/4.0/deed.hr
-[cc-by-nc-sa-image]: https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png
-[cc-by-nc-sa-shield]: https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg
+[CC BY-NC-SA 4.0][cc-by-nc-sa]
 
 Orginal [cc0-1.0][cc0-1.0]
 
@@ -151,6 +133,9 @@ Orginal [cc0-1.0][cc0-1.0]
 
 ### Reference na licenciranje repozitorija
 
+[cc-by-nc-sa]: https://creativecommons.org/licenses/by-nc/4.0/deed.hr
+[cc-by-nc-sa-image]: https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png
+[cc-by-nc-sa-shield]: https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg
 [cc0-1.0]: https://creativecommons.org/licenses/by/1.0/deed.en
 [cc0-1.0-image]: https://licensebuttons.net/l/by/1.0/88x31.png
 [cc0-1.0-shield]: https://img.shields.io/badge/License-CC0--1.0-lightgrey.svg
