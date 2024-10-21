@@ -42,43 +42,31 @@ Kratko opisati cilj Vašeg projekta. Vaša motivacija?  (Napomena: odgovor nije 
 
 # Nefunkcionalni zahtjevi
 
-1. **Sigurnost**:
+1. **Sigurnost i Privatnost**:
 
    - Svi podaci o korisnicima moraju biti zaštićeni enkripcijom.
+   - Podaci o igračima i vlasnicima terena ne smiju se dijeliti s trećim stranama bez njihovog pristanka, u skladu s propisima o zaštiti podataka (GDPR).
    - Plaćanja moraju koristiti sigurnosne protokole (SSL/TLS) i integrirati se s vanjskim, sigurnim servisima (PayPal, sustavi kreditnih kartica).
-2. **Performanse**:
-
-   - Sustav mora omogućiti brzo učitavanje i pregled rezervacija, čak i uz veći broj korisnika i podataka.
-   - Platforma mora biti skalabilna kako bi mogla podržati povećanje broja korisnika i rezervacija.
-3. **Dostupnost**:
-
-   - Platforma mora biti dostupna 24/7 s minimalnim vremenom zastoja.
-4. **Kompatibilnost**:
+2. **Kompatibilnost**:
 
    - Aplikacija mora biti dostupna i optimizirana za različite uređaje (mobilni telefoni, tableti, desktop računala).
    - Kalendar rezervacija treba biti kompatibilan s popularnim uslugama kao što su Google Kalendar i Calendar.online.
-5. **Jednostavnost korištenja**:
+3. **Jednostavnost korištenja**:
 
    - Korisničko sučelje mora biti intuitivno i jednostavno za upotrebu za sve tipove korisnika (igrači, vlasnici terena, administratori).
-6. **Skalabilnost**:
+4. **Skalabilnost**:
 
    - Sustav mora podržavati dodavanje novih funkcionalnosti bez narušavanja postojećih performansi.
-7. **Pouzdanost**:
 
-   - Sustav mora osigurati točne i konzistentne podatke o rezervacijama, plaćanjima i turnirima.
-8. **Privatnost**:
+5. **Integracija s vanjskim servisima**:
 
-   - Podaci o igračima i vlasnicima terena ne smiju se dijeliti s trećim stranama bez njihovog pristanka, u skladu s propisima o zaštiti podataka (GDPR).
-9. **Integracija s vanjskim servisima**:
-
-   - Platforma mora omogućiti integraciju s vanjskim kalendarima (Google Kalendar, Calendar.online) i servisima za plaćanje (PayPal, sustavi kreditnih kartica).
-10. **Održavanje**:
-
-- Sustav mora biti lako održiv, s jasnim dokumentacijama za administratore i tehničku podršku.
+   - Platforma mora omogućiti integraciju s vanjskim uslugama
+      - kalendar (Google Kalendar)
+      - servis za plaćanje (PayPal).
 
 # Tehnologije
 
-#Instalcija
+#Instalacija
 
 # Članovi tima
 
