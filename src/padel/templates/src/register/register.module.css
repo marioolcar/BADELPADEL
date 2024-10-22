@@ -1,0 +1,43 @@
+.header{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.register{
+    margin: auto;
+    display: flex;
+    height: 50%;
+    width: 50%;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+}
+
+.register > div{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.accountType{
+    display: flex;
+    flex-direction: row !important;
+}
+
+.passwordInput{
+    display: flex;
+    border: 2px solid #00000050;
+    border-radius: 5px;
+}
+
+.buttonSelected{
+    background-color: black;
+}
+
+.accountTypeButton{
+    background-color: black;
+    border: 2px solid black;
+}

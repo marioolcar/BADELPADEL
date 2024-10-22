@@ -1,0 +1,36 @@
+.header{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.content{
+    display: grid;
+    bottom: 0;
+}
+
+/* .sidebar{
+    border: 10px solid red;
+} */
+
+.profilePicture{
+    height: 100px;
+    width: 100px;
+}
+
+.middle{
+    grid-column-start: 2;
+    grid-column-end: 8;
+    /* border: 10px solid blue; */
+}
+
+.terenTurnirToggle{
+    display:flex;
+    gap:10px;
+}
+
+.labelButton{
+    align-self: center;
+    background-color: #00000050;
+    border: 2px solid black;
+}
