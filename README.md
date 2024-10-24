@@ -6,11 +6,21 @@ Ovaj projekt je reultat timskog rada u sklopu projeknog zadatka kolegija [Progra
 
 # Funkcionalni zahtjevi
 
+Dionici:
+
+   1. vlasnici terena
+   2. Igrači
+   3. Administrator
+   4. Razvojni tim
+
+Aktori i njihovi zahtjevi su sljedeći
+
 1. **Registracija korisnika**:
 
    - Korisnici se moraju registrirati kao **igrači** ili **vlasnici terena**.
       - Igrači koriste platformu besplatno
       - Vlasnici terena plaćaju godišnju članarinu
+
 2. **Podjela korisnika na vlasnike terena i igrače**:
 
    - Vlasnici terena imaju javni profil koji sadrži osnovne informacije (naziv, adresa, kontakt telefon).
