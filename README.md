@@ -6,15 +6,6 @@ Ovaj projekt je reultat timskog rada u sklopu projeknog zadatka kolegija [Progra
 
 # Funkcionalni zahtjevi
 
-Dionici:
-
-   1. vlasnici terena
-   2. Igrači
-   3. Administrator
-   4. Razvojni tim
-
-Aktori i njihovi zahtjevi su sljedeći
-
 1. **Registracija korisnika**:
 
    - Korisnici se moraju registrirati kao **igrači** ili **vlasnici terena**.
@@ -33,10 +24,19 @@ Aktori i njihovi zahtjevi su sljedeći
    - Igrači mogu pregledavati dostupne termine i rezervirati teren putem platforme.
    - Plaćanje može biti gotovinom, PayPal-om ili kreditnom karticom.
    - Moguće je otkazati rezervaciju do 24 sata prije početka termina.
+
 4. **Praćenje rezultata i događaja**:
 
    - Vlasnici terena mogu unijeti rezultate završenih turnira te postaviti fotografije s turnira.
    - Igrači mogu postavljati komentare i slike vezane uz odigrane mečeve.
+
+Dionici:
+
+   1. vlasnici terena
+   2. Igrači
+   3. Administrator
+   4. Razvojni tim
+
 
 # Nefunkcionalni zahtjevi
 
@@ -64,11 +64,19 @@ Aktori i njihovi zahtjevi su sljedeći
 
 # Tehnologije
 
-#Instalacija
+   - backend: Django
+   - frontend: React
 
 # Članovi tima
 
-> Popis članova tima/linkovi/ glavni doprinos
+   - Voditelj:
+      - Mario Olčar
+   - Frontend:
+      - Iva Džakula
+      - Josip Curkov
+   - Backend:
+      - Gregor Mihaljević
+      - Tomislav Marenić
 
 # Kontribucije
 
