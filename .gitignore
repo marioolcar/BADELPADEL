@@ -165,6 +165,9 @@ media
 .idea/**/uiDesigner.xml
 .idea/**/dbnavigator.xml
 
+*.pyc
+*.pyo
+
 # Gradle
 .idea/**/gradle.xml
 .idea/**/libraries
