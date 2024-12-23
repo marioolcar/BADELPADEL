@@ -20,3 +20,30 @@ class NoteSerializer(serializers.ModelSerializer):
         model = Note
         fields = ["id", "title", "content", "created_at", "author"]
         extra_kwargs = {"author": {"read_only": True}}
+
+
+from .models import Teren, Turnir, Vlasnik, Igrac
+
+
+class VlasnikSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Vlasnik
+        fields = ['id', 'user', 'javni_profil']
+
+
+class IgracSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Igrac
+        fields = ['id', 'user', 'javni_profil']
+
+
+class TerenSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Teren
+        fields = ['id', 'lokacija_grad', 'lokacija_ulica', 'slika', 'tip', 'dostupni_termini', 'vlasnik']
+
+
+class TurnirSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Turnir
+        fields = ['id', 'naziv', 'teren', 'datum_pocetka', 'datum_kraja', 'cijena_kotizacije', 'nagrade', 'opis', 'organizator', 'otvorenost']
