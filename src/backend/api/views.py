@@ -23,7 +23,6 @@ class NoteListCreate(generics.ListCreateAPIView):
         else:
             print(serializer.errors)
 
-
 class NoteDelete(generics.DestroyAPIView):
     serializer_class = NoteSerializer
     permission_classes = [IsAuthenticated]
@@ -32,13 +31,10 @@ class NoteDelete(generics.DestroyAPIView):
         user = self.request.user
         return Note.objects.filter(author=user)
 
-
 class CreateUserView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [AllowAny]
-
-
 
 # Pogledi za Teren
 class TerenListCreate(generics.ListCreateAPIView):
@@ -47,12 +43,10 @@ class TerenListCreate(generics.ListCreateAPIView):
     permission_classes = [IsAuthenticated]
     #promjeni IsAuthenticated
 
-
 class TerenDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Teren.objects.all()
     serializer_class = TerenSerializer
     permission_classes = [IsAuthenticated]
-
 
 # Pogledi za Turnir
 class TurnirListCreate(generics.ListCreateAPIView):
@@ -61,23 +55,17 @@ class TurnirListCreate(generics.ListCreateAPIView):
     permission_classes = [IsAuthenticated]
     #promjeni IsAuthenticated
 
-    
-
-
 class TurnirDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Turnir.objects.all()
     serializer_class = TurnirSerializer
     permission_classes = [IsAuthenticated]
     #promjeni IsAuthenticated
     
-
-
 # Pogledi za Vlasnik
 class VlasnikListCreate(generics.ListCreateAPIView):
     queryset = Vlasnik.objects.all()
     serializer_class = VlasnikSerializer
     permission_classes = [AllowAny]
-
 
 # Pogledi za Igrac
 class IgracListCreate(generics.ListCreateAPIView):
