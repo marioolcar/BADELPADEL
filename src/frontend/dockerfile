@@ -1,0 +1,21 @@
+# Dockerfile for React Frontend
+FROM node:16-alpine
+
+# Set working directory
+WORKDIR /app
+
+# Install dependencies
+COPY package.json /app/
+COPY package-lock.json /app/
+RUN npm install
+
+# Build the app
+COPY . /app/
+RUN npm run build
+
+# Serve the app
+RUN npm install -g serve
+CMD ["serve", "-s", "dist"]
+
+# Expose port
+EXPOSE 3000
