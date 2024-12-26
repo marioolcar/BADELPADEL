@@ -15,6 +15,7 @@ from .serializers import TerenSerializer
 
 
 class UploadTerenImage(APIView):
+    permission_classes = [AllowAny]
     parser_classes = [MultiPartParser, FormParser]  # Omogućuje obradu slika
 
     def post(self, request, *args, **kwargs):
