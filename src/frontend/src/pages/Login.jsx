@@ -32,9 +32,11 @@ function Login() {
                         <img
                             src={teren.slika}
                             alt={`Slika terena: ${teren.lokacija_grad}`}
-                            style={{ width: "200px", height: "300px", objectFit: "cover" }}
+                            style={{  height: "300px", objectFit: "cover" }}
                         />
                         <p>Tip: {teren.tip}</p>
+                        <p>Vlasnik ID: {teren.vlasnik}</p>
+
                     </div>
                 ))}
             </div>
