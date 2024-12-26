@@ -14,7 +14,7 @@ function TournamentPage(){
         .then((res) => res.data)
         .then((data) => {
             setTournament(data);
-            console.log(data);
+            //console.log(data);
         })
         .catch((err) => alert(err));
     }, [])

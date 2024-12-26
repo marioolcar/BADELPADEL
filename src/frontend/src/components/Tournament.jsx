@@ -5,7 +5,20 @@ import api from "../api";
 function Tournament({ tournament }) {
 
     const [lokacija, setLokacija] = useState("");
+    var vrijeme = "";
 
+    function convertDateTime(dateTime){
+        let [date, time] = dateTime.slice(0, dateTime.length-4).split('T');
+        return `${date} u ${time}`;
+    }
+
+    if (tournament.otvorenost === "otvoren"){
+        vrijeme = `Počinje ${convertDateTime(tournament.datum_pocetka)}`
+    } 
+    else{
+        vrijeme = `Završio ${convertDateTime(tournament.datum_kraja)}`
+    }
+    
     useEffect(() => {
         api
         .get(`/api/tereni/${tournament.teren}/`)
@@ -21,7 +34,7 @@ function Tournament({ tournament }) {
         <a className="tournament-link" href={`/tournaments/${tournament.id}`}>
             <div className="tournament">
                 <div className="tournament-left-block">
-                    <p id="tournament-datum">{tournament.datum_pocetka}</p>
+                    <p id="tournament-datum">{vrijeme}</p>
                     <p id="tournament-naziv">{tournament.naziv}</p>
                     <p id="tournament-lokacija">{lokacija}</p>
                 </div>

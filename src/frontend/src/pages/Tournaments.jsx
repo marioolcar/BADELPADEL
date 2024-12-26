@@ -10,7 +10,7 @@ function Tournaments(){
     const [filteredData, setFilteredData] = useState([]);
     const [filters, setFilters] = useState([]);
     const [sliderValue, setSliderValue] = useState(50);
-    const [maxPriceValue, setMaxPriceValue] = useState(99)
+    const [maxPriceValue, setMaxPriceValue] = useState(50)
 
 
     useEffect(() =>{
@@ -26,25 +26,32 @@ function Tournaments(){
     }, [])
 
     useEffect(() =>{
+
         setFilteredData(tournaments.filter(function(item){
-            console.log(filters, item.otvorenost)
+            //console.log(filters, item.otvorenost)
             if (filters.includes(item.otvorenost) || filters.length === 0){
-                if (maxPriceValue >= parseInt(item.cijena_kotizacije))
+
+                if (maxPriceValue >= parseInt(item.cijena_kotizacije)){
                     return true;
+                }
+
             }
             return false;
         }));
+
     }, [filters, maxPriceValue])
 
     const handleTypeFilterUpdate = (e, tournament_openness) => {
 
         const { checked } = e.target;
+
         if (checked){
             setFilters((prev) => [...prev, tournament_openness])
-        } else{
+        }
+        else{
             setFilters(filters.filter((x) => x !== tournament_openness))
         }
-        console.log(filters)            
+        //console.log(filters)            
     }
 
     function handleRangeChange(e){
@@ -58,17 +65,24 @@ function Tournaments(){
     return (
         <>
             <Header />
+
             <div className="filter-container">
+
                 <div className="checkbox-container">
+
                     <input type="checkbox" id="otvoren" name="otvoren" onClick={(e) => handleTypeFilterUpdate(e, "otvoren")}></input>
                     <label htmlFor="otvoren">Otvoren</label>
-                    <input type="checkbox" id="zatvoren" name="zatvoren" onClick={(e) => handleTypeFilterUpdate(e, "zatvoren")}></input>
-                    <label htmlFor="zatvoren">Zatvoren</label>
+                    <input type="checkbox" id="zavrsen" name="zavrsen" onClick={(e) => handleTypeFilterUpdate(e, "zavrsen")}></input>
+                    <label htmlFor="zavrsen">Zavrsen</label>
+
                 </div>
-                <input id="slider" name="priceRange" type="range" min={0} max={99} step={1} value={sliderValue} onChange={handleRangeChange}></input>
-                <input type="text" inputMode="numeric" value={sliderValue} onChange={handleRangeChange} maxLength={2}></input>
+
+                <input id="slider" type="range" min={0} max={99} step={1} value={sliderValue} onChange={handleRangeChange}></input>
+                <input id="slider-numeric-input" type="number" inputMode="numeric" value={sliderValue} onChange={handleRangeChange} maxLength={2}></input>
                 <button onClick={applyRangeChange}>Apply</button>
+
             </div>
+
             <div className="tournaments-container">
 
                 {filteredData.map((tournament) => (

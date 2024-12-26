@@ -11,8 +11,8 @@ function Header(){
                 <a className="header-links" href="/fields">Fields</a>
                 <a className="header-links" href="/tournaments">Tournaments</a>
                 <a className="header-links" href="/notes">Notes</a>
+                <a className="header-links" href="/login" id="sign-in-button">Sign in</a>
             </nav>
-            <a id="sign-in-button" className="header-links" href="/login">Sign in</a>
         </div>
 
     );

@@ -9,4 +9,18 @@
 .filter-container{
     display:flex;
     gap:10px;
+    align-items: center;
+}
+
+input[type="checkbox"]{
+    accent-color: #505050;
+}
+
+#slider{
+    width:100px;
+    accent-color: #505050;
+}
+
+#slider-numeric-input{
+    width: 50px;
 }
