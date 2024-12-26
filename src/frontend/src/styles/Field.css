@@ -1,0 +1,33 @@
+.field{
+    height: 200px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.field-link{
+    text-decoration: none;
+    color: inherit;
+}
+
+.field-header{
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.field-city{
+    margin: 0px;
+    padding: 10px;
+    position:relative;
+    font-size: 36px;
+    color: white;
+}
+
+.other-field-data{
+    display: flex;
+    gap: 20px;
+    padding: 10px;
+    justify-content: space-between;
+    align-items: center;
+}

@@ -1,0 +1,35 @@
+.header-container{
+    display:flex;
+    align-items: center;
+    background-color: #303030;
+    height: 100px;
+    margin: 0px;
+    padding: 0px;
+    gap:20px;
+    font-size: 18px;
+}
+
+.navigation{
+    display:flex;
+    gap:20px;
+    width: 100%;
+    align-items: center;
+}
+
+.header-links {
+    padding: 10px;
+    text-decoration: none;
+    color: white;
+    background-color: #202020;
+    border-radius: 10px;
+}
+
+.header-links:hover {
+    background-color: #101010;
+}
+
+#sign-in-button{
+    width: fit-content;
+    min-width: max-content;
+    margin-right: 10px;
+}

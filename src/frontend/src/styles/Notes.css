@@ -1,6 +1,12 @@
+body{
+  margin: 0px 0px;
+  padding: 0px;
+}
+
 /* Container for the whole page */
 div {
   font-family: Arial, sans-serif;
+  margin: 0px;
 }
 
 /* Styles for the notes section */

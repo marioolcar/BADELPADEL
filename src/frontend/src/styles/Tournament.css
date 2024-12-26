@@ -1,0 +1,51 @@
+.tournament{
+    display: flex;
+    flex-direction: row;
+    height: 100px;
+    background-color: #303030;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.tournament:hover{
+    background-color: #505050;
+}
+
+.tournament-link{
+    text-decoration: none;
+    color: inherit;
+}
+
+.tournament-left-block > * {
+    margin: 0px;
+    color: #aaaaaa;
+}
+
+.tournament-left-block{
+    display:flex;
+    flex-direction: column;
+    align-items: space-evenly;
+}
+
+#tournament-naziv{
+    color: white;
+    font-size: 24px;
+
+}
+
+.tournament-right-block{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+.tournament-right-block > * {
+    color: #aaaaaa;
+    text-align: right;
+}
+
+#tournament-otvorenost{
+    width: 75px;
+}
+

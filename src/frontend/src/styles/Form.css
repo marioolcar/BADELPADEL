@@ -34,26 +34,3 @@
 .form-button:hover {
   background-color: #0056b3;
 }
-
-
-.teren-gallery {
-  display: flex;
-  gap: 20px;
-  margin-top: 20px;
-}
-
-.teren-item {
-  align-items: center; /* Vertikalno centriranje slike i teksta */
-  gap: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 10px;
-  background-color: #f9f9f9;
-  max-width: 100%;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.teren-info {
-  display: flex;
-  gap: 10px; /* Razmak između tekstualnih elemenata */
-}
