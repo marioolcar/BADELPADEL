@@ -38,10 +38,17 @@ class IgracSerializer(serializers.ModelSerializer):
 
 
 class TerenSerializer(serializers.ModelSerializer):
+    slika_url = serializers.SerializerMethodField()
+
     class Meta:
         model = Teren
-        fields = ['id', 'lokacija_grad', 'lokacija_ulica', 'slika', 'tip', 'dostupni_termini', 'vlasnik']
+        fields = ['id', 'lokacija_grad', 'lokacija_ulica', 'tip', 'dostupni_termini', 'vlasnik', 'slika_url']
 
+    def get_slika_url(self, obj):
+        request = self.context.get('request')
+        if obj.slika:
+            return request.build_absolute_uri(obj.slika.url)
+        return None
 
 class TurnirSerializer(serializers.ModelSerializer):
     class Meta:

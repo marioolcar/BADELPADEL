@@ -4,7 +4,8 @@ from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from .models import Teren, Turnir, Vlasnik, Igrac
 from .serializers import TerenSerializer, TurnirSerializer, VlasnikSerializer, IgracSerializer
-
+from django.urls import path
+from .views import UploadTerenImage
 
 
 
@@ -23,6 +24,9 @@ urlpatterns = [
     # Rute za vlasnike i igrače
     path("vlasnici/", views.VlasnikListCreate.as_view(), name="vlasnik-list"),
     path("igraci/", views.IgracListCreate.as_view(), name="igrac-list"),
+    
+    #path za uploadanje slike
+    path('tereni/upload/', UploadTerenImage.as_view(), name='teren-upload'),
 ]
 
 
