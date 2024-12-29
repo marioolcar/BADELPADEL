@@ -1,16 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "../styles/Tournament.css"
 import api from "../api";
+import {convertDateTime} from "../functions/Utility.jsx";
 
 function Tournament({ tournament }) {
 
     const [lokacija, setLokacija] = useState("");
     var vrijeme = "";
-
-    function convertDateTime(dateTime){
-        let [date, time] = dateTime.slice(0, dateTime.length-4).split('T');
-        return `${date} u ${time}`;
-    }
 
     if (tournament.otvorenost === "otvoren"){
         vrijeme = `Počinje ${convertDateTime(tournament.datum_pocetka)}`

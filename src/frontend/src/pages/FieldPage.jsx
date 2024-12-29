@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import { useParams } from "react-router-dom";
 import api from "../api";
 import "../styles/FieldPage.css"
+import FieldPageHeader from "../components/FieldPageHeader";
 
 function FieldPage(){
 
@@ -23,12 +24,7 @@ function FieldPage(){
     return(
         <>
             <Header />
-            <div className="field-page-header" style={{backgroundImage:`linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${field.slika})`}}>
-                <div className="field-page-header-info">
-                    <h1>{`${field.lokacija_grad}, ${field.lokacija_ulica}`}</h1>
-                    <p>{`Tip terena: ${field.tip}`}</p>
-                </div>
-            </div>
+            <FieldPageHeader field = {field}/>
         </>
     );
 }
