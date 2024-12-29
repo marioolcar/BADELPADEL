@@ -1,17 +1,16 @@
-from django.shortcuts import render
 from django.contrib.auth.models import User
 from rest_framework import generics
-from .serializers import UserSerializer, NoteSerializer
+from .serializers import UserSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny
-from .models import Note
-from .models import Teren, Turnir, Vlasnik, Igrac
-from .serializers import TerenSerializer, TurnirSerializer, VlasnikSerializer, IgracSerializer
-from rest_framework.parsers import MultiPartParser, FormParser
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
-from .models import Teren
-from .serializers import TerenSerializer
+
+
+
+class CreateUserView(generics.CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = [AllowAny]
+
+"""
 
 
 class UploadTerenImage(APIView):
@@ -48,10 +47,6 @@ class NoteDelete(generics.DestroyAPIView):
         user = self.request.user
         return Note.objects.filter(author=user)
 
-class CreateUserView(generics.CreateAPIView):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-    permission_classes = [AllowAny]
 
 # Pogledi za Teren
 class TerenListCreate(generics.ListCreateAPIView):
@@ -90,3 +85,4 @@ class IgracListCreate(generics.ListCreateAPIView):
     serializer_class = IgracSerializer
     permission_classes = [AllowAny]
 
+"""
