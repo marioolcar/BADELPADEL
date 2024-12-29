@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from .models import Note
+from .models import Komentar, Note, Post
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -54,3 +54,13 @@ class TurnirSerializer(serializers.ModelSerializer):
     class Meta:
         model = Turnir
         fields = ['id', 'naziv', 'teren', 'datum_pocetka', 'datum_kraja', 'cijena_kotizacije', 'nagrade', 'opis', 'organizator', 'otvorenost']
+        
+class PostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Post
+        fields = '__all__'
+
+class KomentarSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Komentar
+        fields = '__all__'

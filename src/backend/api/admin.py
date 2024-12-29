@@ -8,4 +8,8 @@ admin.site.register(Igrac)
 admin.site.register(Note)
 admin.site.register(Teren)
 admin.site.register(Turnir)
+admin.site.register(Post)
+admin.site.register(Komentar)
+
+
 

@@ -1,5 +1,9 @@
 from django.urls import path
 
+from .views2.komentar_view import *
+
+from .views2.post_view import *
+
 
 from .views2.igrac_view import *
 from .views2.note_view import *
@@ -16,11 +20,11 @@ from .views2 import *
 #from .serializers import TerenSerializer, TurnirSerializer, VlasnikSerializer, IgracSerializer
 from django.urls import path
 #from .views import UploadTerenImage
+from django.views.generic.base import RedirectView
 
 
 
 urlpatterns = [
-    
     path("notes/", NoteListCreate.as_view(), name="note-list"),
     path("notes/delete/<int:pk>/", NoteDelete.as_view(), name="delete-note"),
     # Rute za teren
@@ -37,6 +41,7 @@ urlpatterns = [
     
     # Rute za vlasnike i igrače
     path("vlasnici/", VlasnikListCreate.as_view(), name="vlasnik-list"),
+    
     #path("vlasnici/delete/<int:pk>/", VlasnikDelete.as_view(), name="vlasnik-list"),
     
     path("igraci/", IgracListCreate.as_view(), name="igrac-list"),
@@ -44,6 +49,14 @@ urlpatterns = [
     
     #path za uploadanje slike
     path('tereni/upload/', UploadTerenImage.as_view(), name='teren-upload'),
+    
+    #path za post
+    path('post/', PostListCreate.as_view(), name='post-list'),
+    
+    
+    #path za komentar
+    path('komentar/', KomentarListCreate.as_view(), name='komentar-list'),
+    
 ]
 
 
