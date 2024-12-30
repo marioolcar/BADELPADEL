@@ -23,5 +23,5 @@ class PostDelete(generics.DestroyAPIView):
     permission_classes = [AllowAny]
 
     def get_queryset(self):
-        user = self.request.user
-        return Post.objects.filter(author=user)
+        pk = self.kwargs['pk']  # Dohvaćanje `pk` iz URL-a
+        return Post.objects.filter(id=pk)

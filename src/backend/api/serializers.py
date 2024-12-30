@@ -63,4 +63,6 @@ class PostSerializer(serializers.ModelSerializer):
 class KomentarSerializer(serializers.ModelSerializer):
     class Meta:
         model = Komentar
+        #fields = ['id', 'user_id', 'teren_id', 'turnir_id', 'slika', 'naslov', 'opis', 'broj_like', 'broj_comment']
+        
         fields = '__all__'

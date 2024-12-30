@@ -18,10 +18,11 @@ class KomentarDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [AllowAny]
     #promjeni IsAuthenticated
     
+    
 class KomentarDelete(generics.DestroyAPIView):
     serializer_class = KomentarSerializer
     permission_classes = [AllowAny]
 
     def get_queryset(self):
-        user = self.request.user
-        return Post.objects.filter(author=user)
+        pk = self.kwargs['pk']  # Dohvaćanje `pk` iz URL-a
+        return Post.objects.filter(id=pk)

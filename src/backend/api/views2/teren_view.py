@@ -37,8 +37,8 @@ class UploadTerenImage(APIView):
     
 class TerenDelete(generics.DestroyAPIView):
     serializer_class = TerenSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
 
     def get_queryset(self):
-        user = self.request.user
-        return Teren.objects.filter(author=user)
+        pk = self.kwargs['pk']  # Dohvaćanje `pk` iz URL-a
+        return Teren.objects.filter(id=pk)
