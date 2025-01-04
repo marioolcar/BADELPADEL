@@ -23,5 +23,5 @@ class TurnirDelete(generics.DestroyAPIView):
     permission_classes = [AllowAny]
 
     def get_queryset(self):
-        user = self.request.user
-        return Turnir.objects.filter(author=user)
+        pk = self.kwargs['pk']  # Dohvaćanje `pk` iz URL-a
+        return Turnir.objects.filter(id=pk)

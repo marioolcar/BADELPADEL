@@ -7,16 +7,16 @@ class Note(models.Model):
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="notes")
-
     def __str__(self):
         return self.title
-
+    
 
 # Model za Vlasnika
 class Vlasnik(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     javni_profil = models.URLField(blank=True, null=True)  # Poveznica na javni profil
-
+    slika = models.ImageField(upload_to='vlasnik_images/', blank=True, null=True)
+    telefon = models.CharField(max_length=20, default="0999696969")
     def __str__(self):
         return self.user.username
 
@@ -24,7 +24,8 @@ class Vlasnik(models.Model):
 class Igrac(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     javni_profil = models.URLField(blank=True, null=True)  # Poveznica na javni profil
-
+    slika = models.ImageField(upload_to='igrac_images/', blank=True, null=True)
+    telefon = models.CharField(max_length=20, default="0999696969")
     def __str__(self):
         return self.user.username
 
@@ -64,3 +65,35 @@ class Turnir(models.Model):
 
     def __str__(self):
         return self.naziv
+
+
+
+class Post(models.Model):
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    teren_id = models.ForeignKey(Teren, on_delete=models.CASCADE,blank=True)
+    turnir_id = models.ForeignKey(Turnir, on_delete=models.CASCADE, blank=True)
+    slika = models.ImageField(upload_to='post_images/', blank=True, null=True)
+    naslov = models.CharField(max_length=100)
+    opis = models.CharField(max_length=500)
+    broj_like = models.IntegerField(default=0)
+    broj_comment = models.IntegerField(default=0)
+    
+    def __str__(self):
+        return f"{self.naslov}, {self.user_id}, {self.teren_id}, {self.turnir_id}"
+
+    
+    
+class Komentar(models.Model):
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    teren_id = models.ForeignKey(Teren, on_delete=models.CASCADE,blank=True)
+    turnir_id = models.ForeignKey(Turnir, on_delete=models.CASCADE, blank=True)
+    slika = models.ImageField(upload_to='post_images/', blank=True, null=True)
+    naslov = models.CharField(max_length=100)
+    opis = models.CharField(max_length=500)
+    broj_like = models.IntegerField(default=0)
+    broj_comment = models.IntegerField(default=0)
+    
+    
+    def __str__(self):
+        return f"{self.naslov}, {self.user_id}, {self.teren_id}, {self.turnir_id}"
+    
