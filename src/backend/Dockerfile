@@ -6,18 +6,20 @@ WORKDIR /app
 
 RUN pip install --upgrade pip
 
+# copy requirements
 COPY requirements.txt /app/
 
-RUN pip install  -r requirements.txt
+# install requirements
+RUN pip install -r requirements.txt
 
-# Copy project
+# copy rest 
 COPY . /app/
 
-# Expose port
 EXPOSE 8000
 
-# Collect static files
-RUN python manage.py collectstatic --noinput
+RUN python manage.py makemigrations
+
+RUN python manage.py migrate
 
 # Run the application
 CMD ["gunicorn", "backend.wsgi:application", "--bind", "0.0.0.0:8000"]
