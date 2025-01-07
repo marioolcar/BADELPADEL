@@ -17,6 +17,49 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = PostSerializer
     permission_classes = [AllowAny]
     #promjeni IsAuthenticated
+    def get_queryset(self):
+        try:
+            pk = self.kwargs['pk']  # Dohvaćanje `pk` iz URL-a
+            return Post.objects.filter(id=pk)   
+        except:
+            return Post.objects.filter()
+        
+        
+class PostUser(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+    permission_classes = [AllowAny]
+    #promjeni IsAuthenticated
+    def get_queryset(self):
+        try:
+            pk = self.kwargs['user_id']  # Dohvaćanje `pk` iz URL-a
+            return Post.objects.filter(user_id=pk)   
+        except:
+            return Post.objects.filter()
+        
+class PostTeren(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+    permission_classes = [AllowAny]
+    #promjeni IsAuthenticated
+    def get_queryset(self):
+        try:
+            pk = self.kwargs['teren_id']  # Dohvaćanje `pk` iz URL-a
+            return Post.objects.filter(teren_id=pk)   
+        except:
+            return Post.objects.filter()
+        
+class PostTurnir(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+    permission_classes = [AllowAny]
+    #promjeni IsAuthenticated
+    def get_queryset(self):
+        try:
+            pk = self.kwargs['turnir_id']  # Dohvaćanje `pk` iz URL-a
+            return Post.objects.filter(turnir_id=pk)   
+        except:
+            return Post.objects.filter()
     
 class PostDelete(generics.DestroyAPIView):
     serializer_class = PostSerializer

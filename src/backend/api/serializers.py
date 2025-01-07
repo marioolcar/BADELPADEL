@@ -28,13 +28,16 @@ from .models import Teren, Turnir, Vlasnik, Igrac
 class VlasnikSerializer(serializers.ModelSerializer):
     class Meta:
         model = Vlasnik
-        fields = ['id', 'user', 'javni_profil']
+        #fields = ['id', 'user', 'javni_profil']
+        fields = '__all__'
+        
 
 
 class IgracSerializer(serializers.ModelSerializer):
     class Meta:
         model = Igrac
-        fields = ['id', 'user', 'javni_profil']
+        #fields = ['id', 'user', 'javni_profil']
+        fields = '__all__'
 
 
 class TerenSerializer(serializers.ModelSerializer):
@@ -53,7 +56,7 @@ class TerenSerializer(serializers.ModelSerializer):
 class TurnirSerializer(serializers.ModelSerializer):
     class Meta:
         model = Turnir
-        fields = ['id', 'naziv', 'teren', 'datum_pocetka', 'datum_kraja', 'cijena_kotizacije', 'nagrade', 'opis', 'organizator', 'otvorenost']
+        fields = ['id', 'naziv', 'teren', 'datum_pocetka', 'datum_kraja', 'cijena_kotizacije', 'nagrade', 'opis', 'organizator', 'otvorenost', 'vrijeme']
         
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
@@ -63,6 +66,6 @@ class PostSerializer(serializers.ModelSerializer):
 class KomentarSerializer(serializers.ModelSerializer):
     class Meta:
         model = Komentar
-        #fields = ['id', 'user_id', 'teren_id', 'turnir_id', 'slika', 'naslov', 'opis', 'broj_like', 'broj_comment']
+        #fields = ['id', 'user_id', 'teren_id', 'turnir_id', 'slika', 'naslov', 'opis', 'broj_like', 'broj_comment', 'vrijeme']
         
         fields = '__all__'
