@@ -10,6 +10,13 @@ class IgracListCreate(generics.ListCreateAPIView):
     serializer_class = IgracSerializer
     permission_classes = [AllowAny]
     
+    def get_queryset(self):
+        try:
+            pk = self.kwargs['pk']  # Dohvaćanje `pk` iz URL-a
+            return Igrac.objects.filter(id=pk)   
+        except:
+            return Igrac.objects.filter()
+    
 class IgracDelete(generics.DestroyAPIView):
     serializer_class = IgracSerializer
     permission_classes = [AllowAny]

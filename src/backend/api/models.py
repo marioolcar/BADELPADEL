@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -77,6 +78,7 @@ class Post(models.Model):
     opis = models.CharField(max_length=500)
     broj_like = models.IntegerField(default=0)
     broj_comment = models.IntegerField(default=0)
+    vrijeme =  models.TimeField(default=datetime.now())
     
     def __str__(self):
         return f"{self.naslov}, {self.user_id}, {self.teren_id}, {self.turnir_id}"
@@ -92,6 +94,8 @@ class Komentar(models.Model):
     opis = models.CharField(max_length=500)
     broj_like = models.IntegerField(default=0)
     broj_comment = models.IntegerField(default=0)
+    vrijeme =  models.TimeField(default=datetime.now())
+    post_id = models.ForeignKey(Post, on_delete=models.CASCADE, blank=True, null=True)
     
     
     def __str__(self):

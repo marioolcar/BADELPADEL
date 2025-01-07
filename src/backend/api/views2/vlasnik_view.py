@@ -9,6 +9,13 @@ class VlasnikListCreate(generics.ListCreateAPIView):
     serializer_class = VlasnikSerializer
     permission_classes = [AllowAny]
     
+    def get_queryset(self):
+        try:
+            pk = self.kwargs['pk']  # Dohvaćanje `pk` iz URL-a
+            return Vlasnik.objects.filter(id=pk)   
+        except:
+            return Vlasnik.objects.filter()
+    
     
 class VlasnikDelete(generics.DestroyAPIView):
     serializer_class = VlasnikSerializer
@@ -16,4 +23,4 @@ class VlasnikDelete(generics.DestroyAPIView):
 
     def get_queryset(self):
         pk = self.kwargs['pk']  # Dohvaćanje `pk` iz URL-a
-        return Vlasnik.objects.filter(id=pk)    
+        return Vlasnik.objects.filter(id=pk)   

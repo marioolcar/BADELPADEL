@@ -21,7 +21,24 @@ class TerenDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Teren.objects.all()
     serializer_class = TerenSerializer
     permission_classes = [AllowAny]
-    
+    def get_queryset(self):
+        try:
+            pk = self.kwargs['pk']  # Dohvaćanje `pk` iz URL-a
+            return Teren.objects.filter(id=pk)   
+        except:
+            return Teren.objects.filter()
+        
+
+class TerenVlasnik(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Teren.objects.all()
+    serializer_class = TerenSerializer
+    permission_classes = [AllowAny]
+    def get_queryset(self):
+        try:
+            pk = self.kwargs['vlasnik_id']  # Dohvaćanje `pk` iz URL-a
+            return Teren.objects.filter(vlasnik=pk)   
+        except:
+            return Teren.objects.filter()
     
 class UploadTerenImage(APIView):
     permission_classes = [AllowAny]
