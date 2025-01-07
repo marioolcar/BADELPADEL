@@ -34,27 +34,20 @@ urlpatterns = [
     path('tereni/upload/', UploadTerenImage.as_view(), name='teren-upload'),
     path('tereni/vlasnik/<int:vlasnik_id>/', TerenVlasnik.as_view(), name="teren-vlasnik"),
     
-    
-    
     # Rute za turnir
     path("turniri/", TurnirListCreate.as_view(), name="turnir-list"),
     path("turniri/<int:pk>/", TurnirDetail.as_view(), name="turnir-detail"),
     path("turniri/delete/<int:pk>/", TurnirDelete.as_view(), name="turnir-delete"),
     path('turniri/vlasnik/<int:vlasnik_id>/', TurnirVlasnik.as_view(), name="turnir-vlasnik"),
     
-    
-    
     # Rute za vlasnike i igrače
     path("vlasnici/", VlasnikListCreate.as_view(), name="vlasnik-list"),
     path("vlasnici/delete/<int:pk>/", VlasnikDelete.as_view(), name="vlasnik-delete"),
     path("vlasnici/<int:pk>/", VlasnikListCreate.as_view(), name="vlasnik-pojedinacno"),
     
-    
     path("igraci/", IgracListCreate.as_view(), name="igrac-list"),
     path("igraci/delete/<int:pk>/", IgracDelete.as_view(), name="igrac-delete"),
     path("igraci/<int:pk>/", IgracListCreate.as_view(), name="igrac-pojedinacno"),
-    
-    
     
     #path za post
     path('post/', PostListCreate.as_view(), name='post-list'),
@@ -63,9 +56,6 @@ urlpatterns = [
     path('post/user/<int:user_id>', PostUser.as_view(), name="post-user"),
     path('post/Teren/<int:teren_id>', PostTeren.as_view(), name="post-teren"),
     path('post/Turnir/<int:turnir_id>', PostTurnir.as_view(), name="post-turnir"),
-    
-    
-    
     
     #path za komentar
     path('komentar/', KomentarListCreate.as_view(), name='komentar-list'),
