@@ -56,7 +56,7 @@ class TerenSerializer(serializers.ModelSerializer):
 class TurnirSerializer(serializers.ModelSerializer):
     class Meta:
         model = Turnir
-        fields = ['id', 'naziv', 'teren', 'datum_pocetka', 'datum_kraja', 'cijena_kotizacije', 'nagrade', 'opis', 'organizator', 'otvorenost', 'vrijeme']
+        fields = ['id', 'naziv', 'teren', 'datum_pocetka', 'datum_kraja', 'cijena_kotizacije', 'nagrade', 'opis', 'organizator', 'otvorenost']
         
 class PostSerializer(serializers.ModelSerializer):
     class Meta:

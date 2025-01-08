@@ -22,7 +22,8 @@ function Tournaments(){
             setFilteredData(data);
             console.log(data);
         })
-        .catch((err) => alert(err));
+        .catch(//(err) => alert(err)
+        );
     }, [])
 
     useEffect(() =>{

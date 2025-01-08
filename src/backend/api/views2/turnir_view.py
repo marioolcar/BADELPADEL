@@ -24,15 +24,17 @@ class TurnirDetail(generics.RetrieveUpdateDestroyAPIView):
             return Turnir.objects.filter(id=pk)   
         except:
             return Turnir.objects.filter()
-        
-class TurnirVlasnik(generics.RetrieveUpdateDestroyAPIView):
+
+#promjenjen generics.RetrieveUpdateDestroyAPIView u generics.ListCreateAPIView kako bi mogo dobit vise turnira za jednog organizatora
+class TurnirVlasnik(generics.ListCreateAPIView):
+    lookup_field = 'organizator'
     queryset = Turnir.objects.all()
     serializer_class = TurnirSerializer
     permission_classes = [AllowAny]
     #promjeni IsAuthenticated
     def get_queryset(self):
         try:
-            pk = self.kwargs['vlasnik_id']  # Dohvaćanje `pk` iz URL-a
+            pk = self.kwargs['organizator']  # Dohvaćanje `pk` iz URL-a
             return Turnir.objects.filter(organizator=pk)   
         except:
             return Turnir.objects.filter()

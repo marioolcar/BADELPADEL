@@ -5,7 +5,7 @@ from ..models import Igrac
 
 
 # Pogledi za Igrac
-class IgracListCreate(generics.ListCreateAPIView):
+class IgracListCreate(generics.RetrieveUpdateDestroyAPIView):
     queryset = Igrac.objects.all()
     serializer_class = IgracSerializer
     permission_classes = [AllowAny]

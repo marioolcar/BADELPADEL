@@ -5,13 +5,16 @@ import api from "../api";
 import { convertDateTime } from "../functions/Utility";
 import FieldPageHeader from "../components/FieldPageHeader";
 import TournamentBubbles from "../components/TournamentBubbles";
-import "../styles/TournamentPage.css"
+import CommentForm from "../components/CommentForm.jsx";
+import Post from "../components/Post.jsx";
+import "../styles/TournamentPage.css";
 
 function TournamentPage(){
 
     const { tournamentId } = useParams();
     const [tournament, setTournament] = useState([]);
     const [field, setField] = useState([]);
+    const [posts, setPosts] = useState([]);
 
 
     function fetchFieldData(data){
@@ -22,7 +25,20 @@ function TournamentPage(){
             setField(data)
             console.log(data);
         })
-        .catch((err) => alert(err));
+        .catch(//(err) => alert(err)
+        );
+    }
+
+    function fetchPostData(){
+        api
+        .get(`/api/post/Turnir/${tournamentId}/`)
+        .then((res) => res.data)
+        .then((data) => {
+            setPosts(data)
+            console.log(data);
+        })
+        .catch(//(err) => alert(err)
+        );
     }
 
     useEffect (() => {
@@ -34,11 +50,20 @@ function TournamentPage(){
             data.datum_kraja = convertDateTime(data.datum_kraja);
             setTournament(data);
             fetchFieldData(data);
+            fetchPostData();
             console.log(data);
         })
-        .catch((err) => alert(err));
+        .catch(//(err) => alert(err)
+        );
     }, [])
 
+    if (tournament.length === 0){
+        return (
+        <>
+            <Header />
+            <h1>Turnir nije pronađen</h1>
+        </>);
+    }
     return(
         <>
             <Header />
@@ -53,6 +78,14 @@ function TournamentPage(){
                 <h2>Nagrade:</h2>
                 <p>{tournament.nagrade}</p>
             </div>
+            {(tournament.otvorenost === "zavrsen") ?
+            <>
+                <CommentForm tournamentId={tournamentId} fieldId={field.id} />
+                <h2>Komentari ({posts.length})</h2>
+                {posts.map((post) => (
+                    <Post post={post} key={post.id} />
+                    ))} 
+            </> : null}
         </>
     );
 }

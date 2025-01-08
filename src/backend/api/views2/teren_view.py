@@ -28,8 +28,9 @@ class TerenDetail(generics.RetrieveUpdateDestroyAPIView):
         except:
             return Teren.objects.filter()
         
-
-class TerenVlasnik(generics.RetrieveUpdateDestroyAPIView):
+#promjenjen generics.RetrieveUpdateDestroyAPIView u generics.ListCreateAPIView kako bi mogo dobit vise terena za jednog vlasnika
+class TerenVlasnik(generics.ListCreateAPIView):
+    lookup_field = 'vlasnik_id'
     queryset = Teren.objects.all()
     serializer_class = TerenSerializer
     permission_classes = [AllowAny]

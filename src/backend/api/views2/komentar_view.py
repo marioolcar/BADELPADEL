@@ -26,6 +26,7 @@ class KomentarDetail(generics.RetrieveUpdateDestroyAPIView):
             return Komentar.objects.filter()
         
 class KomentarPost(generics.RetrieveUpdateDestroyAPIView):
+    lookup_field = 'post_id'
     queryset = Komentar.objects.all()
     serializer_class = KomentarSerializer
     permission_classes = [AllowAny]
@@ -39,6 +40,7 @@ class KomentarPost(generics.RetrieveUpdateDestroyAPIView):
             return Komentar.objects.filter()
         
 class KomentarUser(generics.RetrieveUpdateDestroyAPIView):
+    lookup_field = 'user_id'
     queryset = Komentar.objects.all()
     serializer_class = KomentarSerializer
     permission_classes = [AllowAny]

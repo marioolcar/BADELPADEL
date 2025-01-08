@@ -23,7 +23,9 @@ function Tournament({ tournament }) {
             setLokacija(`${data.lokacija_grad}, ${data.lokacija_ulica}`);
             //console.log(data);
         })
-        .catch((err) => alert(err));
+        .catch(//(err) => alert(err)
+            setLokacija("Teren nije pronađen")
+        );
     }, [])
 
     return (

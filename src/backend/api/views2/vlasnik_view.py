@@ -4,7 +4,7 @@ from rest_framework import generics
 from ..models import Vlasnik
 
 # Pogledi za Vlasnik
-class VlasnikListCreate(generics.ListCreateAPIView):
+class VlasnikListCreate(generics.RetrieveUpdateDestroyAPIView):
     queryset = Vlasnik.objects.all()
     serializer_class = VlasnikSerializer
     permission_classes = [AllowAny]

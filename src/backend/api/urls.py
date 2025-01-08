@@ -38,7 +38,7 @@ urlpatterns = [
     path("turniri/", TurnirListCreate.as_view(), name="turnir-list"),
     path("turniri/<int:pk>/", TurnirDetail.as_view(), name="turnir-detail"),
     path("turniri/delete/<int:pk>/", TurnirDelete.as_view(), name="turnir-delete"),
-    path('turniri/vlasnik/<int:vlasnik_id>/', TurnirVlasnik.as_view(), name="turnir-vlasnik"),
+    path('turniri/vlasnik/<int:organizator>/', TurnirVlasnik.as_view(), name="turnir-vlasnik"),
     
     # Rute za vlasnike i igrače
     path("vlasnici/", VlasnikListCreate.as_view(), name="vlasnik-list"),
@@ -53,9 +53,9 @@ urlpatterns = [
     path('post/', PostListCreate.as_view(), name='post-list'),
     path('post/delete/<int:pk>/', PostDelete.as_view(), name='post-delete'),
     path('post/<int:pk>/', PostDetail.as_view(), name='post-delete'),
-    path('post/user/<int:user_id>', PostUser.as_view(), name="post-user"),
-    path('post/Teren/<int:teren_id>', PostTeren.as_view(), name="post-teren"),
-    path('post/Turnir/<int:turnir_id>', PostTurnir.as_view(), name="post-turnir"),
+    path('post/user/<int:user_id>/', PostUser.as_view(), name="post-user"),
+    path('post/Teren/<int:teren_id>/', PostTeren.as_view(), name="post-teren"),
+    path('post/Turnir/<int:turnir_id>/', PostTurnir.as_view(), name="post-turnir"),
     
     #path za komentar
     path('komentar/', KomentarListCreate.as_view(), name='komentar-list'),

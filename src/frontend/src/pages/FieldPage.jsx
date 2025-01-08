@@ -18,8 +18,18 @@ function FieldPage(){
             setField(data);
             console.log(data);
         })
-        .catch((err) => alert(err));
+        .catch(//(err) => alert(err)
+        );
     }, [])
+
+    if (field.length === 0){
+        return (
+            <>
+                <Header />
+                <h1>Teren nije pronađen</h1>
+            </>
+        );
+    }
 
     return(
         <>

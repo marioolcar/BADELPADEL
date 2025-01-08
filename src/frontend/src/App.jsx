@@ -38,7 +38,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/register" element={<RegisterAndLogout />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile/:userId" element={<Profile />} />
         <Route path="/fields" element={<Fields />} />
         <Route path="/fields/:fieldId" element={<FieldPage />} /> 
         <Route path="/tournaments" element={<Tournaments />} />

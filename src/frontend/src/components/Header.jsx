@@ -8,6 +8,7 @@ function Header(){
             <img src={logo} alt="logo" height={75}></img>
             <nav className="navigation">
                 <a className="header-links" href="/">Home</a>
+                <a className="header-links" href="/profile/1">Profile</a>
                 <a className="header-links" href="/fields">Fields</a>
                 <a className="header-links" href="/tournaments">Tournaments</a>
                 <a className="header-links" href="/notes">Notes</a>
