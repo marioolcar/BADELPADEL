@@ -1,0 +1,7 @@
+# vim: set autoindent noexpandtab tabstop=2 shiftwidth=2 ft=caddyfile:
+
+:80 {
+        reverse_proxy /api/* {$BACKEND_URL}
+        reverse_proxy /admin/* {$BACKEND_URL}
+		reverse_proxy {$FRONTEND_URL}
+}

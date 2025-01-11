@@ -17,9 +17,8 @@ COPY . /app/
 
 EXPOSE 8000
 
-RUN python manage.py makemigrations
-
-RUN python manage.py migrate
+RUN python manage.py collectstatic --noinput
 
 # Run the application
+ENTRYPOINT ["/app/docker-entrypoint.sh"]
 CMD ["gunicorn", "backend.wsgi:application", "--bind", "0.0.0.0:8000"]

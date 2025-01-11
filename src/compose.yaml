@@ -1,0 +1,26 @@
+services:
+  django:
+    build:
+      context: ./backend
+    environment:
+      - DB_NAME=/db/db.sqlite3
+    volumes:
+      - ./data/backend/db:/db
+      - ./data/backend-assets:/app/static
+    ports:
+      - 8000:8000
+
+  react:
+    build:
+      context: ./frontend
+
+  proxy:
+    image: caddy:2-alpine
+    volumes:
+      - ./docker/caddy/Caddyfile:/etc/caddy/Caddyfile
+      - ./data/backend-assets:/assets/static
+    environment:
+      - FRONTEND_URL=react:80
+      - BACKEND_URL=django:8000
+    ports:
+      - 80:80
