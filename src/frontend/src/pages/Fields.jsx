@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import Field from "../components/Field"
 import Header from "../components/Header"
-import "../styles/Fields.css"
+import "../styles/pages/Fields.css"
 import api from "../api"
 
 function Fields(){
@@ -19,7 +19,8 @@ function Fields(){
             setFilteredData(data);
             console.log(data);
         })
-        .catch((err) => alert(err));
+        .catch(//(err) => alert(err)
+        );
     }, [])
 
     useEffect(() =>{

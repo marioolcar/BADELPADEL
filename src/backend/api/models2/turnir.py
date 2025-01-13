@@ -13,7 +13,7 @@ class Turnir(models.Model):
     ]
 
     naziv = models.CharField(max_length=200)
-    teren = models.ForeignKey(Teren, on_delete=models.SET_NULL, null=True, related_name='turniri')
+    teren = models.ForeignKey(Teren, on_delete=models.CASCADE, null=True, related_name='turniri')
     datum_pocetka = models.DateTimeField()
     datum_kraja = models.DateTimeField()
     cijena_kotizacije = models.DecimalField(max_digits=10, decimal_places=2)

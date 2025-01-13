@@ -10,6 +10,8 @@ from .views2.note_view import *
 from .views2.teren_view import *
 from .views2.turnir_view import *
 from .views2.vlasnik_view import *
+from .views2.prijave_view import *
+from .views2.user_view import *
 
 
 #from . import views
@@ -25,6 +27,9 @@ from django.views.generic.base import RedirectView
 
 
 urlpatterns = [
+
+    path("user/", UserGetId.as_view(), name="user-id"),
+
     path("notes/", NoteListCreate.as_view(), name="note-list"),
     path("notes/delete/<int:pk>/", NoteDelete.as_view(), name="delete-note"),
     # Rute za teren
@@ -38,24 +43,22 @@ urlpatterns = [
     path("turniri/", TurnirListCreate.as_view(), name="turnir-list"),
     path("turniri/<int:pk>/", TurnirDetail.as_view(), name="turnir-detail"),
     path("turniri/delete/<int:pk>/", TurnirDelete.as_view(), name="turnir-delete"),
-    path('turniri/vlasnik/<int:vlasnik_id>/', TurnirVlasnik.as_view(), name="turnir-vlasnik"),
+    path('turniri/vlasnik/<int:organizator>/', TurnirVlasnik.as_view(), name="turnir-vlasnik"),
     
     # Rute za vlasnike i igrače
-    path("vlasnici/", VlasnikListCreate.as_view(), name="vlasnik-list"),
-    path("vlasnici/delete/<int:pk>/", VlasnikDelete.as_view(), name="vlasnik-delete"),
-    path("vlasnici/<int:pk>/", VlasnikListCreate.as_view(), name="vlasnik-pojedinacno"),
+    path("vlasnici/", VlasnikListAll.as_view(), name="vlasnik-list"),
+    path("vlasnici/<int:user_id>/", VlasnikListCreate.as_view(), name="vlasnik-pojedinacno"),
     
-    path("igraci/", IgracListCreate.as_view(), name="igrac-list"),
-    path("igraci/delete/<int:pk>/", IgracDelete.as_view(), name="igrac-delete"),
-    path("igraci/<int:pk>/", IgracListCreate.as_view(), name="igrac-pojedinacno"),
+    path("igraci/", IgracListAll.as_view(), name="igrac-list"),
+    path("igraci/<int:user_id>/", IgracListCreate.as_view(), name="igrac-pojedinacno"),
     
     #path za post
     path('post/', PostListCreate.as_view(), name='post-list'),
     path('post/delete/<int:pk>/', PostDelete.as_view(), name='post-delete'),
     path('post/<int:pk>/', PostDetail.as_view(), name='post-delete'),
-    path('post/user/<int:user_id>', PostUser.as_view(), name="post-user"),
-    path('post/Teren/<int:teren_id>', PostTeren.as_view(), name="post-teren"),
-    path('post/Turnir/<int:turnir_id>', PostTurnir.as_view(), name="post-turnir"),
+    path('post/user/<int:user_id>/', PostUser.as_view(), name="post-user"),
+    path('post/Teren/<int:teren_id>/', PostTeren.as_view(), name="post-teren"),
+    path('post/Turnir/<int:turnir_id>/', PostTurnir.as_view(), name="post-turnir"),
     
     #path za komentar
     path('komentar/', KomentarListCreate.as_view(), name='komentar-list'),
@@ -63,6 +66,12 @@ urlpatterns = [
     path('komentar/<int:pk>', KomentarDetail.as_view(), name="komentar-id"),
     path('komentar/post/<int:post_id>', KomentarPost.as_view(), name="komentar-post"),
     path('komentar/user/<int:user_id>', KomentarUser.as_view(), name="komentar-user"),
+
+    path('prijava/', PrijaveListCreate.as_view(), name='prijava-list'),
+    path('prijava/delete/turnir/<int:turnir_id>', PrijaveDeleteTurnir.as_view(), name='prijava-delete'),
+    path('prijava/user/', PrijaveUser.as_view(), name="prijave-user"),
+    path('prijava/turnir/<int:turnir_id>', PrijaveTurnir.as_view(), name="prijave-turnir"),
+    path('prijava/turnir/<int:turnir_id>/igraci/', PrijaveIgracTurnir.as_view(), name="prijave-igrac-turnir")
 
 ]
 

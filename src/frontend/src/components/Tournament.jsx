@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../styles/Tournament.css"
+import "../styles/components/Tournament.css"
 import api from "../api";
 import {convertDateTime} from "../functions/Utility.jsx";
 
@@ -23,7 +23,9 @@ function Tournament({ tournament }) {
             setLokacija(`${data.lokacija_grad}, ${data.lokacija_ulica}`);
             //console.log(data);
         })
-        .catch((err) => alert(err));
+        .catch(//(err) => alert(err)
+            setLokacija("Teren nije pronađen")
+        );
     }, [])
 
     return (

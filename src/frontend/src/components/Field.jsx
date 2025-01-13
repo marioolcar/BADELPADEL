@@ -1,9 +1,7 @@
-import React from "react";
-import "../styles/Field.css"
+import React, { useEffect, useState } from "react";
+import "../styles/components/Field.css"
 
 function Field({ field }) {
-
-    console.log(field.slika)
 
     return (
 

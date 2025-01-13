@@ -1,0 +1,11 @@
+.comment-form{
+    margin:0;
+}
+
+.custom-file-upload{
+    color: black;
+    border: 1px black solid;
+    border-radius: 5px;
+    padding: 5px;
+    cursor:pointer;
+}

@@ -1,8 +1,8 @@
 import { useState } from "react";
 import api from "../api";
 import { useNavigate } from "react-router-dom";
-import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants";
-import "../styles/Form.css"
+import { ACCESS_TOKEN, REFRESH_TOKEN, USERNAME } from "../constants";
+import "../styles/components/Form.css"
 import LoadingIndicator from "./LoadingIndicator";
 
 function Form({ route, method }) {
@@ -22,12 +22,13 @@ function Form({ route, method }) {
             if (method === "login") {
                 localStorage.setItem(ACCESS_TOKEN, res.data.access);
                 localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
+                localStorage.setItem(USERNAME, username);
                 navigate("/")
             } else {
                 navigate("/login")
             }
         } catch (error) {
-            alert(error)
+            //alert(error)
         } finally {
             setLoading(false)
         }

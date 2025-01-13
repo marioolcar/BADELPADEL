@@ -1,5 +1,6 @@
 .field{
     height: 200px;
+    max-width: 350px;
     background-color: white;
     border-radius: 10px;
 }

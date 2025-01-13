@@ -24,12 +24,13 @@ class TerenDetail(generics.RetrieveUpdateDestroyAPIView):
     def get_queryset(self):
         try:
             pk = self.kwargs['pk']  # Dohvaćanje `pk` iz URL-a
-            return Teren.objects.filter(id=pk)   
+            return Teren.objects.filter(id=pk)
         except:
             return Teren.objects.filter()
         
-
-class TerenVlasnik(generics.RetrieveUpdateDestroyAPIView):
+#promjenjen generics.RetrieveUpdateDestroyAPIView u generics.ListCreateAPIView kako bi mogo dobit vise terena za jednog vlasnika
+class TerenVlasnik(generics.ListCreateAPIView):
+    lookup_field = 'vlasnik_id'
     queryset = Teren.objects.all()
     serializer_class = TerenSerializer
     permission_classes = [AllowAny]
