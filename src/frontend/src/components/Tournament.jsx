@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../styles/Tournament.css"
+import "../styles/components/Tournament.css"
 import api from "../api";
 import {convertDateTime} from "../functions/Utility.jsx";
 

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import api from "../api";
 import Note from "../components/Note"
 import Header from "../components/Header"
-import "../styles/Notes.css"
+import "../styles/pages/Notes.css"
 
 function Notes() {
     const [notes, setNotes] = useState([]);

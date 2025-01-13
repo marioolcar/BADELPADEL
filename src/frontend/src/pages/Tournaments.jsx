@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
 import Tournament from "../components/Tournament.jsx"
 import Header from "../components/Header.jsx";
-import "../styles/Tournaments.css"
+import "../styles/pages/Tournaments.css"
 import api from "../api.js";
 
 function Tournaments(){
-    
+
     const [tournaments, setTournaments] = useState([]);
     const [filteredData, setFilteredData] = useState([]);
     const [filters, setFilters] = useState([]);

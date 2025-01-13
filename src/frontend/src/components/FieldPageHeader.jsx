@@ -1,4 +1,4 @@
-import "../styles/FieldPageHeader.css"
+import "../styles/components/FieldPageHeader.css"
 import teren_placeholder from "../assets/teren_placeholder.png"
 
 function FieldPageHeader({field}) {

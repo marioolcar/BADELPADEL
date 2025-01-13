@@ -24,7 +24,7 @@ class TerenDetail(generics.RetrieveUpdateDestroyAPIView):
     def get_queryset(self):
         try:
             pk = self.kwargs['pk']  # Dohvaćanje `pk` iz URL-a
-            return Teren.objects.filter(id=pk)   
+            return Teren.objects.filter(id=pk)
         except:
             return Teren.objects.filter()
         

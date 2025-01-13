@@ -1,4 +1,5 @@
-import "../styles/TournamentBubbles.css"
+import "../styles/components/TournamentBubbles.css"
+import EnrollForm from "./EnrollForm";
 
 function TournamentBubbles({tournament}){
 
@@ -18,7 +19,7 @@ function TournamentBubbles({tournament}){
                 <p className="tournament-header-subtext">Datum kraja</p>
             </div>
             <div className="bubbles">
-                <p className="tournament-header-maintext">{tournament.otvorenost}</p>
+                <p className="tournament-header-maintext">{tournament.otvorenost === "zatvoren" ? "Otvoren" : "Zatvoren"}</p>
             </div>
         </div>
         </div>

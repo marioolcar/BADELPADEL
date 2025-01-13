@@ -1,6 +1,6 @@
 import { useState } from "react";
 import api from "../api";
-import "../styles/CommentForm.css"
+import "../styles/components/CommentForm.css"
 
 function CommentForm({fieldId, tournamentId}){
 
@@ -16,7 +16,8 @@ function CommentForm({fieldId, tournamentId}){
         await api.post("/api/post/",
             {slika: image, naslov: title, opis: description, broj_like: 0, broj_comment: 0,
                 vrijeme: `${dateTime.getHours()}:${dateTime.getMinutes()}:${dateTime.getSeconds()}`,
-                user_id: 1, teren_id: fieldId, turnir_id: tournamentId}, {
+                //user_id: 1, 
+                teren_id: fieldId, turnir_id: tournamentId}, {
             headers: {
               'Content-Type': 'multipart/form-data'
             }

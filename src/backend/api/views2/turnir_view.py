@@ -21,7 +21,7 @@ class TurnirDetail(generics.RetrieveUpdateDestroyAPIView):
     def get_queryset(self):
         try:
             pk = self.kwargs['pk']  # Dohvaćanje `pk` iz URL-a
-            return Turnir.objects.filter(id=pk)   
+            return Turnir.objects.filter(id=pk)
         except:
             return Turnir.objects.filter()
 
