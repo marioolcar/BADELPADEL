@@ -11,7 +11,6 @@ from .views2.teren_view import *
 from .views2.turnir_view import *
 from .views2.vlasnik_view import *
 from .views2.prijave_view import *
-from .views2.user_view import *
 
 
 #from . import views
@@ -27,8 +26,6 @@ from django.views.generic.base import RedirectView
 
 
 urlpatterns = [
-
-    path("user/", UserGetId.as_view(), name="user-id"),
 
     path("notes/", NoteListCreate.as_view(), name="note-list"),
     path("notes/delete/<int:pk>/", NoteDelete.as_view(), name="delete-note"),

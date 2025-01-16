@@ -19,7 +19,7 @@ function TournamentBubbles({tournament}){
                 <p className="tournament-header-subtext">Datum kraja</p>
             </div>
             <div className="bubbles">
-                <p className="tournament-header-maintext">{tournament.otvorenost === "zatvoren" ? "Otvoren" : "Zatvoren"}</p>
+                <p className="tournament-header-maintext">{tournament.otvorenost === "zavrsen" ? "Zavrsen" : "Otvoren"}</p>
             </div>
         </div>
         </div>

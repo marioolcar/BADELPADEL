@@ -30,9 +30,11 @@ function Home(){
             <Header />
             <p>Prijavljeni turniri</p>
             <div className="profile-tournament-container">
-                {tournaments.map((tournament) => (
+                {tournaments.length !== 0 ?
+                tournaments.map((tournament) => (
                     <Tournament tournament={tournament} key={tournament.id} />
-                ))}
+                )): 
+                <p><b>Nema prijavljenih turnira</b></p>}
             </div>
             <hr/>
             <p>Rezervirani termini</p>

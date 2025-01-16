@@ -70,7 +70,7 @@ function OwnerProfile(){
                 <div className="profile-right-block">
                     <img src={userData.slika === null ? avatar_placeholder : userData.slika} alt="avatar" height={200} style={{borderRadius: 200}}/>
                     <p>{username}</p>
-                    <p>Telephone number: {userData.telefon}</p>
+                    <p>Telefon: {userData.telefon}</p>
                 </div>
                 <hr id="divider"/>
                 <div className="profile-left-block">

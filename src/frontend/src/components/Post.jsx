@@ -39,10 +39,7 @@ function Post({post}){
                 <img src = {avatar} alt="avatar" height={50} style={{borderRadius: 50}}/>
                 <p>{username}</p>
 
-                {//remove this when authentification is set up better
-                (localStorage.getItem(USERNAME) === username) ?
-                    <button onClick={(handleDelete)}>Izbrisi</button> : null
-                }
+                <button onClick={(handleDelete)}>Izbrisi</button>
             </div>
             {post.slika === null ? null: <img src={post.slika} style={{maxHeight: 100}}/>}
             <p>{post.opis}</p>

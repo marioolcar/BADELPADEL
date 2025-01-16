@@ -14,7 +14,7 @@ function CommentForm({fieldId, tournamentId}){
         console.log(dateTime)
 
         await api.post("/api/post/",
-            {slika: image, naslov: title, opis: description, broj_like: 0, broj_comment: 0,
+            {slika: image, naslov: title, opis: description,
                 vrijeme: `${dateTime.getHours()}:${dateTime.getMinutes()}:${dateTime.getSeconds()}`,
                 //user_id: 1, 
                 teren_id: fieldId, turnir_id: tournamentId}, {

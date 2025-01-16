@@ -76,8 +76,8 @@ class Post(models.Model):
     slika = models.ImageField(upload_to='post_images/', blank=True, null=True)
     naslov = models.CharField(max_length=100)
     opis = models.CharField(max_length=500)
-    broj_like = models.IntegerField(default=0)
-    broj_comment = models.IntegerField(default=0)
+    #broj_like = models.IntegerField(default=0)
+    #broj_comment = models.IntegerField(default=0)
     vrijeme =  models.TimeField(default=datetime.now())
     
     def __str__(self):
@@ -92,8 +92,8 @@ class Komentar(models.Model):
     slika = models.ImageField(upload_to='post_images/', blank=True, null=True)
     naslov = models.CharField(max_length=100)
     opis = models.CharField(max_length=500)
-    broj_like = models.IntegerField(default=0)
-    broj_comment = models.IntegerField(default=0)
+    #broj_like = models.IntegerField(default=0)
+    #broj_comment = models.IntegerField(default=0)
     vrijeme =  models.TimeField(default=datetime.now())
     post_id = models.ForeignKey(Post, on_delete=models.CASCADE, blank=True, null=True)
     

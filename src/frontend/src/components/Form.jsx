@@ -1,6 +1,8 @@
 import { useState } from "react";
 import api from "../api";
 import { useNavigate } from "react-router-dom";
+import { GoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from "jwt-decode";
 import { ACCESS_TOKEN, REFRESH_TOKEN, USERNAME } from "../constants";
 import "../styles/components/Form.css"
 import LoadingIndicator from "./LoadingIndicator";
@@ -29,10 +31,21 @@ function Form({ route, method }) {
             }
         } catch (error) {
             //alert(error)
+            location.reload()
         } finally {
             setLoading(false)
         }
     };
+
+    async function handleGoogleLogin(response){
+
+        console.log("Logged in successfully");
+        console.log(response)
+        const userData = jwtDecode(response.credential)
+        console.log(userData)
+
+        api.post("/api/user/register/", {username: userData.email, password: "pass", first_name: userData.given_name, last_name: userData.family_name})
+    }
 
     return (
         <form onSubmit={handleSubmit} className="form-container">
@@ -55,6 +68,8 @@ function Form({ route, method }) {
             <button className="form-button" type="submit">
                 {name}
             </button>
+
+            <GoogleLogin onSuccess={(response) => handleGoogleLogin(response)} buttonText="Sign in with Google"/>
         </form>
     );
 }

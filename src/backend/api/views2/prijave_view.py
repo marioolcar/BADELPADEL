@@ -17,14 +17,13 @@ class PrijaveListCreate(generics.ListCreateAPIView):
 
 
 class PrijaveUser(generics.ListCreateAPIView):
-    queryset = TurnirPrijava.objects.all()
     serializer_class = TurnirPrijavaSerialzier
     permission_classes = [AllowAny]
 
-    def get_object(self):
+    def get_queryset(self):
         try:
-            print(TurnirPrijava.objects.filter(user=self.request.user.id))
-            return TurnirPrijava.objects.filter(user=self.request.user.id)
+            print(TurnirPrijava.objects.filter(user=self.request.user))
+            return TurnirPrijava.objects.filter(user=self.request.user)
         except:
             return None
 

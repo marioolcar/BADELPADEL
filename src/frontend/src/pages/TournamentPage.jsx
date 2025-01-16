@@ -74,7 +74,7 @@ function TournamentPage(){
             <Header />
             <div style={{display: "flex"}}>
                 <h1 id="tournament-name">{tournament.naziv}</h1>
-                <EnrollForm tournament = {tournament}/>
+                {tournament.otvorenost === "otvoren" ? <EnrollForm tournament = {tournament}/> : null}
             </div>
 
             <TournamentBubbles tournament = {tournament}/>

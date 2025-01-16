@@ -78,8 +78,16 @@ function Tournaments(){
 
                 </div>
 
-                <input id="slider" type="range" min={0} max={99} step={1} value={sliderValue} onChange={handleRangeChange}></input>
-                <input id="slider-numeric-input" type="number" inputMode="numeric" value={sliderValue} onChange={handleRangeChange} maxLength={2}></input>
+                <p>Cijena: </p>
+                
+                <input id="slider" type="range" min={0} max={99} step={1}
+                        value={sliderValue} 
+                        onChange={handleRangeChange}/>
+
+                <input id="slider-numeric-input" type="number" inputMode="numeric"
+                        value={sliderValue}
+                        onChange={handleRangeChange} maxLength={2}/>
+
                 <button onClick={applyRangeChange}>Apply</button>
 
             </div>
