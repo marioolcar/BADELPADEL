@@ -27,12 +27,14 @@
     flex-direction: column;
     align-items: space-evenly;
     justify-content: space-evenly;
+    word-wrap: break-word;
+    word-break: break-all;
 }
 
 #tournament-naziv{
     color: white;
     font-size: 24px;
-
+    word-wrap: normal;
 }
 
 .tournament-right-block{

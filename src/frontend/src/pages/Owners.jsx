@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import "../styles/pages/Owners.css"
 import api from "../api";
 import avatar_placeholder from "../assets/avatar_placeholder.png"
+import Owner from "../components/Owner";
 
 function Owners(){
 
@@ -23,12 +24,7 @@ function Owners(){
             <Header />
             <div className='all-owners-container'>
                 {owners.map((owner) => (
-                <a key={owner.user.id} className="owner-link" href={`/profile/owner/${owner.user.id}`}>
-                    <div className="owner-container">
-                        <img src={owner.slika === null ? avatar_placeholder : owner.slika} height={100} style={{borderRadius: 100}}/>
-                        <p className="owner-username">{owner.user.username}</p>
-                    </div>
-                </a>
+                    <Owner owner = {owner} key={owner.user.id}/>
                 ))}
             </div>
         </>

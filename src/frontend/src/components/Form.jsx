@@ -1,7 +1,8 @@
 import { useState } from "react";
 import api from "../api";
 import { useNavigate } from "react-router-dom";
-import { GoogleLogin } from '@react-oauth/google';
+import { GoogleButton } from 'react-google-button';
+import { GoogleLogin, useGoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from "jwt-decode";
 import { ACCESS_TOKEN, REFRESH_TOKEN, USERNAME } from "../constants";
 import "../styles/components/Form.css"
@@ -37,14 +38,10 @@ function Form({ route, method }) {
         }
     };
 
-    async function handleGoogleLogin(response){
-
-        console.log("Logged in successfully");
-        console.log(response)
-        const userData = jwtDecode(response.credential)
-        console.log(userData)
-
-        api.post("/api/user/register/", {username: userData.email, password: "pass", first_name: userData.given_name, last_name: userData.family_name})
+    function handleGoogleLogin(response){
+        
+        const code = response.credential
+        api.post("/api/google-login/", {code:code})
     }
 
     return (
@@ -69,7 +66,7 @@ function Form({ route, method }) {
                 {name}
             </button>
 
-            <GoogleLogin onSuccess={(response) => handleGoogleLogin(response)} buttonText="Sign in with Google"/>
+            <GoogleLogin onSuccess={handleGoogleLogin} buttonText="Login with Google"/>
         </form>
     );
 }

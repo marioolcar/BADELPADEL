@@ -29,22 +29,38 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+
         <Route
           path="/notes"
           element={
             <ProtectedRoute>
               <Notes />
-            </ProtectedRoute>
-          }
-        />
-        <Route path="/" element={<Home/>} />
+            </ProtectedRoute>}/>
+
+        <Route path="/"
+          element={
+            <ProtectedRoute>
+              <Home/>
+            </ProtectedRoute>} />
+
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/register" element={<RegisterAndLogout />} />
         <Route path="/profile/owner/:userId" element={<OwnerProfile />} />
         <Route path="/owners" element={<Owners />} />
-        <Route path="/addField" element={<AddField />} />
-        <Route path="/addTournament" element={<AddTournament />} />
+
+        <Route path="/add/field"
+          element={
+            <ProtectedRoute>
+              <AddField />
+            </ProtectedRoute>} />
+
+        <Route path="/add/tournament"
+        element={
+          <ProtectedRoute>
+            <AddTournament />
+          </ProtectedRoute>} />
+          
         <Route path="/fields" element={<Fields />} />
         <Route path="/fields/:fieldId" element={<FieldPage />} /> 
         <Route path="/tournaments" element={<Tournaments />} />

@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import Header from "../components/Header";
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import api from "../api";
 import Field from "../components/Field"
 import Tournament from "../components/Tournament";
@@ -69,31 +69,43 @@ function OwnerProfile(){
         <>
             <Header />
             <div className="profile-content">
+
                 <div className="profile-right-block">
-                    <img src={userData.slika === null ? avatar_placeholder : userData.slika} alt="avatar" height={200} style={{borderRadius: 200}}/>
+                    <img src={userData.slika === null ? avatar_placeholder : userData.slika}
+                        alt="avatar" height={200} style={{borderRadius: 200}}/>
                     <p>{username}</p>
                     <p>Telefon: {userData.telefon}</p>
                 </div>
+
                 <hr id="divider"/>
+
                 <div className="profile-left-block">
+
                     <div className="profile-field-block">
+
                         <div>
                             <h2>Fields</h2>
-                            <button onClick={() => navigate('/addField')}>Dodaj teren</button>
+                            <button onClick={() => navigate('/add/field')}>Dodaj teren</button>
                         </div>
+                        
                         <div className="profile-field-container">
                             {fields.length === 0 ? <p>No fields found</p> :
                                 fields.map((field) => (
                                     <Field field={field} key={field.id} />
                             ))}
                         </div>
+
                     </div>
+
                     <hr/>
+
                     <div className="profile-tournament-block">
+
                         <div>
                             <h2>Tournaments</h2>
-                            <button onClick={() => navigate('/addTournament')}>Dodaj turnir</button>
+                            <button onClick={() => navigate('/add/tournament')}>Dodaj turnir</button>
                         </div>
+
                         <div className="profile-tournament-container">
                             {tournaments.length === 0 ? <p>No tournaments found</p> :
                             tournaments.map((tournament) => (

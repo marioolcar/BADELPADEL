@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "../styles/components/Owner.css"
 import avatar_placeholder from "../assets/avatar_placeholder.png"
 
 function Owner( {owner} ){
@@ -16,11 +17,14 @@ function Owner( {owner} ){
     }, [owner])
 
     return(
-        <div style={{display: "flex", alignItems: "center"}}>
-            <a href={`/profile/owner/${id}`}>
-                <img src={owner.slika === null ? avatar_placeholder : owner.slika} height={50} style={{borderRadius: 50}}/>
+
+        <div className="owner-container">
+            <a key={owner.user.id} className="owner-link" href={`/profile/owner/${owner.user.id}`}>
+                <div className="owner-container-details">
+                    <img src={owner.slika === null ? avatar_placeholder : owner.slika} height={100} style={{borderRadius: 100}}/>
+                    <p className="owner-username">{owner.user.username}</p>
+                </div>
             </a>
-            <p>{username}</p>
         </div>
     );
 }
