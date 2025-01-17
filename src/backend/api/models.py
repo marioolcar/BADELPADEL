@@ -62,7 +62,7 @@ class Turnir(models.Model):
     nagrade = models.TextField()
     opis = models.TextField()
     organizator = models.ForeignKey(User, on_delete=models.CASCADE, related_name='turniri')
-    otvorenost = models.CharField(max_length=10, choices=STATUS_TURNIRA_CHOICES)
+    otvorenost = models.CharField(max_length=10, choices=STATUS_TURNIRA_CHOICES, default="otvoren")
 
     def __str__(self):
         return self.naziv

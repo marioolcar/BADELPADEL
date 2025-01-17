@@ -17,6 +17,12 @@ class TerenListCreate(generics.ListCreateAPIView):
     permission_classes = [AllowAny]
     #promjeni IsAuthenticated
 
+    def perform_create(self, serializer):
+        if serializer.is_valid():
+            serializer.save(vlasnik_id=self.request.user.id)
+        else:
+            print(serializer.errors)
+
 class TerenDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Teren.objects.all()
     serializer_class = TerenSerializer
@@ -30,16 +36,25 @@ class TerenDetail(generics.RetrieveUpdateDestroyAPIView):
         
 #promjenjen generics.RetrieveUpdateDestroyAPIView u generics.ListCreateAPIView kako bi mogo dobit vise terena za jednog vlasnika
 class TerenVlasnik(generics.ListCreateAPIView):
-    lookup_field = 'vlasnik_id'
-    queryset = Teren.objects.all()
     serializer_class = TerenSerializer
     permission_classes = [AllowAny]
+
     def get_queryset(self):
         try:
             pk = self.kwargs['vlasnik_id']  # Dohvaćanje `pk` iz URL-a
-            return Teren.objects.filter(vlasnik=pk)   
+            return Teren.objects.filter(vlasnik=pk)
         except:
-            return Teren.objects.filter()
+            return None
+
+class TerenVlasnikCurrent(generics.ListCreateAPIView):
+    serializer_class = TerenSerializer
+    permission_classes = [AllowAny]
+
+    def get_queryset(self):
+        try:
+            return Teren.objects.filter(vlasnik=self.request.user.id)
+        except:
+            return None
     
 class UploadTerenImage(APIView):
     permission_classes = [AllowAny]

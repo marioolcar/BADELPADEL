@@ -50,7 +50,8 @@ class TerenSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Teren
-        fields = ['id', 'lokacija_grad', 'lokacija_ulica','slika', 'tip', 'dostupni_termini', 'vlasnik']
+        fields = ['id', 'lokacija_grad', 'lokacija_ulica', 'slika', 'tip', 'dostupni_termini', 'vlasnik']
+        extra_kwargs = {"vlasnik": {"required": False}, "slika":{"required": False}, "otvorenost": {"required": False}}
 
     def get_slika_url(self, obj):
         request = self.context.get('request')
@@ -62,7 +63,8 @@ class TurnirSerializer(serializers.ModelSerializer):
     class Meta:
         model = Turnir
         fields = ['id', 'naziv', 'teren', 'datum_pocetka', 'datum_kraja', 'cijena_kotizacije', 'nagrade', 'opis', 'organizator', 'otvorenost']
-        
+        extra_kwargs = {"organizator": {"required": False}}
+
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post

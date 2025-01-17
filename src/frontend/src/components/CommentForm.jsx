@@ -21,8 +21,12 @@ function CommentForm({fieldId, tournamentId}){
             headers: {
               'Content-Type': 'multipart/form-data'
             }
-          }).catch((err) => console.error(err))
-          location.reload()
+        })
+        .then((response) => {
+            location.reload()
+        })
+        .catch((err) => console.error(err))
+
     }
 
     return(
