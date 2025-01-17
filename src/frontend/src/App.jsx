@@ -9,6 +9,8 @@ import Tournaments from "./pages/Tournaments"
 import TournamentPage from "./pages/TournamentPage"
 import Owners from "./pages/Owners"
 import OwnerProfile from "./pages/OwnerProfile"
+import AddField from "./pages/AddField"
+import AddTournament from "./pages/AddTournament"
 import NotFound from "./pages/NotFound"
 import ProtectedRoute from "./components/ProtectedRoute"
 
@@ -41,6 +43,8 @@ function App() {
         <Route path="/register" element={<RegisterAndLogout />} />
         <Route path="/profile/owner/:userId" element={<OwnerProfile />} />
         <Route path="/owners" element={<Owners />} />
+        <Route path="/addField" element={<AddField />} />
+        <Route path="/addTournament" element={<AddTournament />} />
         <Route path="/fields" element={<Fields />} />
         <Route path="/fields/:fieldId" element={<FieldPage />} /> 
         <Route path="/tournaments" element={<Tournaments />} />

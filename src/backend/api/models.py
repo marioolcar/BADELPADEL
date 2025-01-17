@@ -40,7 +40,7 @@ class Teren(models.Model):
     lokacija_ulica = models.CharField(max_length=200)
     slika = models.ImageField(upload_to='teren_images/', blank=True, null=True)
     tip = models.CharField(max_length=10, choices=TIP_TERENA_CHOICES)
-    dostupni_termini = models.JSONField()  # JSON za pohranu više termina s datumom, vremenom i cijenom
+    dostupni_termini = models.JSONField(default = [{}])  # JSON za pohranu više termina s datumom, vremenom i cijenom
     vlasnik = models.ForeignKey(User, on_delete=models.CASCADE, related_name='tereni')
     
     def __str__(self):
@@ -62,7 +62,7 @@ class Turnir(models.Model):
     nagrade = models.TextField()
     opis = models.TextField()
     organizator = models.ForeignKey(User, on_delete=models.CASCADE, related_name='turniri')
-    otvorenost = models.CharField(max_length=10, choices=STATUS_TURNIRA_CHOICES)
+    otvorenost = models.CharField(max_length=10, choices=STATUS_TURNIRA_CHOICES, default="otvoren")
 
     def __str__(self):
         return self.naziv

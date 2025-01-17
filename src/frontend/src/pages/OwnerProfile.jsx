@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Header from "../components/Header";
 import { Suspense, useEffect, useState } from "react";
 import api from "../api";
@@ -8,6 +8,8 @@ import "../styles/pages/OwnerProfile.css"
 import avatar_placeholder from "../assets/avatar_placeholder.png"
 
 function OwnerProfile(){
+
+    const navigate = useNavigate();
 
     const { userId } = useParams();
     const [userData, setUserData] = useState({})
@@ -75,7 +77,10 @@ function OwnerProfile(){
                 <hr id="divider"/>
                 <div className="profile-left-block">
                     <div className="profile-field-block">
-                        <h2>Fields</h2>
+                        <div>
+                            <h2>Fields</h2>
+                            <button onClick={() => navigate('/addField')}>Dodaj teren</button>
+                        </div>
                         <div className="profile-field-container">
                             {fields.length === 0 ? <p>No fields found</p> :
                                 fields.map((field) => (
@@ -85,7 +90,10 @@ function OwnerProfile(){
                     </div>
                     <hr/>
                     <div className="profile-tournament-block">
-                        <h2>Tournaments</h2>
+                        <div>
+                            <h2>Tournaments</h2>
+                            <button onClick={() => navigate('/addTournament')}>Dodaj turnir</button>
+                        </div>
                         <div className="profile-tournament-container">
                             {tournaments.length === 0 ? <p>No tournaments found</p> :
                             tournaments.map((tournament) => (

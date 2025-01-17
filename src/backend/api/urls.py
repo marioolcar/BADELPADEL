@@ -35,6 +35,7 @@ urlpatterns = [
     path("tereni/delete/<int:pk>/", TerenDelete.as_view(), name="teren-delete"),
     path('tereni/upload/', UploadTerenImage.as_view(), name='teren-upload'),
     path('tereni/vlasnik/<int:vlasnik_id>/', TerenVlasnik.as_view(), name="teren-vlasnik"),
+    path('tereni/vlasnik/', TerenVlasnikCurrent.as_view(), name="teren-vlasnik"),
     
     # Rute za turnir
     path("turniri/", TurnirListCreate.as_view(), name="turnir-list"),

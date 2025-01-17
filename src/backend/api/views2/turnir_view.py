@@ -11,6 +11,13 @@ class TurnirListCreate(generics.ListCreateAPIView):
     serializer_class = TurnirSerializer
     permission_classes = [AllowAny]
     #promjeni IsAuthenticated
+
+    def perform_create(self, serializer):
+        if serializer.is_valid():
+            serializer.save(organizator=self.request.user)
+        else:
+            print(serializer.errors)
+
     
 
 class TurnirDetail(generics.RetrieveUpdateDestroyAPIView):
