@@ -2,21 +2,33 @@ from ..serializers import PostSerializer, TurnirSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework import generics
 from ..models import Post
+from ..permissions import IsOwnerOrAdmin  # Importirajte prilagođeni permission
 
-
-
-# Pogledi za Turnir
+# Pogledi za Postove
 class PostListCreate(generics.ListCreateAPIView):
+    """
+    Omogućava listanje svih postova i kreiranje novih.
+    Samo autentificirani korisnici mogu kreirati postove.
+    """
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-    permission_classes = [AllowAny]
-    #promjeni IsAuthenticated
+    permission_classes = [IsAuthenticated]
+    def perform_create(self, serializer):
+        """
+        Automatski postavlja trenutnog korisnika kao autora posta.
+        """
+        serializer.save(user_id=self.request.user)
+
 
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
+    """
+    Omogućava dohvaćanje, ažuriranje i brisanje pojedinačnog posta.
+    Samo vlasnik posta ili administrator ima pristup.
+    """
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-    permission_classes = [AllowAny]
-    #promjeni IsAuthenticated
+    permission_classes = [IsAuthenticated, IsOwnerOrAdmin]
+
     def get_queryset(self):
         try:
             pk = self.kwargs['pk']  # Dohvaćanje `pk` iz URL-a
