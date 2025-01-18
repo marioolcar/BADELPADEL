@@ -2,25 +2,35 @@ from ..serializers import VlasnikSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework import generics
 from ..models import Vlasnik
+from ..permissions import IsOwnerOrAdmin  # Prilagođeni permission
 
-# Pogledi za Vlasnik
+
+# Pogled za listanje i kreiranje vlasnika
 class VlasnikListCreate(generics.ListCreateAPIView):
+    """
+    Omogućava listanje svih vlasnika i kreiranje novih.
+    Samo autentificirani korisnici mogu kreirati vlasnike.
+    """
     queryset = Vlasnik.objects.all()
     serializer_class = VlasnikSerializer
-    permission_classes = [AllowAny]
-    
-    def get_queryset(self):
-        try:
-            pk = self.kwargs['pk']  # Dohvaćanje `pk` iz URL-a
-            return Vlasnik.objects.filter(id=pk)   
-        except:
-            return Vlasnik.objects.filter()
-    
-    
+    permission_classes = [IsAuthenticated]
+
+    def perform_create(self, serializer):
+        """
+        Automatski postavlja trenutnog korisnika kao vlasnika.
+        """
+        serializer.save(user=self.request.user)
+
+
+# Pogled za brisanje vlasnika
 class VlasnikDelete(generics.DestroyAPIView):
+    """
+    Omogućava brisanje vlasnika.
+    Samo vlasnik ili administrator može obrisati zapis.
+    """
     serializer_class = VlasnikSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated, IsOwnerOrAdmin]
 
     def get_queryset(self):
         pk = self.kwargs['pk']  # Dohvaćanje `pk` iz URL-a
-        return Vlasnik.objects.filter(id=pk)   
+        return Vlasnik.objects.filter(id=pk)

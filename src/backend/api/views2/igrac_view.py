@@ -46,6 +46,17 @@ class IgracListCreate(generics.RetrieveUpdateDestroyAPIView):
     #     except:
     #         return Igrac.objects.filter()
 
+
+class IgracDelete(generics.DestroyAPIView):
+    def get_queryset(self):
+        try:
+            pk = self.kwargs['pk']  # Dohvaćanje `pk` iz URL-a
+            return Igrac.objects.filter(user=pk)
+
+        except:
+            return Igrac.objects.filter()
+
+
 class IgracListAll(generics.ListCreateAPIView):
     queryset=Igrac.objects.all()
     serializer_class = IgracSerializer
