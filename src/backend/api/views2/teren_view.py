@@ -5,6 +5,7 @@ from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
+import json
 
 from ..models import Teren
 
@@ -19,7 +20,8 @@ class TerenListCreate(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         if serializer.is_valid():
-            serializer.save(vlasnik_id=self.request.user.id)
+            termini = json.loads(self.request.data['dostupni_termini'])
+            serializer.save(vlasnik_id=self.request.user.id, dostupni_termini=termini)
         else:
             print(serializer.errors)
 

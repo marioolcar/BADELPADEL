@@ -84,7 +84,7 @@ function OwnerProfile(){
                     <div className="profile-field-block">
 
                         <div>
-                            <h2>Fields</h2>
+                            <h2>Tereni</h2>
                             <button onClick={() => navigate('/add/field')}>Dodaj teren</button>
                         </div>
                         
@@ -102,7 +102,7 @@ function OwnerProfile(){
                     <div className="profile-tournament-block">
 
                         <div>
-                            <h2>Tournaments</h2>
+                            <h2>Turniri</h2>
                             <button onClick={() => navigate('/add/tournament')}>Dodaj turnir</button>
                         </div>
 

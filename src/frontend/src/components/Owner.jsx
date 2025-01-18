@@ -19,10 +19,10 @@ function Owner( {owner} ){
     return(
 
         <div className="owner-container">
-            <a key={owner.user.id} className="owner-link" href={`/profile/owner/${owner.user.id}`}>
+            <a key={id} className="owner-link" href={`/profile/owner/${id}`}>
                 <div className="owner-container-details">
                     <img src={owner.slika === null ? avatar_placeholder : owner.slika} height={100} style={{borderRadius: 100}}/>
-                    <p className="owner-username">{owner.user.username}</p>
+                    <p className="owner-username">{username}</p>
                 </div>
             </a>
         </div>
