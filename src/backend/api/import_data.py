@@ -15,9 +15,6 @@ def run():
         print("Superuser 'admin' already exists.")
 
 
-
-
-
 def citaj_csv_tablicu(csv_file_path):
     # Postavi putanju do CSV datoteke
     try:
@@ -146,8 +143,5 @@ def citaj_csv_tablicu(csv_file_path):
     except:
         pass
     
-csv_file_path = 'api/podatci_prazno.csv'
-
+csv_file_path = 'api/example_podatci/podatci_prazno.csv'
 citaj_csv_tablicu(csv_file_path)
-
-
