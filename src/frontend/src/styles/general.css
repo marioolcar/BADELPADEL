@@ -1,0 +1,130 @@
+/* Global Styles */
+
+/* palette */
+:root {
+    --primary-color: #381635; /* Main purple for primary elements */
+    --secondary-color: #66999B; /* Light teal for accents and highlights */
+    --accent-color: #A4C639; /* Lime green for call-to-actions */
+    --neutral-dark: #43443F; /* Dark gray for text or backgrounds */
+    --neutral-light: #EFECCA; /* Light beige for backgrounds */
+    --text-color: #000000; /* Default text color */
+  }
+  
+  /* Global Resets */
+  body, h1, h2, h3, h4, h5, h6, p, ul, ol, a {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Body Styles */
+  body {
+    font-family: 'Montserrat', sans-serif;  /* Default font */
+    color: var(--text-color);
+    background-color: var(--neutral-light);
+    line-height: 1.6;
+  }
+  
+    /* Headings */
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--primary-color);
+  }
+  
+  p {
+    margin-bottom: 1rem;
+  }
+  
+  /* Links */
+  a {
+    text-decoration: none;
+    color: var(--secondary-color);
+    transition: color 0.3s;
+  }
+  
+  a:hover {
+    color: var(--accent-color);
+  }
+  
+  /* Buttons */
+  button {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: var(--secondary-color);
+  }
+  
+    /* Container Styles */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+    /* Section Styles */
+  section {
+    margin-bottom: 2rem;
+  }
+  
+  /* Header Styles */
+  header {
+    background-color: var(--primary-color);
+    color: var(--neutral-light);
+    padding: 20px 0;
+    text-align: center;
+  }
+  
+  /* Footer Styles */
+  footer {
+    background-color: var(--neutral-dark);
+    color: var(--neutral-light);
+    text-align: center;
+    padding: 20px 0;
+  }
+  
+  /* Customizable Area: Add your specific styles below */
+  
+  
+  .hero {
+    text-align: center;
+    background-color: var(--primary-color);
+    color: var(--neutral-light);
+    padding: 60px 20px;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+  }
+  
+  .hero button {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+  }
+  
+  /* Example: Cards */
+  .card {
+    background-color: var(--neutral-light);
+    border: 1px solid var(--neutral-dark);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  }
+  

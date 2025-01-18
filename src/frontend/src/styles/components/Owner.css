@@ -1,3 +1,5 @@
+@import "../general.css";
+
 .owner-link{
     text-decoration: none;
     background: #303030;
@@ -5,13 +7,13 @@
     padding: 0px;
 }
 
-.owner-link:hover{
-    background: #404040;
+.owner-container:hover{
+    background: var(--accent-color);
 }
 
 .owner-container{
     max-width: 450px;
-    background-color: #303030;
+    background-color: var(--primary-color);
     margin: 10px;
     padding: 10px;
     border-radius: 20px;

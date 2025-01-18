@@ -1,9 +1,11 @@
+@import '../general.css';
+
 .header-container{
     display:flex;
     position: sticky;
     top:0;
     align-items: center;
-    background-color: #202020;
+    background-color: var(--primary-color);
     height: 100px;
     width: 100%;
     margin: 0px;
@@ -26,7 +28,7 @@
     padding: 10px;
     text-decoration: none;
     color: white;
-    background-color: #303030;
+    background-color: var(--secondary-color);
     border-radius: 10px;
 }
 
