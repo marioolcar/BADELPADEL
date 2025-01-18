@@ -82,3 +82,4 @@ class TerenDelete(generics.DestroyAPIView):
     def get_queryset(self):
         pk = self.kwargs['pk']
         return Teren.objects.filter(id=pk)
+    

@@ -3,6 +3,7 @@ from rest_framework import generics
 
 from ..models import Vlasnik
 from ..permissions import IsOwnerOrAdmin  # Prilagođeni permission
+from ..serializers import VlasnikSerializer
 
 
 # Pogled za listanje i kreiranje vlasnika
@@ -21,6 +22,9 @@ class VlasnikListCreate(generics.ListCreateAPIView):
         Automatski postavlja trenutnog korisnika kao vlasnika.
         """
         serializer.save(user=self.request.user)
+        
+class VlasnikListAll(generics.ListCreateAPIView):
+    queryset=Vlasnik.objects.all()
 
 
 # Pogled za brisanje vlasnika
