@@ -10,16 +10,20 @@ function EnrollForm({tournament}){
         await api.post(`/api/prijava/`,
             {turnir: tournament.id}
         )
+        .then((res) => {
+            location.reload()
+        })
         .catch((err) => console.error(err))
-        location.reload()
     }
 
     async function handleUnenroll(){
-        await api.delete(`/api/prijava/delete/turnir/${tournament.id}`,
+        await api.delete(`/api/prijava/delete/turnir/${tournament.id}/`,
             {turnir: tournament.id}
         )
+        .then((res) => {
+            location.reload()
+        })
         .catch((err) => console.log(err));
-        location.reload()
     }
 
     useEffect(() => {

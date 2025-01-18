@@ -102,7 +102,13 @@ class Komentar(models.Model):
         return f"{self.naslov}, {self.user_id}, {self.teren_id}, {self.turnir_id}"
     
 class TurnirPrijava(models.Model):
+    STATUS_PRIJAVE_CHOICES = [
+        ('prihvaćena', 'Prijava prihvaćena'),
+        ('pending', 'Prijava čeka potvrdu'),
+    ]
+
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     turnir = models.ForeignKey(Turnir, on_delete=models.CASCADE)
+    status = models.CharField(max_length=11, choices=STATUS_PRIJAVE_CHOICES, default="pending")
     def __str__(self):
         return f'{self.turnir}, {self.user}'

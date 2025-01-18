@@ -35,13 +35,14 @@ urlpatterns = [
     path("tereni/delete/<int:pk>/", TerenDelete.as_view(), name="teren-delete"),
     path('tereni/upload/', UploadTerenImage.as_view(), name='teren-upload'),
     path('tereni/vlasnik/<int:vlasnik_id>/', TerenVlasnik.as_view(), name="teren-vlasnik"),
-    path('tereni/vlasnik/', TerenVlasnikCurrent.as_view(), name="teren-vlasnik"),
+    path('tereni/vlasnik/', TerenVlasnikCurrent.as_view(), name="teren-vlasnik-trenutni"),
     
     # Rute za turnir
     path("turniri/", TurnirListCreate.as_view(), name="turnir-list"),
     path("turniri/<int:pk>/", TurnirDetail.as_view(), name="turnir-detail"),
     path("turniri/delete/<int:pk>/", TurnirDelete.as_view(), name="turnir-delete"),
     path('turniri/vlasnik/<int:organizator>/', TurnirVlasnik.as_view(), name="turnir-vlasnik"),
+    path('turniri/vlasnik/', TurnirVlasnikCurrent.as_view(), name="turnir-vlasnik-trenutni"),
     
     # Rute za vlasnike i igrače
     path("vlasnici/", VlasnikListAll.as_view(), name="vlasnik-list"),
@@ -66,9 +67,11 @@ urlpatterns = [
     path('komentar/user/<int:user_id>', KomentarUser.as_view(), name="komentar-user"),
 
     path('prijava/', PrijaveListCreate.as_view(), name='prijava-list'),
-    path('prijava/delete/turnir/<int:turnir_id>', PrijaveDeleteTurnir.as_view(), name='prijava-delete'),
+    path('prijava/accept/', PrijavaAccept.as_view(), name='prijava-accept'),
+    path('prijava/delete/turnir/<int:turnir_id>/', PrijaveDeleteTurnir.as_view(), name='prijava-delete'),
+    path('prijava/delete/turnir/<int:turnir_id>/user/<int:user_id>/', PrijaveDeleteForUser.as_view(), name='prijava-delete'),
     path('prijava/user/', PrijaveUser.as_view(), name="prijave-user"),
-    path('prijava/turnir/<int:turnir_id>', PrijaveTurnir.as_view(), name="prijave-turnir"),
+    path('prijava/turnir/<int:turnir_id>/', PrijaveTurnir.as_view(), name="prijave-turnir"),
     path('prijava/turnir/<int:turnir_id>/igraci/', PrijaveIgracTurnir.as_view(), name="prijave-igrac-turnir")
 
 ]

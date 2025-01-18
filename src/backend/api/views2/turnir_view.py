@@ -45,6 +45,18 @@ class TurnirVlasnik(generics.ListCreateAPIView):
             return Turnir.objects.filter(organizator=pk)   
         except:
             return Turnir.objects.filter()
+
+class TurnirVlasnikCurrent(generics.ListCreateAPIView):
+    lookup_field = 'organizator'
+    queryset = Turnir.objects.all()
+    serializer_class = TurnirSerializer
+    permission_classes = [AllowAny]
+    #promjeni IsAuthenticated
+    def get_queryset(self):
+        try:
+            return Turnir.objects.filter(organizator=self.request.user)
+        except:
+            return Turnir.objects.filter()
     
 class TurnirDelete(generics.DestroyAPIView):
     serializer_class = TurnirSerializer

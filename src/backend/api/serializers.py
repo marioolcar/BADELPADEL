@@ -79,8 +79,9 @@ class KomentarSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class TurnirPrijavaSerialzier(serializers.ModelSerializer):
+
     class Meta:
         model = TurnirPrijava
-        fields = ['turnir', 'id']
-        extra_kwargs = {"user": {"required": False}}
+        fields = ['turnir', 'id', 'user', 'status']
+        extra_kwargs = {"user": {"required": False}, "status": {"required": False}}
 

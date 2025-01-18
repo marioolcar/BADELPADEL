@@ -11,6 +11,7 @@ import Owners from "./pages/Owners"
 import OwnerProfile from "./pages/OwnerProfile"
 import AddField from "./pages/AddField"
 import AddTournament from "./pages/AddTournament"
+import ConfirmApplications from "./pages/ConfirmApplications"
 import NotFound from "./pages/NotFound"
 import ProtectedRoute from "./components/ProtectedRoute"
 
@@ -60,7 +61,13 @@ function App() {
           <ProtectedRoute>
             <AddTournament />
           </ProtectedRoute>} />
-          
+
+          <Route path="/applications"
+        element={
+          <ProtectedRoute>
+            <ConfirmApplications />
+          </ProtectedRoute>} />
+
         <Route path="/fields" element={<Fields />} />
         <Route path="/fields/:fieldId" element={<FieldPage />} /> 
         <Route path="/tournaments" element={<Tournaments />} />

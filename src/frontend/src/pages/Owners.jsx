@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import "../styles/pages/Owners.css"
 import api from "../api";
-import avatar_placeholder from "../assets/avatar_placeholder.png"
 import Owner from "../components/Owner";
 
 function Owners(){
