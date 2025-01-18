@@ -18,19 +18,3 @@
     background-color: #404040;
     cursor: pointer;
 }
-
-.enrolled{
-    width: fit-content;
-    min-width: max-content;
-    max-height: 20px;
-    margin-right: 10px;
-    margin-left: auto;
-    padding: 10px;
-    text-decoration: none;
-    color: white;
-    background-color: #303030;
-    border-radius: 10px;
-    position: absolute;
-    align-self: center;
-    right:0;
-}

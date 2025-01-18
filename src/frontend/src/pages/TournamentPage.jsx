@@ -74,7 +74,11 @@ function TournamentPage(){
             <Header />
             <div style={{display: "flex"}}>
                 <h1 id="tournament-name">{tournament.naziv}</h1>
-                {tournament.otvorenost === "otvoren" ? <EnrollForm tournament = {tournament}/> : null}
+
+                {/* render enrollment form if tournament is joinable and user is logged in*/}
+                {(tournament.otvorenost === "otvoren" &&
+                    localStorage.getItem('access')) ? <EnrollForm tournament = {tournament}/> : null}
+
             </div>
 
             <TournamentBubbles tournament = {tournament}/>
@@ -90,6 +94,7 @@ function TournamentPage(){
                 <p>{tournament.nagrade}</p>
             </div>
             
+            {/* render comment box form if tournament is finished */}
             {(tournament.otvorenost === "zavrsen") ?
             <>
                 <CommentForm tournamentId={tournamentId} fieldId={field.id} />
@@ -97,7 +102,8 @@ function TournamentPage(){
                 {posts.map((post) => (
                     <Post post={post} key={post.id} />
                     ))} 
-            </> : null}
+            </> :
+            null}
         </>
     );
 }

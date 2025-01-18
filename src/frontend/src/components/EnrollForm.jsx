@@ -41,7 +41,7 @@ function EnrollForm({tournament}){
     return(
         enrollment.length > 0 ?
         <> 
-            <label className = "enrolled" htmlFor="unenroll">Odjavi</label>
+            <label htmlFor="unenroll" className = "enrollLabel">Odjavi</label>
             <button id="unenroll" onClick={handleUnenroll} hidden></button>
         </>:
         <>

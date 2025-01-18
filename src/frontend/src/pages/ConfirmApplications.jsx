@@ -33,7 +33,17 @@ function ConfirmApplications(){
         })
     }, [])
 
+    if (prijave.length === 0){
+        return(
+            <>
+                <Header/>
+                <p>Nema prijava za vaše turnire</p>
+            </>
+        )
+    }
+
     return(
+
         <>
             <Header />
             <div className="application-container">
