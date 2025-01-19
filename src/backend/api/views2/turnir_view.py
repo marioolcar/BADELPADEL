@@ -30,7 +30,9 @@ class TurnirDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     queryset = Turnir.objects.all()
     serializer_class = TurnirSerializer
-    permission_classes = [IsAuthenticated, IsOwnerOrAdmin]
+    permission_classes = [IsAuthenticated]
+    
+    #permission_classes = [IsAuthenticated, IsOwnerOrAdmin]
 
 
 # Pogled za dohvaćanje turnira prema organizatoru

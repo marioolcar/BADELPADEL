@@ -16,15 +16,19 @@ class VlasnikListCreate(generics.ListCreateAPIView):
     lookup_field = "user_id"
     serializer_class = VlasnikSerializer
     permission_classes = [IsAuthenticated]
-
+"""
     def perform_create(self, serializer):
-        """
-        Automatski postavlja trenutnog korisnika kao vlasnika.
-        """
+        #Automatski postavlja trenutnog korisnika kao vlasnika.
         serializer.save(user=self.request.user)
+
+
+"""
         
 class VlasnikListAll(generics.ListCreateAPIView):
-    queryset=Vlasnik.objects.all()
+    queryset = Vlasnik.objects.all()
+    lookup_field = "user_id"
+    serializer_class = VlasnikSerializer
+    permission_classes = [IsAuthenticated]
 
 
 # Pogled za brisanje vlasnika

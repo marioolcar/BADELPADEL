@@ -36,7 +36,8 @@ class TerenDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     queryset = Teren.objects.all()
     serializer_class = TerenSerializer
-    permission_classes = [IsAuthenticated, IsOwnerOrAdmin]
+    permission_classes = [AllowAny]
+    #permission_classes = [IsAuthenticated, IsOwnerOrAdmin]
 
 
 # Pogled za dohvaćanje terena prema vlasniku
