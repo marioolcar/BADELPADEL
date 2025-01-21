@@ -26,9 +26,10 @@ class VlasnikListCreate(generics.ListCreateAPIView):
         
 class VlasnikListAll(generics.ListCreateAPIView):
     queryset = Vlasnik.objects.all()
+    
     lookup_field = "user_id"
     serializer_class = VlasnikSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsOwnerOrAdmin,IsAuthenticated]
 
 
 # Pogled za brisanje vlasnika

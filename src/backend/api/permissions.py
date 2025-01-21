@@ -6,6 +6,7 @@ class IsIgracOrAdmin(BasePermission):
     """
     def has_permission(self, request, view):
         # Administratori imaju pristup svemu
+        print(request.user)
         if request.user.is_staff:
             return True
         # Provjera da li korisnik ima povezani Igrac model
@@ -13,6 +14,7 @@ class IsIgracOrAdmin(BasePermission):
 
     def has_object_permission(self, request, view, obj):
         # Administratori imaju pristup svemu
+        print(request.user)
         if request.user.is_staff:
             return True
         # Ako je korisnik vlasnik podataka
@@ -23,7 +25,17 @@ class IsOwnerOrAdmin(BasePermission):
     """
     Dozvoljava pristup samo vlasnicima objekta ili administratorima.
     """
+    def has_permission(self, request, view):
+        # Administratori imaju pristup svemu
+        if request.user.is_staff:
+            return True
+        # Provjera da li korisnik ima povezani Igrac model
+        return hasattr(request.user, 'vlasnik')
+    
+    
     def has_object_permission(self, request, view, obj):
+        print(obj)
+        print(request.user)
         # Administratori imaju pristup svemu
         if request.user.is_staff:
             return True
