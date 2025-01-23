@@ -97,7 +97,7 @@ function addTournament(){
 
                 <label>Kraj: </label>
                 <DatePicker selected={endDate} dateFormat="MMMM d, yyyy h:mm aa"
-                    showTimeSelect timeIntervals={60} minDate={new Date()}
+                    showTimeSelect timeIntervals={60} minDate={startDate}
                     filterTime={filterPassedDateTime} onChange={(date) => setEndDate(date)}/>
 
                 <br/>

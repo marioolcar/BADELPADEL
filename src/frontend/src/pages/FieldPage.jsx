@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import { useParams } from "react-router-dom";
 import api from "../api";
 import { convertDateTime } from "../functions/Utility";
+import SlotForm from "../components/SlotForm";
 import "../styles/pages/FieldPage.css"
 import FieldPageHeader from "../components/FieldPageHeader";
 import Owner from "../components/Owner";
@@ -26,13 +27,23 @@ function FieldPage(){
         })
     }
 
+    function fetchTermini(){
+        api
+        .get(`/api/termin/${fieldId}/`)
+        .then((res) => res.data)
+        .then((data) => {
+            console.log(data)
+            setTermini(data);
+        }).catch((err) => console.error(err))
+    }
+
     useEffect (() => {
+        fetchTermini()
         api
         .get(`/api/tereni/${fieldId}/`)
         .then((res) => res.data)
         .then((data) => {
             setField(data);
-            setTermini(data.dostupni_termini)
             fetchOwner(data.vlasnik)
             console.log(data);
         })
@@ -57,16 +68,7 @@ function FieldPage(){
             <Header />
             <FieldPageHeader field = {field}/>
             <Owner owner = {owner}/>
-            <h1>Termini: </h1>
-            {termini.map((termin) => {
-                return (
-                    <div>
-                        <p>{convertDateTime(termin.pocetak)}</p>
-                        <p>{convertDateTime(termin.kraj)}</p>
-                        <p>{termin.cijena}</p>
-                    </div>
-            );
-            })}
+            <SlotForm termini = {termini} />
         </>
     );
 }

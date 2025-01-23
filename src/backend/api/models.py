@@ -40,7 +40,6 @@ class Teren(models.Model):
     lokacija_ulica = models.CharField(max_length=200)
     slika = models.ImageField(upload_to='teren_images/', blank=True, null=True)
     tip = models.CharField(max_length=10, choices=TIP_TERENA_CHOICES)
-    dostupni_termini = models.JSONField( default=dict)  # JSON za pohranu više termina s datumom, vremenom i cijenom
     vlasnik = models.ForeignKey(User, on_delete=models.CASCADE, related_name='tereni')
     
     def __str__(self):
@@ -112,3 +111,21 @@ class TurnirPrijava(models.Model):
     status = models.CharField(max_length=11, choices=STATUS_PRIJAVE_CHOICES, default="pending")
     def __str__(self):
         return f'{self.turnir}, {self.user}'
+
+class Termin(models.Model):
+    teren = models.ForeignKey(Teren, on_delete=models.CASCADE)
+    pocetak = models.DateTimeField()
+    kraj = models.DateTimeField()
+    cijena = models.DecimalField(max_digits=10, decimal_places=2)
+    def __str__(self):
+        return f'{self.teren}, {self.pocetak}'
+
+class ZauzetiTermin(models.Model):
+    #user je id korisnika koji je rezervirao termin
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    teren = models.ForeignKey(Teren, on_delete=models.CASCADE)
+    pocetak = models.DateTimeField()
+    kraj = models.DateTimeField()
+    cijena = models.DecimalField(max_digits=10, decimal_places=2)
+    def __str__(self):
+        return f'{self.teren}, {self.pocetak}'

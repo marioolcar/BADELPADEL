@@ -11,6 +11,8 @@ from .views2.teren_view import *
 from .views2.turnir_view import *
 from .views2.vlasnik_view import *
 from .views2.prijave_view import *
+from .views2.termin_view import *
+from .views2.zauzeti_termin_view import *
 
 
 #from . import views
@@ -72,8 +74,15 @@ urlpatterns = [
     path('prijava/delete/turnir/<int:turnir_id>/user/<int:user_id>/', PrijaveDeleteForUser.as_view(), name='prijava-delete'),
     path('prijava/user/', PrijaveUser.as_view(), name="prijave-user"),
     path('prijava/turnir/<int:turnir_id>/', PrijaveTurnir.as_view(), name="prijave-turnir"),
-    path('prijava/turnir/<int:turnir_id>/igraci/', PrijaveIgracTurnir.as_view(), name="prijave-igrac-turnir")
+    path('prijava/turnir/<int:turnir_id>/igraci/', PrijaveIgracTurnir.as_view(), name="prijave-igrac-turnir"),
 
+    path('termin/', TerminListCreate.as_view(), name='termin-list'),
+    path('termin/<int:pk>/', TerminPerField.as_view(), name='termin-teren'),
+    path('termin/delete/<int:pk>/', TerminDelete.as_view(), name='delete-termin'),
+
+    path('termin/zauzeti/', ZauzetiTerminListCreate.as_view(), name='zauzeti-termin-list'),
+    path('termin/zauzeti/<int:pk>/', ZauzetiTerminPerField.as_view(), name='zauzeti-termin-user'),
+    path('termin/zauzeti/delete/<int:pk>/', ZauzetiTerminDelete.as_view(), name='delete-zauzeti-termin'),
 ]
 
 

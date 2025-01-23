@@ -1,14 +1,29 @@
 import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Tournament from "../components/Tournament";
+import Slot from "../components/Slot";
 import "../styles/pages/OwnerProfile.css"
+import { sortData } from "../functions/Utility";
 import api from "../api";
 
 function Home(){
 
     const [tournaments, setTournaments] = useState([]);
+    const [termini, setTermini] = useState([])
+
+    function fetchReservations(){
+        api
+        .get("/api/termin/zauzeti/")
+        .then((res) => res.data)
+        .then((data) => {
+            console.log(data)
+            sortData(data)
+            setTermini(data)
+        })
+    }
 
     useEffect(() => {
+        fetchReservations()
         api
         .get("/api/prijava/user/")
         .then((res) => res.data)
@@ -38,6 +53,11 @@ function Home(){
             </div>
             <hr/>
             <p>Rezervirani termini</p>
+            {termini.length !== 0 ?
+                termini.map((termin) => (
+                    <Slot slot={termin} key={termin.id} />
+                )): 
+                <p><b>Nema prijavljenih turnira</b></p>}
             <div>
 
             </div>

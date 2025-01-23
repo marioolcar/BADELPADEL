@@ -20,8 +20,8 @@ class TerenListCreate(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         if serializer.is_valid():
-            termini = json.loads(self.request.data['dostupni_termini'])
-            serializer.save(vlasnik_id=self.request.user.id, dostupni_termini=termini)
+            teren = serializer.save(vlasnik_id=self.request.user.id)
+            return Response(data={"teren_id": teren})
         else:
             print(serializer.errors)
 

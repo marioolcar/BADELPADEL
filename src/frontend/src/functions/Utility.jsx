@@ -16,3 +16,15 @@ export async function fetchData(path){
         return undefined;
     })
 }
+
+export function sortData(data){
+    data.sort((a,b) => {
+        if(a.pocetak > b.pocetak){
+            return 1
+        }
+        else if (a.pocetak < b.pocetak){
+            return -1
+        }
+    })
+    return data
+}

@@ -22,7 +22,7 @@ class NoteSerializer(serializers.ModelSerializer):
         extra_kwargs = {"author": {"read_only": True}}
 
 
-from .models import Teren, Turnir, TurnirPrijava
+from .models import Teren, Turnir, TurnirPrijava, Termin, ZauzetiTermin
 from .models import Vlasnik, Igrac
 
 
@@ -50,7 +50,7 @@ class TerenSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Teren
-        fields = ['id', 'lokacija_grad', 'lokacija_ulica', 'slika', 'tip', 'dostupni_termini', 'vlasnik']
+        fields = ['id', 'lokacija_grad', 'lokacija_ulica', 'slika', 'tip', 'vlasnik']
         extra_kwargs = {"vlasnik": {"required": False}, "slika":{"required": False}}
 
     def get_slika_url(self, obj):
@@ -85,3 +85,15 @@ class TurnirPrijavaSerialzier(serializers.ModelSerializer):
         fields = ['turnir', 'id', 'user', 'status']
         extra_kwargs = {"user": {"required": False}, "status": {"required": False}}
 
+class TerminSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Termin
+        fields = '__all__'
+
+class ZauzetiTerminSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = ZauzetiTermin
+        fields = '__all__'
+        extra_kwargs = {"user":{"required": False}}

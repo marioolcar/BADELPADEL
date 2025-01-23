@@ -41,13 +41,18 @@ function AddField (){
         }
 
         api.post("/api/tereni/",
-            {lokacija_grad: grad, lokacija_ulica: ulica, tip: tip, slika: slika, dostupni_termini: JSON.stringify(termini)},
+            {lokacija_grad: grad, lokacija_ulica: ulica, tip: tip, slika: slika},
             {headers: {
               'Content-Type': 'multipart/form-data'
             }
         })
         .then((response) => {
-            location.reload()
+            const teren = response.data
+            termini.forEach((termin) => {
+                api.post(`/api/termin/`,
+                    {pocetak: termin.pocetak, kraj: termin.kraj, cijena: termin.cijena, teren: teren.id})
+            })
+            
         })
         .catch((err) => console.error(err));
         

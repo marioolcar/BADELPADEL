@@ -11,6 +11,5 @@ admin.site.register(Turnir)
 admin.site.register(Post)
 admin.site.register(Komentar)
 admin.site.register(TurnirPrijava)
-
-
-
+admin.site.register(Termin)
+admin.site.register(ZauzetiTermin)

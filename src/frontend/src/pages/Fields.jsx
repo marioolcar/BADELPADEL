@@ -9,6 +9,7 @@ function Fields(){
     const [fields, setFields] = useState([]);
     const [filteredData, setFilteredData] = useState(fields);
     const [selectedType, setSelectedType] = useState([]);
+    const [search, setSearch] = useState("");
 
     useEffect(() =>{
         api
@@ -25,13 +26,20 @@ function Fields(){
 
     useEffect(() =>{
         setFilteredData(fields.filter(function(item){
-            console.log(selectedType, item.tip)
+            //console.log(selectedType, item.tip)
             if (selectedType.includes(item.tip) || selectedType.length === 0){
-                return true;
+                var keywords = item.lokacija_grad.toLowerCase().split(" ")
+                keywords.push(...item.lokacija_ulica.toLowerCase().split(" "))
+
+                //abominacija koja funkcionira
+                if (search.split(" ").every((word) => 
+                    keywords.some((keyword) => 
+                        keyword.includes(word))))
+                    return true
             }
             return false;
         }));
-    }, [selectedType])
+    }, [selectedType, search])
 
     const handleTypeFilterUpdate = (e, field_type) => {
 
@@ -47,15 +55,18 @@ function Fields(){
     return (
         <>
             <Header/>
-            <input type="checkbox" id="indoor" name="indoor" onClick={(e) => handleTypeFilterUpdate(e, "unutarnji")}></input>
+            <input type="checkbox" id="indoor" name="type" onClick={(e) => handleTypeFilterUpdate(e, "unutarnji")}></input>
             <label htmlFor="indoor">Unutarnji</label>
-            <input type="checkbox" id="outdoor" name="outdoor" onClick={(e) => handleTypeFilterUpdate(e, "vanjski")}></input>
+            <input type="checkbox" id="outdoor" name="type" onClick={(e) => handleTypeFilterUpdate(e, "vanjski")}></input>
             <label htmlFor="outdoor">Vanjski</label>
+            <br/>
+            <label>Filter: </label>
+            <input type="text" onChange={(e) => setSearch(e.target.value)}></input>
             
             <div className="fields-container">
 
                 {filteredData.map((field) => (
-                <Field field={field} key={field.id} />
+                <Field field={field} key={field.id} value = {`${field.lokacija_grad}, ${field.lokacija_ulica}`} />
                 ))}
 
             </div>

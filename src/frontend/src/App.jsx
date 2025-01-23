@@ -14,6 +14,7 @@ import AddTournament from "./pages/AddTournament"
 import ConfirmApplications from "./pages/ConfirmApplications"
 import NotFound from "./pages/NotFound"
 import ProtectedRoute from "./components/ProtectedRoute"
+import Paypal from "./pages/Paypal"
 
 
 function Logout() {
@@ -49,6 +50,7 @@ function App() {
         <Route path="/register" element={<RegisterAndLogout />} />
         <Route path="/profile/owner/:userId" element={<OwnerProfile />} />
         <Route path="/owners" element={<Owners />} />
+        <Route path="/test" element={<Paypal price = {9.99} />} />
 
         <Route path="/add/field"
           element={
