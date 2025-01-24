@@ -1,0 +1,40 @@
+.field{
+    height: 200px;
+    max-width: 350px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.field-link{
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.field-header{
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.field-city{
+    margin: 0px;
+    padding: 10px;
+    position:relative;
+    font-size: 36px;
+    color: white;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.other-field-data{
+    display: flex;
+    height: max-content;
+    gap: 20px;
+    padding: 0px 20px;
+    justify-content: space-between;
+    align-items: center;
+}

@@ -1,0 +1,57 @@
+@import "../general.css";
+
+.tournament{
+    display: flex;
+    flex-direction: row;
+    height: 100px;
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.tournament:hover{
+    background-color: var(--accent-color);
+}
+
+.tournament-link{
+    text-decoration: none;
+    color: inherit;
+}
+
+.tournament-left-block > * {
+    margin: 0px;
+    color: #aaaaaa;
+}
+
+.tournament-left-block{
+    display:flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: space-evenly;
+    justify-content: space-evenly;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+#tournament-naziv{
+    color: white;
+    font-size: 24px;
+    word-wrap: normal;
+}
+
+.tournament-right-block{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+}
+
+.tournament-right-block > * {
+    color: #aaaaaa;
+    text-align: right;
+}
+
+#tournament-otvorenost{
+    width: 60px;
+}
+

@@ -1,0 +1,44 @@
+@import '../general.css';
+
+.header-container{
+    display:flex;
+    position: sticky;
+    top:0;
+    align-items: center;
+    background-color: var(--primary-color);
+    height: 100px;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    gap: 20px;
+    font-size: 18px;
+    z-index: 99;
+    box-shadow: 0 0 30px 10px rgba(0,0,0,0.3)
+}
+
+.navigation{
+    display:flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+    align-items: center;
+}
+
+.header-links {
+    padding: 10px;
+    text-decoration: none;
+    color: white;
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+}
+
+.header-links:hover {
+    background-color: #404040;
+}
+
+.sign-in-button{
+    width: fit-content;
+    min-width: max-content;
+    margin-right: 10px;
+    margin-left: auto;
+}

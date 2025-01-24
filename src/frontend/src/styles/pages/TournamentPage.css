@@ -1,0 +1,9 @@
+#tournament-name{
+    color: #303030;
+    background-color: #FFFFFFaa;
+    border-radius: 0px 20px 20px 0px;
+    padding: 20px;
+    margin: 0px;
+    font-size: 72px;
+    width: 100%;
+}

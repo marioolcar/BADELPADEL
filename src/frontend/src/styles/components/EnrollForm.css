@@ -1,0 +1,22 @@
+@import "../general.css";
+
+.enrollLabel{
+    width: fit-content;
+    min-width: max-content;
+    max-height: 20px;
+    margin-right: 10px;
+    margin-left: auto;
+    padding: 10px;
+    text-decoration: none;
+    color: white;
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+    position: absolute;
+    align-self: center;
+    right:0;
+
+}
+.enrollLabel:hover{
+    background-color: #404040;
+    cursor: pointer;
+}

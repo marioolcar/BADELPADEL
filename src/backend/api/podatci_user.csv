@@ -1,0 +1,2 @@
+username,password,email,note_title,note_content,note_author,vlasnik_user,vlasnik_telefon,teren_grad,teren_ulica,teren_vlasnik,teren_tip,teren_dostupni_termini,turnir_naziv,turnir_teren,turnir_organizator,prijava_user,prijava_turnir
+admin,test8888,admin@example.com,Naslov 1,Some content,admin,admin,0999123456,Zagreb,Ulica 1,admin,unutarnji,"{}",Turnir 1,Zagreb,admin,user1,1

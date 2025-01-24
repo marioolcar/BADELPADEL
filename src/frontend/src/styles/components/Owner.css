@@ -1,0 +1,38 @@
+@import "../general.css";
+
+.owner-link{
+    text-decoration: none;
+    background: #303030;
+    border-radius: 20px;
+    padding: 0px;
+}
+
+.owner-container:hover{
+    background: var(--accent-color);
+}
+
+.owner-container{
+    max-width: 450px;
+    background-color: var(--primary-color);
+    margin: 10px;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.owner-container-details{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 10px;
+    gap: 10px;
+    padding: 10px;
+}
+
+.owner-username{
+    color: white;
+    padding: 10px;
+    font-size: 20px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
