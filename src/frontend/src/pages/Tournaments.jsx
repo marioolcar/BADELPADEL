@@ -14,22 +14,23 @@ function Tournaments(){
 
 
     useEffect(() =>{
+
         api
-        .get("/api/turniri/")
-        .then((res) => res.data)
-        .then((data) => {
-            setTournaments(data);
-            setFilteredData(data);
-            //console.log(data);
-        })
-        .catch(//(err) => alert(err)
-        );
+            .get("/api/turniri/")
+            .then((res) => res.data)
+            .then((data) => {
+                setTournaments(data);
+                setFilteredData(data);
+                //console.log(data);
+            })
+            .catch()
+
     }, [])
 
     useEffect(() =>{
 
         setFilteredData(tournaments.filter(function(item){
-            //console.log(filters, item.otvorenost)
+            
             if (filters.includes(new Date(item.datum_pocetka) < new Date() ? "zatvoren" : "otvoren") ||
                 filters.length === 0){
 

@@ -16,21 +16,24 @@ function Post({post}){
         }
 
         api
-        .get(`/api/igraci/${post.user_id}/`)
-        .then((res) => res.data)
-        .then((data) => {
-            setUserData(data)
-            setUsername(data.user.username)
-            //console.log(data);
-        })
-        .catch(//(err) => alert(err)
-        );
+            .get(`/api/igraci/${post.user_id}/`)
+            .then((res) => res.data)
+            .then((data) => {
+                setUserData(data)
+                setUsername(data.user.username)
+                //console.log(data);
+            })
+            .catch(//(err) => alert(err)
+            );
     },[post])
 
     async function handleDelete(){
-        await api.delete(`/api/post/delete/${post.id}/`)
-        .catch((err) => console.error(err));
-        location.reload()
+
+        await api
+                .delete(`/api/post/delete/${post.id}/`)
+                .then((res) => location.reload())
+                .catch((err) => console.error(err));
+
     }
 
     return(

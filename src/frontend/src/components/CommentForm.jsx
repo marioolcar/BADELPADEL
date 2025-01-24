@@ -10,21 +10,24 @@ function CommentForm({fieldId, tournamentId}){
     const [image, setImage] = useState(null);
 
     async function handleSubmit(e){
+
         e.preventDefault();
         const dateTime = new Date()
-        await api.post("/api/post/",
-            {slika: image, naslov: title, opis: description,
-                vrijeme: `${dateTime.getHours()}:${dateTime.getMinutes()}:${dateTime.getSeconds()}`,
-                //user_id: 1, 
-                teren_id: fieldId, turnir_id: tournamentId}, {
-            headers: {
-              'Content-Type': 'multipart/form-data'
-            }
-        })
-        .then((response) => {
-            location.reload()
-        })
-        .catch((err) => console.error(err))
+
+        await api
+                .post("/api/post/",
+                    {slika: image, naslov: title, opis: description,
+                        vrijeme: `${dateTime.getHours()}:${dateTime.getMinutes()}:${dateTime.getSeconds()}`,
+                        //user_id: 1, 
+                        teren_id: fieldId, turnir_id: tournamentId}, {
+                    headers: {
+                    'Content-Type': 'multipart/form-data'
+                    }
+                })
+                .then((response) => {
+                    location.reload()
+                })
+                .catch((err) => console.error(err))
 
     }
 

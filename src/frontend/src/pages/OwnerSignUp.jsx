@@ -27,11 +27,13 @@ function OwnerSignUp(){
     const navigate = useNavigate()
 
     function handleConfirm() {
+
         api
-        .post(`/api/register/owner/`, {telefon: telefon, adresa: adress})
-        .then((res) => {
-            navigate("/profile")
-        })
+            .post(`/api/register/owner/`, {telefon: telefon, adresa: adress})
+            .then((res) => {
+                navigate("/profile")
+            })
+            
     }
 
     return(

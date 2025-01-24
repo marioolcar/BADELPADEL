@@ -9,13 +9,15 @@ function Owners(){
     const [owners, setOwners] = useState([]);
 
     useEffect(() => {
+        
         api
-        .get("/api/vlasnici/")
-        .then((res) => res.data)
-        .then((data) => {
-            //console.log(data);
-            setOwners(data);
-        }).catch((err) => console.error(err))
+            .get("/api/vlasnici/")
+            .then((res) => res.data)
+            .then((data) => {
+                //console.log(data);
+                setOwners(data);
+            }).catch((err) => console.error(err))
+
     }, [])
 
     if (owners.length === 0){

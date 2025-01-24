@@ -40,10 +40,12 @@ class PrijaveUser(generics.ListCreateAPIView):
             return None
 
 class PrijaveTurnir(generics.ListCreateAPIView):
-    queryset = TurnirPrijava.objects.all()
     serializer_class = TurnirPrijavaSerialzier
     permission_classes = [AllowAny]
-    lookup_field = "turnir"
+
+    def get_queryset(self):
+        turnir = self.kwargs["turnir_id"]
+        return TurnirPrijava.objects.filter(turnir=turnir)
 
 class PrijaveIgracTurnir(generics.ListCreateAPIView):
     queryset = TurnirPrijava.objects.all()

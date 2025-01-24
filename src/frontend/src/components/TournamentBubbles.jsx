@@ -1,19 +1,9 @@
 import "../styles/components/TournamentBubbles.css"
-import { convertDateTime } from "../functions/Utility";
+import { convertDateTime, checkOtvorenost } from "../functions/Utility";
 
 function TournamentBubbles({tournament}){
 
-    var otvorenost = ''
-
-    if(new Date(tournament.datum_pocetka) > new  Date()){
-        otvorenost = "Otvoren"
-    }
-    else if(new Date(tournament.datum_kraja) > new Date()){
-        otvorenost = "U tijeku"
-    }
-    else{
-        otvorenost = "Zatvoren"
-    }
+    var otvorenost = checkOtvorenost(tournament)
 
     return (
     <div className="tournament-header">

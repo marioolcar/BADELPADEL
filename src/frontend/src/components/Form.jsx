@@ -9,50 +9,54 @@ import "../styles/components/Form.css"
 import LoadingIndicator from "./LoadingIndicator";
 
 function Form({ route, method }) {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [loading, setLoading] = useState(false);
+
     const navigate = useNavigate();
 
-    const name = method === "login" ? "Login" : "Register";
+    // const [username, setUsername] = useState("");
+    // const [password, setPassword] = useState("");
+    // const [loading, setLoading] = useState(false);
 
-    const handleSubmit = async (e) => {
-        setLoading(true);
-        e.preventDefault();
+    // const name = method === "login" ? "Login" : "Register";
 
-        try {
-            const res = await api.post(route, { username, password })
-            if (method === "login") {
-                localStorage.setItem(ACCESS_TOKEN, res.data.access);
-                localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
-                localStorage.setItem(USERNAME, username);
-                navigate("/profile")
-            } else {
-                navigate("/login")
-            }
-        } catch (error) {
-            //alert(error)
-            location.reload()
-        } finally {
-            setLoading(false)
-        }
-    };
+    // const handleSubmit = async (e) => {
+    //     setLoading(true);
+    //     e.preventDefault();
+
+    //     try {
+    //         const res = await api.post(route, { username, password })
+    //         if (method === "login") {
+    //             localStorage.setItem(ACCESS_TOKEN, res.data.access);
+    //             localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
+    //             localStorage.setItem(USERNAME, username);
+    //             navigate("/profile")
+    //         } else {
+    //             navigate("/login")
+    //         }
+    //     } catch (error) {
+    //         //alert(error)
+    //         location.reload()
+    //     } finally {
+    //         setLoading(false)
+    //     }
+    // };
 
     const handleGoogleLogin = useGoogleLogin({
         onSuccess: async tokenResponse => {
 
             //console.log(tokenResponse)
         
-            api.post("/api/google-login/", {google_access_token: tokenResponse.access_token})
-            .then((res) => res.data)
-            .then((data) => {
-                //console.log(data)
-                localStorage.setItem(ACCESS_TOKEN, data.access);
-                localStorage.setItem(REFRESH_TOKEN, data.refresh);
-                localStorage.setItem(USERNAME, username);
-                navigate("/")
-            })
-            .catch ((err) => console.error(err))
+            api
+                .post("/api/google-login/", {google_access_token: tokenResponse.access_token})
+                .then((res) => res.data)
+                .then((data) => {
+                    //console.log(data)
+                    localStorage.setItem(ACCESS_TOKEN, data.access);
+                    localStorage.setItem(REFRESH_TOKEN, data.refresh);
+                    localStorage.setItem(USERNAME, data.username);
+                    navigate("/")
+                })
+                .catch ((err) => console.error(err))
+                
         }
     })
 

@@ -35,7 +35,6 @@ class TurnirDetail(generics.RetrieveUpdateDestroyAPIView):
 #promjenjen generics.RetrieveUpdateDestroyAPIView u generics.ListCreateAPIView kako bi mogo dobit vise turnira za jednog organizatora
 class TurnirVlasnik(generics.ListCreateAPIView):
     lookup_field = 'organizator'
-    queryset = Turnir.objects.all()
     serializer_class = TurnirSerializer
     permission_classes = [AllowAny]
     #promjeni IsAuthenticated
@@ -48,7 +47,6 @@ class TurnirVlasnik(generics.ListCreateAPIView):
 
 class TurnirVlasnikCurrent(generics.ListCreateAPIView):
     lookup_field = 'organizator'
-    queryset = Turnir.objects.all()
     serializer_class = TurnirSerializer
     permission_classes = [AllowAny]
     #promjeni IsAuthenticated
@@ -56,7 +54,7 @@ class TurnirVlasnikCurrent(generics.ListCreateAPIView):
         try:
             return Turnir.objects.filter(organizator=self.request.user)
         except:
-            return Turnir.objects.filter()
+            return None
     
 class TurnirDelete(generics.DestroyAPIView):
     serializer_class = TurnirSerializer

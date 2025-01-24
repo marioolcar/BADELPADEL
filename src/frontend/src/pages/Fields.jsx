@@ -12,26 +12,30 @@ function Fields(){
     const [search, setSearch] = useState("");
 
     useEffect(() =>{
+
         api
-        .get("/api/tereni/")
-        .then((res) => res.data)
-        .then((data) => {
-            setFields(data);
-            setFilteredData(data);
-            //console.log(data);
-        })
-        .catch(//(err) => alert(err)
-        );
+            .get("/api/tereni/")
+            .then((res) => res.data)
+            .then((data) => {
+                setFields(data);
+                setFilteredData(data);
+                //console.log(data);
+            })
+            .catch(//(err) => alert(err)
+            )
+
     }, [])
 
     useEffect(() =>{
+
         setFilteredData(fields.filter(function(item){
             //console.log(selectedType, item.tip)
             if (selectedType.includes(item.tip) || selectedType.length === 0){
-                var keywords = item.lokacija_grad.toLowerCase().split(" ")
-                keywords.push(...item.lokacija_ulica.toLowerCase().split(" "))
 
                 //abominacija koja funkcionira
+                //uzmi sve tokene iz grada i ulice i usporedi ih sa svakim tokenom iz trazilice
+                var keywords = item.lokacija_grad.toLowerCase().split(" ")
+                keywords.push(...item.lokacija_ulica.toLowerCase().split(" "))
                 if (search.split(" ").every((word) => 
                     keywords.some((keyword) => 
                         keyword.includes(word))))
@@ -44,15 +48,17 @@ function Fields(){
     const handleTypeFilterUpdate = (e, field_type) => {
 
         const { checked } = e.target;
+
         if (checked){
             setSelectedType((prev) => [...prev, field_type])
         } else{
             setSelectedType(selectedType.filter((x) => x !== field_type))
         }
-        console.log(selectedType)            
+        //console.log(selectedType)            
     }
 
     if (fields.length === 0){
+        
         return (
             <>
                 <Header />

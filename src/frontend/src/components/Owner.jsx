@@ -11,12 +11,14 @@ function Owner( {owner} ){
     const [id, setId] = useState(-1);
 
     useEffect(() => { 
+
         try{
             setUsername(owner.user.username)
             setId(owner.user.id)
         }catch{
             console.error("Couldn't get owner's username")
         };
+        
     }, [owner])
 
     return(

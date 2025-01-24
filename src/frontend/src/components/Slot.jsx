@@ -18,27 +18,29 @@ function Slot({slot}){
         }
 
         api
-        .get(`/api/tereni/${slot.teren}/`)
-        .then((res) => res.data)
-        .then((data) => {
-            console.log(data)
-            setField(data)
-        })
+            .get(`/api/tereni/${slot.teren}/`)
+            .then((res) => res.data)
+            .then((data) => {
+                //console.log(data)
+                setField(data)
+            })
+
     },[slot])
 
     function handleDelete(){
         var deletedSlot = null
         api
-        .delete(`/api/termin/zauzeti/delete/${slot.id}/`)
-        .then((res) => deletedSlot = res.data.termin)
-        .then(() => {
-            //console.log(deletedSlot)
-            api.post(`/api/termin/`,
-                {"pocetak": deletedSlot.pocetak, "kraj": deletedSlot.kraj, "teren": deletedSlot.teren_id, "cijena": deletedSlot.cijena})
-                .then((res) => {
-                    location.reload()
-                })
-        })
+            .delete(`/api/termin/zauzeti/delete/${slot.id}/`)
+            .then((res) => deletedSlot = res.data.termin)
+            .then(() => {
+                //console.log(deletedSlot)
+                api
+                    .post(`/api/termin/`,
+                        {"pocetak": deletedSlot.pocetak, "kraj": deletedSlot.kraj, "teren": deletedSlot.teren_id, "cijena": deletedSlot.cijena})
+                    .then((res) => {
+                        location.reload()
+                    })
+            })
     }
 
     return (

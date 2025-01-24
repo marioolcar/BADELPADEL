@@ -23,61 +23,68 @@ function OwnerProfile(){
 
 
     function fetchUserData(){
+
         var api_path = `/api/vlasnici/current/`
         if (userId != undefined){
             api_path = `/api/vlasnici/${userId}/`
         }
 
         api
-        .get(`${api_path}`)
-        .then((res) => res.data)
-        .then((data) => {
-            if (Array.isArray(data)){
-                data = data[0]
-            }
-            setUserData(data);
-            setUsername(data.user.username)
-        }).catch((err) => {
-            console.error(err)
-        console.error("Couldn't fetch owner data")});
+            .get(`${api_path}`)
+            .then((res) => res.data)
+            .then((data) => {
+                if (Array.isArray(data)){
+                    data = data[0]
+                }
+                setUserData(data);
+                setUsername(data.user.username)
+            })
+            .catch((err) => {
+            console.error("Couldn't fetch owner data")});
     }
 
     function fetchTournamentData(){
+
         var api_path = "/api/turniri/vlasnik/"
         if (userId != undefined){
             api_path +=`${userId}/`
         }
 
         api
-        .get(`${api_path}`)
-        .then((res) => res.data)
-        .then((data) => {
-            setTournaments(data);
-            //console.log(data);
-        }).catch(() =>
-        console.error("Failed to fetch tournaments"));
+            .get(`${api_path}`)
+            .then((res) => res.data)
+            .then((data) => {
+                setTournaments(data);
+                //console.log(data);
+            }).catch(() =>
+            console.error("Failed to fetch tournaments"));
+
     }
 
     function fetchFieldData(){
+
         var api_path = "/api/tereni/vlasnik/"
         if (userId != undefined){
             api_path +=`${userId}/`
         }
 
         api
-        .get(`${api_path}`)
-        .then((res) => res.data)
-        .then((data) => {
-            setFields(data);
-            //console.log(data);
-        }).catch(() =>
-        console.error("Failed to fetch fields"));
+            .get(`${api_path}`)
+            .then((res) => res.data)
+            .then((data) => {
+                setFields(data);
+                //console.log(data);
+            }).catch(() =>
+            console.error("Failed to fetch fields"));
+
     }
 
     useEffect(() => {
+
         if (location.pathname === "/profile"){
             setIsPublic(false)
         }
+        
         fetchUserData();
         fetchTournamentData();
         fetchFieldData();
@@ -148,8 +155,8 @@ function OwnerProfile(){
                         {isPublic ? null:
                         <>
                             <hr/>
-                            <p>Prijave</p>
-                            <ConfirmApplications />
+                            <h2>Prijave</h2>
+                            <ConfirmApplications turniri={tournaments}/>
                             <hr/>
                         </>
                         }

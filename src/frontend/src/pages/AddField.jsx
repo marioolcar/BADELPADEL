@@ -5,15 +5,11 @@ import "react-datepicker/dist/react-datepicker.css";
 import "../styles/components/AddForm.css"
 import api from "../api";
 import Header from "../components/Header";
+import {roundToHour} from "../functions/Utility.jsx"
 
 function AddField (){
 
-    //get current date and round up to the hour
-    var current_date = new Date()
-    current_date.setMinutes(current_date.getMinutes()+60)
-    current_date.setMinutes(0);
-    current_date.setSeconds(0);
-    current_date.setMilliseconds(0);
+    var current_date = roundToHour(new Date())
 
     const [grad, setGrad] = useState("");
     const [ulica, setUlica] = useState("");
@@ -26,7 +22,7 @@ function AddField (){
     //function which runs after the form has been submitted
     function handleSubmit (event) {
         event.preventDefault()
-        console.log(grad, ulica, tip, slika, termini)
+        //console.log(grad, ulica, tip, slika, termini)
 
         if (termini.length === 0){
             alert("Niste odabrali niti jedan termin")
@@ -41,21 +37,23 @@ function AddField (){
             return;
         }
 
-        api.post("/api/tereni/",
-            {lokacija_grad: grad, lokacija_ulica: ulica, tip: tip, slika: slika},
-            {headers: {
-              'Content-Type': 'multipart/form-data'
-            }
-        })
-        .then((response) => {
-            const teren = response.data
-            termini.forEach((termin) => {
-                api.post(`/api/termin/`,
-                    {pocetak: termin.pocetak, kraj: termin.kraj, cijena: termin.cijena, teren: teren.id})
+        api
+            .post("/api/tereni/",
+                {lokacija_grad: grad, lokacija_ulica: ulica, tip: tip, slika: slika},
+                {headers: {
+                'Content-Type': 'multipart/form-data'
+                }
             })
+            .then((response) => {
+                const teren = response.data
+                termini.forEach((termin) => {
+                    api
+                        .post(`/api/termin/`,
+                            {pocetak: termin.pocetak, kraj: termin.kraj, cijena: termin.cijena, teren: teren.id})
+                })
             
-        })
-        .catch((err) => console.error(err));
+            })
+            .catch((err) => console.error(err));
         
     }
 
@@ -69,7 +67,7 @@ function AddField (){
             kraj.setHours(kraj.getHours()+1)
             setTermini([...termini, {pocetak: date, kraj: kraj, cijena: cijena}])
         }
-        console.log(termini)
+        //console.log(termini)
     }
 
     //filter function for DatePicker

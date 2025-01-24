@@ -16,53 +16,60 @@ function FieldPage(){
     const [termini, setTermini] = useState([]);
 
     function fetchOwner(fieldOwner){
+
         api
-        .get(`/api/vlasnici/${fieldOwner}/`)
-        .then((res) => res.data)
-        .then((data) => {
-            setOwner(data);
-            //console.log(data)
-        }).catch((err) => {
-            console.error("Couldn't fetch owner");
-        })
+            .get(`/api/vlasnici/${fieldOwner}/`)
+            .then((res) => res.data)
+            .then((data) => {
+                setOwner(data);
+                //console.log(data)
+            }).catch((err) => {
+                console.error("Couldn't fetch owner");
+            })
+
     }
 
     function fetchTermini(){
+
         api
-        .get(`/api/termin/${fieldId}/`)
-        .then((res) => res.data)
-        .then((data) => {
-            //console.log(data)
-            setTermini(data)
-        }).catch((err) => console.error(err))
+            .get(`/api/termin/${fieldId}/`)
+            .then((res) => res.data)
+            .then((data) => {
+                //console.log(data)
+                setTermini(data)
+            }).catch((err) => console.error(err))
+
     }
 
     function getUserType(){
+
         api
-        .get(`/api/user/`)
-        .then((res) => res.data.type)
-        .then((data) => {
-            //console.log(data)
-            setUserType(data)
+            .get(`/api/user/`)
+            .then((res) => res.data.type)
+            .then((data) => {
+                //console.log(data)
+                setUserType(data)
         })
+
     }
 
     useEffect (() => {
+
         fetchTermini()
         getUserType()
-        api
-        .get(`/api/tereni/${fieldId}/`)
-        .then((res) => res.data)
-        .then((data) => {
-            setField(data);
-            fetchOwner(data.vlasnik)
-            //console.log(data);
-        })
-        .catch((err) => 
-            console.error(err)
-        );
 
-        
+        api
+            .get(`/api/tereni/${fieldId}/`)
+            .then((res) => res.data)
+            .then((data) => {
+                setField(data);
+                fetchOwner(data.vlasnik)
+                //console.log(data);
+            })
+            .catch((err) => 
+                console.error(err)
+            );
+
     }, [])
 
     if (field.length === 0){
@@ -80,7 +87,8 @@ function FieldPage(){
             <FieldPageHeader field = {field}/>
             <Owner owner = {owner}/>
             { userType === "igrac" ?
-            <SlotForm termini = {termini} />:
+                (termini.length === 0 ? <p>Nema slobodnih termina</p> :
+                    <SlotForm termini = {termini} />) :
             null
             }
         </>

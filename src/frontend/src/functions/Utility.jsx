@@ -28,26 +28,38 @@ export async function fetchData(path){
     })
 }
 
-export function sortData(data){
+export function sortData(data, field){
+
     data.sort((a,b) => {
-        if(a.pocetak > b.pocetak){
+
+        if(a[field] > b[field]){
             return 1
         }
-        else if (a.pocetak < b.pocetak){
+        else if (a[field] < b[field]){
             return -1
         }
     })
     return data
 }
 
-export function sortApplications(data){
-    data.sort((a,b) => {
-        if(a.status > b.status){
-            return 1
-        }
-        else if (a.pocetak < b.pocetak){
-            return -1
-        }
-    })
-    return data
+export function checkOtvorenost(tournament){
+
+    if(new Date(tournament.datum_pocetka) > new  Date()){
+        return "Otvoren"
+    }
+    else if(new Date(tournament.datum_kraja) > new Date()){
+        return "U tijeku"
+    }
+    else{
+        return "Zatvoren"
+    }
+}
+
+export function roundToHour(date) {
+        //get current date and round up to the hour
+        date.setMinutes(date.getMinutes()+60)
+        date.setMinutes(0);
+        date.setSeconds(0);
+        date.setMilliseconds(0);
+        return date
 }

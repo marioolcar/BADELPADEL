@@ -7,35 +7,42 @@ function EnrollForm({tournament}){
     const [enrollment, setEnrollment] = useState([]);
 
     async function handleEnroll(){
-        await api.post(`/api/prijava/`,
-            {turnir: tournament.id}
-        )
-        .then((res) => {
-            location.reload()
-        })
-        .catch((err) => console.error(err))
+
+        await api
+                .post(`/api/prijava/`,
+                    {turnir: tournament.id}
+                )
+                .then((res) => {
+                    location.reload()
+                })
+                .catch((err) => console.error(err))
     }
 
     async function handleUnenroll(){
-        await api.delete(`/api/prijava/delete/turnir/${tournament.id}/`,
-            {turnir: tournament.id}
-        )
-        .then((res) => {
-            location.reload()
-        })
-        .catch((err) => console.log(err));
+
+        await api
+                .delete(`/api/prijava/delete/turnir/${tournament.id}/`,
+                    {turnir: tournament.id}
+                )
+                .then((res) => {
+                    location.reload()
+                })
+                .catch((err) => console.error(err));
+
     }
 
     useEffect(() => {
+
         api
-        .get(`/api/prijava/turnir/${tournament.id}/igraci/`)
-        .then((res) => res.data)
-        .then((data) => {
-            //console.log(data)
-            setEnrollment(data);
-        }).catch(
-            console.error("Couldn't get enrollments")
-        )
+            .get(`/api/prijava/turnir/${tournament.id}/igraci/`)
+            .then((res) => res.data)
+            .then((data) => {
+                //console.log(data)
+                setEnrollment(data);
+            }).catch(
+                console.error("Couldn't get enrollments")
+            )
+
     }, [])
 
     return(

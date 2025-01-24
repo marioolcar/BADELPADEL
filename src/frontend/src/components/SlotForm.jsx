@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 function SlotForm({termini}){
 
-    termini = sortData(termini)
+    termini = sortData(termini, "pocetak")
     const navigate = useNavigate()
 
     const [paymentType, setPaymentType] = useState("gotovina");
@@ -17,23 +17,24 @@ function SlotForm({termini}){
     const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
 
     function handleConfirm(){
+
         if (selectedSlot === null){
             alert("Morate odabrati termin");
             return;
         }
-        console.log(paymentType, selectedSlot);
+        //console.log(paymentType, selectedSlot);
 
         var deletedSlot = null
         api
-        .delete(`/api/termin/delete/${selectedSlot}/`)
-        .then((res) => deletedSlot = res.data.termin)
-        .then(() => {
-            //console.log(deletedSlot)
-            api.post(`/api/termin/zauzeti/`,
-                {"pocetak": deletedSlot.pocetak, "kraj": deletedSlot.kraj, "teren": deletedSlot.teren_id, "cijena": deletedSlot.cijena})
-                .then((res) =>{
-                    navigate("/profile")
-                })
+            .delete(`/api/termin/delete/${selectedSlot}/`)
+            .then((res) => deletedSlot = res.data.termin)
+            .then(() => {
+                //console.log(deletedSlot)
+                api.post(`/api/termin/zauzeti/`,
+                    {"pocetak": deletedSlot.pocetak, "kraj": deletedSlot.kraj, "teren": deletedSlot.teren_id, "cijena": deletedSlot.cijena})
+                    .then((res) =>{
+                        navigate("/profile")
+                    })
         })
 
 
@@ -46,7 +47,7 @@ function SlotForm({termini}){
     }
 
     const onCreateOrder = (data,actions) => {
-        console.log(price)
+        //console.log(price)
         return actions.order.create({
             purchase_units: [
                 {
@@ -83,13 +84,8 @@ function SlotForm({termini}){
             {price === null ? null :
             <div>
                 <button type="button" onClick={(e) => payWithCash()} style={{width: "100%"}}>Gotovina</button>
-            </div>
-            }  
-        </div>
 
-        <div className="checkout">
-            {price === null ? null :
-            isPending ? <p>LOADING...</p> : (
+                {isPending ? <p>LOADING...</p> : (
                 <>
                     <PayPalButtons 
                         style={{ layout: "vertical" }}
@@ -98,7 +94,11 @@ function SlotForm({termini}){
                     />
                 </>
             )}
+            </div>
+            }  
         </div>
+
+
     </>)
 }
 

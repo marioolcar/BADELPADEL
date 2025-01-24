@@ -4,16 +4,13 @@ import Header from "../components/Header";
 import api from "../api";
 import "../styles/components/AddForm.css"
 import DatePicker from "react-datepicker";
+import { roundToHour } from "../functions/Utility";
 
 function addTournament(){
 
     const navigate = useNavigate()
 
-    var current_date = new Date()
-    current_date.setMinutes(current_date.getMinutes()+60)
-    current_date.setMinutes(0);
-    current_date.setSeconds(0);
-    current_date.setMilliseconds(0);
+    var current_date = roundToHour(new Date())
 
     const [tereni, setTereni] = useState([])
     const [naziv, setNaziv] = useState("");
@@ -25,14 +22,15 @@ function addTournament(){
     const [endDate, setEndDate] = useState("");
 
     useEffect(() => {
+
         api
-        .get('/api/tereni/vlasnik/')
-        .then((res) => res.data)
-        .then((data) => {
-            console.log(data)
-            setTereni(data);
-            
-        })
+            .get('/api/tereni/vlasnik/')
+            .then((res) => res.data)
+            .then((data) => {
+                //console.log(data)
+                setTereni(data);
+            })
+
     }, [])
 
     async function handleSubmit(event){
@@ -45,14 +43,15 @@ function addTournament(){
             return;
         }
 
-        await api.post('/api/turniri/',
-            {naziv: naziv, teren: teren, opis: opis, nagrade: nagrade,
-            cijena_kotizacije: cijena, datum_pocetka: startDate, datum_kraja: endDate}
-        )
-        .then((response) => {
-            navigate("/")
-        })
-        .catch((err) => console.error(err))
+        await api
+                .post('/api/turniri/',
+                    {naziv: naziv, teren: teren, opis: opis, nagrade: nagrade,
+                    cijena_kotizacije: cijena, datum_pocetka: startDate, datum_kraja: endDate}
+                )
+                .then((response) => {
+                    navigate("/")
+                })
+                .catch((err) => console.error(err))
 
     }
 

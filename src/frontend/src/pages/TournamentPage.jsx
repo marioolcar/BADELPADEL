@@ -19,58 +19,65 @@ function TournamentPage(){
 
 
     function fetchFieldData(data){
+
         api
-        .get(`/api/tereni/${data.teren}/`)
-        .then((res) => res.data)
-        .then((data) => {
-            setField(data)
-            //console.log(data);
-        })
-        .catch(//(err) => alert(err)
-        );
+            .get(`/api/tereni/${data.teren}/`)
+            .then((res) => res.data)
+            .then((data) => {
+                setField(data)
+                //console.log(data);
+            })
+            .catch(//(err) => alert(err)
+            );
+            
     }
 
     function fetchPostData(){
+
         api
-        .get(`/api/post/Turnir/${tournamentId}/`)
-        .then((res) => res.data)
-        .then((data) => {
-            setPosts(data)
-            //console.log(data);
-        })
-        .catch(//(err) => alert(err)
-        );
+            .get(`/api/post/Turnir/${tournamentId}/`)
+            .then((res) => res.data)
+            .then((data) => {
+                setPosts(data)
+                //console.log(data);
+            })
+            .catch(//(err) => alert(err)
+            );
+
     }
 
     function getUserType(){
+
         api
-        .get(`/api/user/`)
-        .then((res) => res.data.type)
-        .then((data) => {
-            //console.log(data);
-            setUserType(data);
-        }).catch((err) => {
-            //console.error(err)
-        })
+            .get(`/api/user/`)
+            .then((res) => res.data.type)
+            .then((data) => {
+                //console.log(data);
+                setUserType(data);
+            }).catch((err) => {
+                //console.error(err)
+            })
+
     }
 
     useEffect (() => {
-        getUserType()
-        api
-        .get(`/api/turniri/${tournamentId}/`)
-        .then((res) => res.data)
-        .then((data) => {
-            setTournament(data);
-            fetchFieldData(data);
 
-            if (new Date(data.datum_kraja) < new Date()){
-                fetchPostData();
-            }
-            
-            //console.log(data);
-        })
-        .catch(//(err) => alert(err)
-        );
+        getUserType()
+
+        api
+            .get(`/api/turniri/${tournamentId}/`)
+            .then((res) => res.data)
+            .then((data) => {
+                setTournament(data);
+                fetchFieldData(data);
+
+                if (new Date(data.datum_kraja) < new Date()){
+                    fetchPostData();
+                }
+
+            })
+            .catch();
+
     }, [])
 
     if (tournament.length === 0){
@@ -80,6 +87,7 @@ function TournamentPage(){
             <h1>Turnir nije pronađen</h1>
         </>);
     }
+
     return(
         <>
             <Header />

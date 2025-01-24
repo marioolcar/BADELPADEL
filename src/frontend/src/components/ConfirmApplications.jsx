@@ -1,36 +1,34 @@
 import { useEffect, useState } from "react";
 import api from "../api";
 import Application from "./Applications";
-import { sortApplications } from "../functions/Utility";
+import { sortData } from "../functions/Utility";
 
-function ConfirmApplications(){
+function ConfirmApplications({turniri}){
 
-    const [turniri, setTurniri] = useState([]);
     const [prijave, setPrijave] = useState([]);
 
 
     async function getApplicationForTournament(turnir){
+
         api
-        .get(`/api/prijava/turnir/${turnir.id}/`)
-        .then((res) => res.data)
-        .then((data) => {
-            //console.log(data)
-            sortApplications(data)
-            setPrijave(data)
-        })
+            .get(`/api/prijava/turnir/${turnir.id}/`)
+            .then((res) => res.data)
+            .then((data) => {
+                //console.log(data)
+                sortData(data, "status")
+                setPrijave(data)
+            })
+
     }
 
     useEffect(() => {
-        api
-        .get("/api/turniri/vlasnik/")
-        .then((res) => res.data)
-        .then((data) => {
-            //console.log(data)
-            setTurniri(data)
-            data.forEach((turnir) => {
+        if (turniri === undefined){
+            return
+        }
+        turniri.forEach((turnir) => {
                 getApplicationForTournament(turnir)
             })
-        })
+            
     }, [])
 
     if (prijave.length === 0){
