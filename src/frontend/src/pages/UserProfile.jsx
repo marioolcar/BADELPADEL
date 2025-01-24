@@ -17,7 +17,7 @@ function UserProfile(){
         .get("/api/termin/zauzeti/")
         .then((res) => res.data)
         .then((data) => {
-            console.log(data)
+            //console.log(data)
             sortData(data)
             setTermini(data)
         })
@@ -28,7 +28,7 @@ function UserProfile(){
         .get('/api/user/')
         .then((res) => res.data)
         .then((data) => {
-            console.log(data)
+            //console.log(data)
         })
     }
 
@@ -39,7 +39,7 @@ function UserProfile(){
         .get("/api/prijava/user/")
         .then((res) => res.data)
         .then((data) => {
-            console.log(data)
+            //console.log(data)
             data.forEach((item) =>{
                 api
                 .get(`/api/turniri/${item.turnir}/`)

@@ -20,7 +20,7 @@ function Tournaments(){
         .then((data) => {
             setTournaments(data);
             setFilteredData(data);
-            console.log(data);
+            //console.log(data);
         })
         .catch(//(err) => alert(err)
         );

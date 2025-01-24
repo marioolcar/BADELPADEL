@@ -53,7 +53,7 @@ function OwnerProfile(){
         .then((res) => res.data)
         .then((data) => {
             setTournaments(data);
-            console.log(data);
+            //console.log(data);
         }).catch(() =>
         console.error("Failed to fetch tournaments"));
     }
