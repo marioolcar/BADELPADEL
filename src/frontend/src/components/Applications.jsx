@@ -8,7 +8,7 @@ function Application({prijava, turnir}){
     const [turnirNaziv, setTurnirNaziv] = useState("");
 
     useEffect(() => {
-        console.log(turnir)
+        //console.log(turnir)
         if (turnir !== undefined){
             setTurnirNaziv(turnir.naziv)
         }

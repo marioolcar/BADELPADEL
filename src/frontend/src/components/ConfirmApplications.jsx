@@ -29,7 +29,7 @@ function ConfirmApplications({turniri}){
                 getApplicationForTournament(turnir)
             })
             
-    }, [])
+    }, [turniri])
 
     if (prijave.length === 0){
         return(

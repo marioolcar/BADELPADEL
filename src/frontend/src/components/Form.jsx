@@ -62,7 +62,7 @@ function Form({ route, method }) {
 
     return (
         <div style={{display: "flex", flexDirection: "column", alignItems: "center", gap: "50px", margin: "20px", width: "100%"}}>
-            <h1>Igrač login</h1>
+            <h1>Login</h1>
             <GoogleButton onClick={handleGoogleLogin} buttonText="Login with Google"/>
     
                         {/* <h1>{name}</h1>
