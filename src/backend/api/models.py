@@ -43,6 +43,12 @@ class Teren(models.Model):
     tip = models.CharField(max_length=10, choices=TIP_TERENA_CHOICES)
     vlasnik = models.ForeignKey(User, on_delete=models.CASCADE, related_name='tereni')
     
+    class Meta:
+        permissions = [
+            ('can_manage_teren', 'Može upravljati terenima'),
+            ('can_view_teren', 'Može pregledati terene'),
+        ]
+    
     def __str__(self):
         return f"{self.lokacija_grad}, {self.lokacija_ulica}"
 
@@ -63,6 +69,12 @@ class Turnir(models.Model):
     opis = models.TextField()
     organizator = models.ForeignKey(User, on_delete=models.CASCADE, related_name='turniri')
     otvorenost = models.CharField(max_length=10, choices=STATUS_TURNIRA_CHOICES, default="otvoren")
+
+    class Meta:
+        permissions = [
+            ('can_manage_turnir', 'Može upravljati turnir'),
+            ('can_view_turnir', 'Može pregledati turnir'),
+        ]
 
     def __str__(self):
         return self.naziv
