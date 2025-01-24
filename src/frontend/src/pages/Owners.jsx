@@ -13,10 +13,19 @@ function Owners(){
         .get("/api/vlasnici/")
         .then((res) => res.data)
         .then((data) => {
-            console.log(data);
+            //console.log(data);
             setOwners(data);
         }).catch((err) => console.error(err))
     }, [])
+
+    if (owners.length === 0){
+        return(
+            <>
+                <Header />
+                <p>Nisu pronadeni vlasnici</p>
+            </>
+        );
+    }
 
     return(
         <>

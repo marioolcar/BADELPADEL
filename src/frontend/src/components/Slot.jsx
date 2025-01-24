@@ -32,7 +32,7 @@ function Slot({slot}){
         .delete(`/api/termin/zauzeti/delete/${slot.id}/`)
         .then((res) => deletedSlot = res.data.termin)
         .then(() => {
-            console.log(deletedSlot)
+            //console.log(deletedSlot)
             api.post(`/api/termin/`,
                 {"pocetak": deletedSlot.pocetak, "kraj": deletedSlot.kraj, "teren": deletedSlot.teren_id, "cijena": deletedSlot.cijena})
                 .then((res) => {

@@ -36,7 +36,7 @@
     background-color: #404040;
 }
 
-#sign-in-button{
+.sign-in-button{
     width: fit-content;
     min-width: max-content;
     margin-right: 10px;

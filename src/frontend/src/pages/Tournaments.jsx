@@ -88,7 +88,7 @@ function Tournaments(){
 
                 </div>
 
-                <p>Cijena: </p>
+                <p style={{margin: "0px"}}>Cijena: </p>
                 
                 <input id="slider" type="range" min={0} max={99} step={1}
                         value={sliderValue} 

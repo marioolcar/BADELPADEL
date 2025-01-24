@@ -10,6 +10,7 @@ import Owner from "../components/Owner";
 function FieldPage(){
 
     const { fieldId } = useParams();
+    const [userType, setUserType] = useState(null)
     const [field, setField] = useState({});
     const [owner, setOwner] = useState({});
     const [termini, setTermini] = useState([]);
@@ -20,7 +21,7 @@ function FieldPage(){
         .then((res) => res.data)
         .then((data) => {
             setOwner(data);
-            console.log(data)
+            //console.log(data)
         }).catch((err) => {
             console.error("Couldn't fetch owner");
         })
@@ -31,20 +32,31 @@ function FieldPage(){
         .get(`/api/termin/${fieldId}/`)
         .then((res) => res.data)
         .then((data) => {
-            console.log(data)
-            setTermini(data);
+            //console.log(data)
+            setTermini(data)
         }).catch((err) => console.error(err))
+    }
+
+    function getUserType(){
+        api
+        .get(`/api/user/`)
+        .then((res) => res.data.type)
+        .then((data) => {
+            //console.log(data)
+            setUserType(data)
+        })
     }
 
     useEffect (() => {
         fetchTermini()
+        getUserType()
         api
         .get(`/api/tereni/${fieldId}/`)
         .then((res) => res.data)
         .then((data) => {
             setField(data);
             fetchOwner(data.vlasnik)
-            console.log(data);
+            //console.log(data);
         })
         .catch((err) => 
             console.error(err)
@@ -67,7 +79,10 @@ function FieldPage(){
             <Header />
             <FieldPageHeader field = {field}/>
             <Owner owner = {owner}/>
-            <SlotForm termini = {termini} />
+            { userType === "igrac" ?
+            <SlotForm termini = {termini} />:
+            null
+            }
         </>
     );
 }

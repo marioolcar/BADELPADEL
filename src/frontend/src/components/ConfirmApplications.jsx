@@ -14,7 +14,7 @@ function ConfirmApplications(){
         .get(`/api/prijava/turnir/${turnir.id}/`)
         .then((res) => res.data)
         .then((data) => {
-            console.log(data)
+            //console.log(data)
             sortApplications(data)
             setPrijave(data)
         })
@@ -25,7 +25,7 @@ function ConfirmApplications(){
         .get("/api/turniri/vlasnik/")
         .then((res) => res.data)
         .then((data) => {
-            console.log(data)
+            //console.log(data)
             setTurniri(data)
             data.forEach((turnir) => {
                 getApplicationForTournament(turnir)

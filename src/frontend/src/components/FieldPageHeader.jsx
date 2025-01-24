@@ -5,7 +5,7 @@ function FieldPageHeader({field}) {
 
     //if field doesn't exists
     if (field.length === 0){
-        console.log(field)
+        //console.log(field)
         return (
         <div className="field-page-header" style={{backgroundImage:`linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${teren_placeholder})`}}>
             <div className="field-page-header-info">

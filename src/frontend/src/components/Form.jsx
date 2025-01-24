@@ -41,12 +41,12 @@ function Form({ route, method }) {
     const handleGoogleLogin = useGoogleLogin({
         onSuccess: async tokenResponse => {
 
-            console.log(tokenResponse)
+            //console.log(tokenResponse)
         
             api.post("/api/google-login/", {google_access_token: tokenResponse.access_token})
             .then((res) => res.data)
             .then((data) => {
-                console.log(data)
+                //console.log(data)
                 localStorage.setItem(ACCESS_TOKEN, data.access);
                 localStorage.setItem(REFRESH_TOKEN, data.refresh);
                 localStorage.setItem(USERNAME, username);
@@ -58,8 +58,9 @@ function Form({ route, method }) {
 
     return (
         <div style={{display: "flex", flexDirection: "column", alignItems: "center", gap: "50px", margin: "20px", width: "100%"}}>
-            <h1>Login</h1>
+            <h1>Igrač login</h1>
             <GoogleButton onClick={handleGoogleLogin} buttonText="Login with Google"/>
+    
                         {/* <h1>{name}</h1>
             <input
                 className="form-input"

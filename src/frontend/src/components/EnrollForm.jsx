@@ -31,10 +31,10 @@ function EnrollForm({tournament}){
         .get(`/api/prijava/turnir/${tournament.id}/igraci/`)
         .then((res) => res.data)
         .then((data) => {
-            console.log(data)
+            //console.log(data)
             setEnrollment(data);
         }).catch(
-            console.log("Couldn't get enrollments")
+            console.error("Couldn't get enrollments")
         )
     }, [])
 

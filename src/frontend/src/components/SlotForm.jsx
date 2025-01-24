@@ -4,10 +4,12 @@ import "../styles/components/SlotForm.css"
 import api from "../api";
 import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 import { sortData } from "../functions/Utility";
+import { useNavigate } from "react-router-dom";
 
 function SlotForm({termini}){
 
     termini = sortData(termini)
+    const navigate = useNavigate()
 
     const [paymentType, setPaymentType] = useState("gotovina");
     const [selectedSlot, setSelectedSlot] = useState(null);
@@ -26,11 +28,11 @@ function SlotForm({termini}){
         .delete(`/api/termin/delete/${selectedSlot}/`)
         .then((res) => deletedSlot = res.data.termin)
         .then(() => {
-            console.log(deletedSlot)
+            //console.log(deletedSlot)
             api.post(`/api/termin/zauzeti/`,
                 {"pocetak": deletedSlot.pocetak, "kraj": deletedSlot.kraj, "teren": deletedSlot.teren_id, "cijena": deletedSlot.cijena})
                 .then((res) =>{
-                    location.reload()
+                    navigate("/profile")
                 })
         })
 

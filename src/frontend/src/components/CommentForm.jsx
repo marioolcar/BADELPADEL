@@ -1,5 +1,6 @@
 import { useState } from "react";
 import api from "../api";
+import "../styles/components/AddForm.css"
 import "../styles/components/CommentForm.css"
 
 function CommentForm({fieldId, tournamentId}){
@@ -11,8 +12,6 @@ function CommentForm({fieldId, tournamentId}){
     async function handleSubmit(e){
         e.preventDefault();
         const dateTime = new Date()
-        console.log(dateTime)
-
         await api.post("/api/post/",
             {slika: image, naslov: title, opis: description,
                 vrijeme: `${dateTime.getHours()}:${dateTime.getMinutes()}:${dateTime.getSeconds()}`,
@@ -30,7 +29,7 @@ function CommentForm({fieldId, tournamentId}){
     }
 
     return(
-        <form className="comment-form" onSubmit={handleSubmit}>
+        <form className="comment-form add-form" onSubmit={handleSubmit}>
             <input name="naslov" onChange={(e) => setTitle(e.target.value)} placeholder="Add a comment title"></input>
             <input name="opis" onChange={(e) => setDescription(e.target.value)} placeholder="Add a comment body"></input>
             <input name="image" onChange={(e) => setImage(e.target.files[0])} type="file" accept="image/jpeg,image/png" />

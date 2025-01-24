@@ -12,6 +12,7 @@ import EnrollForm from "../components/EnrollForm.jsx";
 function TournamentPage(){
 
     const { tournamentId } = useParams();
+    const [userType, setUserType] = useState(null);
     const [tournament, setTournament] = useState([]);
     const [field, setField] = useState([]);
     const [posts, setPosts] = useState([]);
@@ -23,7 +24,7 @@ function TournamentPage(){
         .then((res) => res.data)
         .then((data) => {
             setField(data)
-            console.log(data);
+            //console.log(data);
         })
         .catch(//(err) => alert(err)
         );
@@ -35,13 +36,26 @@ function TournamentPage(){
         .then((res) => res.data)
         .then((data) => {
             setPosts(data)
-            console.log(data);
+            //console.log(data);
         })
         .catch(//(err) => alert(err)
         );
     }
 
+    function getUserType(){
+        api
+        .get(`/api/user/`)
+        .then((res) => res.data.type)
+        .then((data) => {
+            //console.log(data);
+            setUserType(data);
+        }).catch((err) => {
+            //console.error(err)
+        })
+    }
+
     useEffect (() => {
+        getUserType()
         api
         .get(`/api/turniri/${tournamentId}/`)
         .then((res) => res.data)
@@ -49,11 +63,11 @@ function TournamentPage(){
             setTournament(data);
             fetchFieldData(data);
 
-            if (data.otvorenost !== "otvoren"){
+            if (new Date(data.datum_kraja) < new Date()){
                 fetchPostData();
             }
             
-            console.log(data);
+            //console.log(data);
         })
         .catch(//(err) => alert(err)
         );
@@ -73,8 +87,8 @@ function TournamentPage(){
                 <h1 id="tournament-name">{tournament.naziv}</h1>
 
                 {/* render enrollment form if tournament is joinable and user is logged in*/}
-                {(new Date(tournament.datum_pocetka) > new Date() &&
-                    localStorage.getItem('access')) ? <EnrollForm tournament = {tournament}/> : null}
+                {(new Date(tournament.datum_pocetka) > new Date() && userType === "igrac") ? 
+                <EnrollForm tournament = {tournament}/> : null}
 
             </div>
 
@@ -92,7 +106,7 @@ function TournamentPage(){
             </div>
             
             {/* render comment box form if tournament is finished */}
-            {(tournament.otvorenost === "zavrsen") ?
+            {(new Date(tournament.datum_kraja) < new Date()) ?
             <>
                 <CommentForm tournamentId={tournamentId} fieldId={field.id} />
                 <h2>Komentari ({posts.length})</h2>

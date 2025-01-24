@@ -52,6 +52,7 @@ urlpatterns = [
     # Rute za vlasnike i igrače
     path("vlasnici/", VlasnikListAll.as_view(), name="vlasnik-list"),
     path("vlasnici/<int:user_id>/", VlasnikListCreate.as_view(), name="vlasnik-pojedinacno"),
+    path("vlasnici/current/", VlasnikCurrent.as_view(), name="vlasnik-trenutni"),
     
     path("igraci/", IgracListAll.as_view(), name="igrac-list"),
     path("igraci/<int:user_id>/", IgracListCreate.as_view(), name="igrac-pojedinacno"),

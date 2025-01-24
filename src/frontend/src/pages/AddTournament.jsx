@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import api from "../api";
+import "../styles/components/AddForm.css"
 import DatePicker from "react-datepicker";
 
 function addTournament(){
@@ -37,7 +38,7 @@ function addTournament(){
     async function handleSubmit(event){
 
         event.preventDefault();
-        console.log({naziv, teren, opis, nagrade, cijena, startDate, endDate});
+        //console.log({naziv, teren, opis, nagrade, cijena, startDate, endDate});
         
         if (teren === -1){
             alert("Odaberite teren");
@@ -61,7 +62,7 @@ function addTournament(){
 
             {(tereni.length === 0) ? <p>Nemate terena</p>: 
 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="add-form">
 
                 <h1>Dodaj turnir</h1>
 
@@ -75,7 +76,6 @@ function addTournament(){
                         <option value={teren.id} key={teren.id}>{`${teren.lokacija_grad}, ${teren.lokacija_ulica}`}</option>
                     ))}
                 </select>
-                <br/>
 
                 <label htmlFor="kotizacija">Cijena kotizacije: </label>
                 <input type="number" id="kotizacija" name="kotizacija" onChange={(e) => setCijena(e.target.value)}/>
@@ -86,15 +86,12 @@ function addTournament(){
                     filterTime={(dateTime) => dateTime > new Date()}
                     onChange={(date) => setStartDate(date)}/>
 
-                <br/>
-
                 <label>Kraj: </label>
                 <DatePicker selected={endDate} dateFormat="MMMM d, yyyy h:mm aa"
                     showTimeSelect timeIntervals={60} minDate={startDate}
                     filterTime={(dateTime) => dateTime > startDate}
                     onChange={(date) => setEndDate(date)}/>
 
-                <br/>
                 <label htmlFor="opis">Opis: </label>
                 <input id="opis" name="opis" onChange={(e) => setOpis(e.target.value)}/>
 

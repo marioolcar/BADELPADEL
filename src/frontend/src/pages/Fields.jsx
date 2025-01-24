@@ -18,7 +18,7 @@ function Fields(){
         .then((data) => {
             setFields(data);
             setFilteredData(data);
-            console.log(data);
+            //console.log(data);
         })
         .catch(//(err) => alert(err)
         );

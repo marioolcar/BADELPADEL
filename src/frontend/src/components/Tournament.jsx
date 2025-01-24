@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react";
 import "../styles/components/Tournament.css"
 import api from "../api";
 import {convertDateTime} from "../functions/Utility.jsx";
+import { useNavigate } from "react-router-dom";
 
 function Tournament({ tournament }) {
+
+    const navigate = useNavigate()
 
     const [lokacija, setLokacija] = useState("");
     var vrijeme = "";
@@ -36,7 +39,7 @@ function Tournament({ tournament }) {
     }, [])
 
     return (
-        <a className="tournament-link" href={`/tournaments/${tournament.id}`}>
+        <a className="tournament-link" onClick={(e) => navigate(`/tournaments/${tournament.id}`)}>
             <div className="tournament">
                 <div className="tournament-left-block">
                     <p id="tournament-datum">{vrijeme}</p>
