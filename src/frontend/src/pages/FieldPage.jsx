@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import { useParams } from "react-router-dom";
 import api from "../api";
-import { convertDateTime } from "../functions/Utility";
 import SlotForm from "../components/SlotForm";
 import "../styles/pages/FieldPage.css"
 import FieldPageHeader from "../components/FieldPageHeader";

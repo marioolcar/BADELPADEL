@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { convertDateTime } from "../functions/Utility";
+import "../styles/components/SlotForm.css"
 import api from "../api";
-import Paypal from "../pages/Paypal";
+import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 import { sortData } from "../functions/Utility";
 
 function SlotForm({termini}){
@@ -10,6 +11,8 @@ function SlotForm({termini}){
 
     const [paymentType, setPaymentType] = useState("gotovina");
     const [selectedSlot, setSelectedSlot] = useState(null);
+    const [price, setPrice] = useState(null);
+    const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
 
     function handleConfirm(){
         if (selectedSlot === null){
@@ -34,22 +37,66 @@ function SlotForm({termini}){
 
     }
 
+    const payWithCash = () => {
+        if(confirm(`Jeste li sigurni da želite platiti gotovinom? ${price}€`)){
+            handleConfirm()
+        }
+    }
+
+    const onCreateOrder = (data,actions) => {
+        console.log(price)
+        return actions.order.create({
+            purchase_units: [
+                {
+                    amount: {
+                        currency_code: "EUR",
+                        value: price,
+                    },
+                },
+            ],
+        });
+    }
+
+    const onApproveOrder = (data,actions) => {
+        return actions.order.capture().then((details) => {
+            handleConfirm()
+        });
+    }
+
     return(
     <>
         <h1>Termini: </h1>
-        <select onChange={(e) => setSelectedSlot(e.target.value)}>
-            <option hidden>--Odaberite termin--</option>
-        {termini.map((termin) => {
-            return (
-                <option key={termin.id} value={termin.id}>{convertDateTime(termin.pocetak)}: {termin.cijena}€</option>
-        );
-        })}
-        </select>
-        <input type="radio" name="payment" id="gotovina-payment" defaultChecked onChange={(e) => setPaymentType("gotovina")}></input>
-        <label htmlFor="gotovina-payment">Gotovina</label>
-        <input type="radio" name="payment" id="paypal-payment" onChange={(e) => setPaymentType("paypal")}></input>
-        <label htmlFor="paypal-payment">PayPal</label>
-        <button type="button" onClick={handleConfirm}>Submit</button>
+
+        <div className="slot-form">
+            <select onChange={(e) => setSelectedSlot(e.target.value)}>
+                <option hidden>--Odaberite termin--</option>
+            {termini.map((termin) => {
+                return (
+                    <option key={termin.id} value={termin.id} onClick={(e) => setPrice(termin.cijena)}>
+                        {convertDateTime(termin.pocetak)}: {termin.cijena}€
+                        </option>
+            );
+            })}
+            </select>
+            {price === null ? null :
+            <div>
+                <button type="button" onClick={(e) => payWithCash()} style={{width: "100%"}}>Gotovina</button>
+            </div>
+            }  
+        </div>
+
+        <div className="checkout">
+            {price === null ? null :
+            isPending ? <p>LOADING...</p> : (
+                <>
+                    <PayPalButtons 
+                        style={{ layout: "vertical" }}
+                        createOrder={(data, actions) => onCreateOrder(data, actions)}
+                        onApprove={(data, actions) => onApproveOrder(data, actions)}
+                    />
+                </>
+            )}
+        </div>
     </>)
 }
 

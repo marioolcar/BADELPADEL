@@ -30,7 +30,8 @@ function Tournaments(){
 
         setFilteredData(tournaments.filter(function(item){
             //console.log(filters, item.otvorenost)
-            if (filters.includes(item.otvorenost) || filters.length === 0){
+            if (filters.includes(new Date(item.datum_pocetka) < new Date() ? "zatvoren" : "otvoren") ||
+                filters.length === 0){
 
                 if (maxPriceValue >= parseInt(item.cijena_kotizacije)){
                     return true;
@@ -63,6 +64,15 @@ function Tournaments(){
         setMaxPriceValue(sliderValue);
     }
 
+    if (tournaments.length === 0){
+        return (
+            <>
+                <Header />
+                <p>Nisu pronadeni turniri</p>
+            </>
+        )
+    }
+
     return (
         <>
             <Header />
@@ -73,8 +83,8 @@ function Tournaments(){
 
                     <input type="checkbox" id="otvoren" name="otvoren" onClick={(e) => handleTypeFilterUpdate(e, "otvoren")}></input>
                     <label htmlFor="otvoren">Otvoren</label>
-                    <input type="checkbox" id="zavrsen" name="zavrsen" onClick={(e) => handleTypeFilterUpdate(e, "zavrsen")}></input>
-                    <label htmlFor="zavrsen">Zavrsen</label>
+                    <input type="checkbox" id="zavrsen" name="zatvoren" onClick={(e) => handleTypeFilterUpdate(e, "zatvoren")}></input>
+                    <label htmlFor="zavrsen">Zatvoren</label>
 
                 </div>
 

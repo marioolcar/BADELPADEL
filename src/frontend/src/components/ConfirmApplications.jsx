@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import Header from "../components/Header";
 import api from "../api";
-import Tournament from "../components/Tournament";
-import Application from "../components/Applications";
+import Application from "./Applications";
+import { sortApplications } from "../functions/Utility";
 
 function ConfirmApplications(){
 
@@ -16,7 +15,8 @@ function ConfirmApplications(){
         .then((res) => res.data)
         .then((data) => {
             console.log(data)
-            setPrijave([...data])
+            sortApplications(data)
+            setPrijave(data)
         })
     }
 
@@ -36,7 +36,6 @@ function ConfirmApplications(){
     if (prijave.length === 0){
         return(
             <>
-                <Header/>
                 <p>Nema prijava za vaše turnire</p>
             </>
         )
@@ -44,16 +43,11 @@ function ConfirmApplications(){
 
     return(
 
-        <>
-            <Header />
-            <div className="application-container">
-                {prijave.map((prijava) => (
-                    (prijava.status !== "prihvaćena") ?
-                    <Application prijava={prijava} turnir={turniri.find(({id}) => id === prijava.turnir)} key={prijava.id}/>
-                    : null
-                ))}
-            </div>
-        </>
+        <div className="application-container">
+            {prijave.map((prijava) => (
+                <Application prijava={prijava} turnir={turniri.find(({id}) => id === prijava.turnir)} key={prijava.id}/>
+            ))}
+        </div>
     );
 }
 export default ConfirmApplications;

@@ -26,7 +26,7 @@ function Form({ route, method }) {
                 localStorage.setItem(ACCESS_TOKEN, res.data.access);
                 localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
                 localStorage.setItem(USERNAME, username);
-                navigate("/")
+                navigate("/profile")
             } else {
                 navigate("/login")
             }
@@ -38,15 +38,29 @@ function Form({ route, method }) {
         }
     };
 
-    function handleGoogleLogin(response){
+    const handleGoogleLogin = useGoogleLogin({
+        onSuccess: async tokenResponse => {
+
+            console.log(tokenResponse)
         
-        const code = response.credential
-        api.post("/api/google-login/", {code:code})
-    }
+            api.post("/api/google-login/", {google_access_token: tokenResponse.access_token})
+            .then((res) => res.data)
+            .then((data) => {
+                console.log(data)
+                localStorage.setItem(ACCESS_TOKEN, data.access);
+                localStorage.setItem(REFRESH_TOKEN, data.refresh);
+                localStorage.setItem(USERNAME, username);
+                navigate("/")
+            })
+            .catch ((err) => console.error(err))
+        }
+    })
 
     return (
-        <form onSubmit={handleSubmit} className="form-container">
-            <h1>{name}</h1>
+        <div style={{display: "flex", flexDirection: "column", alignItems: "center", gap: "50px", margin: "20px", width: "100%"}}>
+            <h1>Login</h1>
+            <GoogleButton onClick={handleGoogleLogin} buttonText="Login with Google"/>
+                        {/* <h1>{name}</h1>
             <input
                 className="form-input"
                 type="text"
@@ -64,10 +78,10 @@ function Form({ route, method }) {
             {loading && <LoadingIndicator />}
             <button className="form-button" type="submit">
                 {name}
-            </button>
+            </button> */}
+        </div>
 
-            <GoogleLogin onSuccess={handleGoogleLogin} buttonText="Login with Google"/>
-        </form>
+
     );
 }
 

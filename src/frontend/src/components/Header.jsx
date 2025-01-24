@@ -11,11 +11,10 @@ function Header(){
         <div className="header-container">
              <img src={logo} alt="logo" height={75}></img>
              <nav className="navigation">
-                <button onClick={() => navigate("/")}>Home</button>
+                <button onClick={() => navigate("/profile")}>Profil</button>
                 <button onClick={() => navigate("/fields")}>Tereni</button>
                 <button onClick={() => navigate("/tournaments")}>Turniri</button>
                 <button onClick={() => navigate("/owners")}>Vlasnici</button>
-                <button onClick={() => navigate("/notes")}>Notes</button>
                 
                 {!localStorage.getItem(ACCESS_TOKEN) ? 
                     <button onClick={() => navigate("/login")} id="sign-in-button">Sign in</button> :

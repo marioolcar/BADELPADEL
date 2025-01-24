@@ -15,7 +15,7 @@ class PostListCreate(generics.ListCreateAPIView):
         else:
             print(serializer.errors)
 
-class PostDetail(generics.RetrieveUpdateDestroyAPIView):
+class PostDetail(generics.RetrieveAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     permission_classes = [AllowAny]
@@ -23,12 +23,12 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     def get_queryset(self):
         try:
             pk = self.kwargs['pk']  # Dohvaćanje `pk` iz URL-a
-            return Post.objects.filter(id=pk)   
+            return Post.objects.get(id=pk)   
         except:
             return Post.objects.filter()
         
         
-class PostUser(generics.ListCreateAPIView):
+class PostUser(generics.ListAPIView):
     lookup_field = 'user_id'
     queryset = Post.objects.all()
     serializer_class = PostSerializer
@@ -37,22 +37,10 @@ class PostUser(generics.ListCreateAPIView):
     def get_queryset(self):
         try:
             pk = self.kwargs['user_id']  # Dohvaćanje `pk` iz URL-a
-            return Post.objects.filter(user_id=pk)
+            return Post.objects.get(user_id=pk)
         except:
             return Post.objects.filter()
         
-class PostTeren(generics.ListCreateAPIView):
-    lookup_field = 'teren_id'
-    queryset = Post.objects.all()
-    serializer_class = PostSerializer
-    permission_classes = [AllowAny]
-    #promjeni IsAuthenticated
-    def get_queryset(self):
-        try:
-            pk = self.kwargs['teren_id']  # Dohvaćanje `pk` iz URL-a
-            return Post.objects.filter(teren_id=pk)
-        except:
-            return Post.objects.filter()
         
 class PostTurnir(generics.ListCreateAPIView):
     lookup_field = 'turnir_id'
@@ -61,11 +49,10 @@ class PostTurnir(generics.ListCreateAPIView):
     permission_classes = [AllowAny]
     #promjeni IsAuthenticated
     def get_queryset(self):
-        try:
-            pk = self.kwargs['turnir_id']  # Dohvaćanje `pk` iz URL-a
-            return Post.objects.filter(turnir_id=pk)   
-        except:
-            return Post.objects.filter()
+        pk = self.kwargs['turnir_id']  # Dohvaćanje `pk` iz URL-a
+        return Post.objects.filter(turnir_id=pk)
+        #except:
+        return Post.objects.filter()
     
 class PostDelete(generics.DestroyAPIView):
     serializer_class = PostSerializer

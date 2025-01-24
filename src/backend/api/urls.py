@@ -13,6 +13,7 @@ from .views2.vlasnik_view import *
 from .views2.prijave_view import *
 from .views2.termin_view import *
 from .views2.zauzeti_termin_view import *
+from .views2.user_type import *
 
 
 #from . import views
@@ -28,6 +29,8 @@ from django.views.generic.base import RedirectView
 
 
 urlpatterns = [
+
+    path("user/", UserPermissionType.as_view(), name="user-type"),
 
     path("notes/", NoteListCreate.as_view(), name="note-list"),
     path("notes/delete/<int:pk>/", NoteDelete.as_view(), name="delete-note"),
@@ -58,7 +61,6 @@ urlpatterns = [
     path('post/delete/<int:pk>/', PostDelete.as_view(), name='post-delete'),
     path('post/<int:pk>/', PostDetail.as_view(), name='post-delete'),
     path('post/user/<int:user_id>/', PostUser.as_view(), name="post-user"),
-    path('post/Teren/<int:teren_id>/', PostTeren.as_view(), name="post-teren"),
     path('post/Turnir/<int:turnir_id>/', PostTurnir.as_view(), name="post-turnir"),
     
     #path za komentar

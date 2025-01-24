@@ -38,11 +38,18 @@ function Application({prijava, turnir}){
     }
 
     return(
-        <div>
+        <>
+        {prijava.status != "prihvaćena" ? 
+        <div style={{display: "flex"}}>
             <p>{igracName} se želi prijaviti na: {turnirNaziv}</p>
             <button onClick={Accept}>Dopusti</button>
             <button onClick={Reject}>Odbij</button>
+        </div>:
+        <div>
+            <p>{igracName} je prijavljen na: {turnirNaziv}</p>
         </div>
+        }
+        </>
     );
 }
 

@@ -37,7 +37,7 @@ function addTournament(){
     async function handleSubmit(event){
 
         event.preventDefault();
-        console.log({naziv, teren, opis, nagrade, cijena});
+        console.log({naziv, teren, opis, nagrade, cijena, startDate, endDate});
         
         if (teren === -1){
             alert("Odaberite teren");
@@ -53,14 +53,6 @@ function addTournament(){
         })
         .catch((err) => console.error(err))
 
-    }
-
-    //filter function for DatePicker
-    const filterPassedDateTime = (dateTime) => {
-        if (dateTime > startDate){
-            return true
-        }
-        return false
     }
 
     return(
@@ -91,14 +83,16 @@ function addTournament(){
                 <label>Pocetak: </label>
                 <DatePicker selected={startDate} dateFormat="MMMM d, yyyy h:mm aa"
                     showTimeSelect timeIntervals={60} minDate={new Date()}
-                    filterTime={filterPassedDateTime} onChange={(date) => setStartDate(date)}/>
+                    filterTime={(dateTime) => dateTime > new Date()}
+                    onChange={(date) => setStartDate(date)}/>
 
                 <br/>
 
                 <label>Kraj: </label>
                 <DatePicker selected={endDate} dateFormat="MMMM d, yyyy h:mm aa"
                     showTimeSelect timeIntervals={60} minDate={startDate}
-                    filterTime={filterPassedDateTime} onChange={(date) => setEndDate(date)}/>
+                    filterTime={(dateTime) => dateTime > startDate}
+                    onChange={(date) => setEndDate(date)}/>
 
                 <br/>
                 <label htmlFor="opis">Opis: </label>

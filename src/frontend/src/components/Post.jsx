@@ -28,7 +28,7 @@ function Post({post}){
     },[post])
 
     async function handleDelete(){
-        await api.delete(`/api/post/${post.id}/`)
+        await api.delete(`/api/post/delete/${post.id}/`)
         .catch((err) => console.error(err));
         location.reload()
     }

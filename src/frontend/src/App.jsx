@@ -1,8 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
-import Home from "./pages/Home"
+import Profile from "./pages/Profile"
 import Login from "./pages/Login"
 import Register from "./pages/Register"
-import Notes from "./pages/Notes"
 import Fields from "./pages/Fields"
 import FieldPage from "./pages/FieldPage"
 import Tournaments from "./pages/Tournaments"
@@ -11,14 +10,14 @@ import Owners from "./pages/Owners"
 import OwnerProfile from "./pages/OwnerProfile"
 import AddField from "./pages/AddField"
 import AddTournament from "./pages/AddTournament"
-import ConfirmApplications from "./pages/ConfirmApplications"
 import NotFound from "./pages/NotFound"
 import ProtectedRoute from "./components/ProtectedRoute"
-import Paypal from "./pages/Paypal"
-
+import { googleLogout } from "@react-oauth/google"
 
 function Logout() {
   localStorage.clear()
+  googleLogout();
+
   return <Navigate to="/login" />
 }
 
@@ -32,25 +31,17 @@ function App() {
     <BrowserRouter>
       <Routes>
 
-        <Route
-          path="/notes"
+        <Route path="/profile"
           element={
             <ProtectedRoute>
-              <Notes />
-            </ProtectedRoute>}/>
-
-        <Route path="/"
-          element={
-            <ProtectedRoute>
-              <Home/>
+              <Profile/>
             </ProtectedRoute>} />
 
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
-        <Route path="/register" element={<RegisterAndLogout />} />
+        {/* <Route path="/register" element={<RegisterAndLogout />} /> */}
         <Route path="/profile/owner/:userId" element={<OwnerProfile />} />
         <Route path="/owners" element={<Owners />} />
-        <Route path="/test" element={<Paypal price = {9.99} />} />
 
         <Route path="/add/field"
           element={
@@ -62,12 +53,6 @@ function App() {
         element={
           <ProtectedRoute>
             <AddTournament />
-          </ProtectedRoute>} />
-
-          <Route path="/applications"
-        element={
-          <ProtectedRoute>
-            <ConfirmApplications />
           </ProtectedRoute>} />
 
         <Route path="/fields" element={<Fields />} />

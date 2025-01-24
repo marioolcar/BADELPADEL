@@ -5,8 +5,9 @@ import Slot from "../components/Slot";
 import "../styles/pages/OwnerProfile.css"
 import { sortData } from "../functions/Utility";
 import api from "../api";
+import ConfirmApplications from "../components/ConfirmApplications";
 
-function Home(){
+function Profile(){
 
     const [tournaments, setTournaments] = useState([]);
     const [termini, setTermini] = useState([])
@@ -22,8 +23,18 @@ function Home(){
         })
     }
 
+    function getUserType(){
+        api
+        .get('/api/user/')
+        .then((res) => res.data)
+        .then((data) => {
+            console.log(data)
+        })
+    }
+
     useEffect(() => {
         fetchReservations()
+        getUserType()
         api
         .get("/api/prijava/user/")
         .then((res) => res.data)
@@ -45,24 +56,27 @@ function Home(){
             <Header />
             <p>Prijavljeni turniri</p>
             <div className="profile-tournament-container">
-                {tournaments.length !== 0 ?
-                tournaments.map((tournament) => (
-                    <Tournament tournament={tournament} key={tournament.id} />
-                )): 
+                    {tournaments.length !== 0 ?
+                        tournaments.map((tournament) => (
+                            <Tournament tournament={tournament} key={tournament.id} />
+                        )):
+
                 <p><b>Nema prijavljenih turnira</b></p>}
             </div>
             <hr/>
             <p>Rezervirani termini</p>
-            {termini.length !== 0 ?
-                termini.map((termin) => (
-                    <Slot slot={termin} key={termin.id} />
-                )): 
+            <div className="profile-field-container">
+                {termini.length !== 0 ?
+                    termini.map((termin) => (
+                        <Slot slot={termin} key={termin.id} />
+                    )): 
                 <p><b>Nema prijavljenih turnira</b></p>}
-            <div>
-
             </div>
+            <hr/>
+            <p>Prijave</p>
+            <ConfirmApplications />
             <hr/>
         </>
     );
 }
-export default Home;
+export default Profile;

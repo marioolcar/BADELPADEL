@@ -84,7 +84,7 @@ function AddField (){
     }
 
     function formatDate(pocetak, kraj){
-        return `${pocetak.getMonth()+1}.${pocetak.getDate()}.${pocetak.getFullYear()} ${pocetak.getHours()}:00 - ${kraj.getHours()}:00`
+        return `${pocetak.getMonth()+1}.${pocetak.getDate()}.${pocetak.getFullYear()}: ${pocetak.getHours()}:00 - ${kraj.getHours()}:00`
     }
 
     return(
@@ -123,8 +123,8 @@ function AddField (){
                         }
                         const formatted_termin = formatDate(termin.pocetak, termin.kraj)
                         return (
-                        <div>
-                            <p key={termin.pocetak}>{formatted_termin}</p>
+                        <div style={{display: "flex", margin: "10px 0px 10px", alignItems: "center"}}>
+                                <p key={termin.pocetak}>{formatted_termin}: {termin.cijena}€ </p>
                             <button type="button" onClick={(event) => izbrisiTermin(termin.pocetak)}>Izbrisi</button>
                         </div>)
                     })}

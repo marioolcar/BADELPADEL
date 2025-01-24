@@ -7,12 +7,19 @@ function Tournament({ tournament }) {
 
     const [lokacija, setLokacija] = useState("");
     var vrijeme = "";
+    var otvorenost
 
-    if (tournament.otvorenost === "otvoren"){
+    if (new Date(tournament.datum_pocetka) > new Date()){
         vrijeme = `Počinje ${convertDateTime(tournament.datum_pocetka)}`
+        otvorenost = "otvoren"
     } 
+    else if (new Date(tournament.datum_kraja) > new Date()){
+        vrijeme = `Završava ${convertDateTime(tournament.datum_kraja)}`
+        otvorenost = "u tijeku"
+    }
     else{
         vrijeme = `Završio ${convertDateTime(tournament.datum_kraja)}`
+        otvorenost = "zatvoren"
     }
     
     useEffect(() => {
@@ -38,7 +45,7 @@ function Tournament({ tournament }) {
                 </div>
                 <div className="tournament-right-block">
                     <p id="tournament-cijena">{tournament.cijena_kotizacije}€</p>
-                    <p id="tournament-otvorenost">{tournament.otvorenost}</p>
+                    <p id="tournament-otvorenost">{otvorenost}</p>
                 </div>
             </div>
         </a>

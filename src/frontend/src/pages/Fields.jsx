@@ -52,6 +52,15 @@ function Fields(){
         console.log(selectedType)            
     }
 
+    if (fields.length === 0){
+        return (
+            <>
+                <Header />
+                <p>Nisu pronadeni tereni</p>
+            </>
+        )
+    }
+
     return (
         <>
             <Header/>

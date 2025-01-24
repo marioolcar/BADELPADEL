@@ -1,7 +1,19 @@
 import "../styles/components/TournamentBubbles.css"
-import EnrollForm from "./EnrollForm";
+import { convertDateTime } from "../functions/Utility";
 
 function TournamentBubbles({tournament}){
+
+    var otvorenost = ''
+
+    if(new Date(tournament.datum_pocetka) > new  Date()){
+        otvorenost = "Otvoren"
+    }
+    else if(new Date(tournament.datum_kraja) > new Date()){
+        otvorenost = "U tijeku"
+    }
+    else{
+        otvorenost = "Zatvoren"
+    }
 
     return (
     <div className="tournament-header">
@@ -11,15 +23,15 @@ function TournamentBubbles({tournament}){
                 <p className="tournament-header-subtext">Cijena kotizacije</p>
             </div>
             <div className="bubbles">
-                <p className="tournament-header-maintext">{tournament.datum_pocetka}</p>
+                <p className="tournament-header-maintext">{convertDateTime(tournament.datum_pocetka)}</p>
                 <p className="tournament-header-subtext">Datum početka</p>
             </div>
             <div className="bubbles">
-                <p className="tournament-header-maintext">{tournament.datum_kraja}</p>
+                <p className="tournament-header-maintext">{convertDateTime(tournament.datum_kraja)}</p>
                 <p className="tournament-header-subtext">Datum kraja</p>
             </div>
             <div className="bubbles">
-                <p className="tournament-header-maintext">{tournament.otvorenost === "zavrsen" ? "Zavrsen" : "Otvoren"}</p>
+                <p className="tournament-header-maintext">{otvorenost}</p>
             </div>
         </div>
         </div>

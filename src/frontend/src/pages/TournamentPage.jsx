@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import { useParams } from "react-router-dom";
 import api from "../api";
-import { convertDateTime } from "../functions/Utility";
 import FieldPageHeader from "../components/FieldPageHeader";
 import TournamentBubbles from "../components/TournamentBubbles";
 import CommentForm from "../components/CommentForm.jsx";
@@ -47,8 +46,6 @@ function TournamentPage(){
         .get(`/api/turniri/${tournamentId}/`)
         .then((res) => res.data)
         .then((data) => {
-            data.datum_pocetka = convertDateTime(data.datum_pocetka);
-            data.datum_kraja = convertDateTime(data.datum_kraja);
             setTournament(data);
             fetchFieldData(data);
 
@@ -76,7 +73,7 @@ function TournamentPage(){
                 <h1 id="tournament-name">{tournament.naziv}</h1>
 
                 {/* render enrollment form if tournament is joinable and user is logged in*/}
-                {(tournament.otvorenost === "otvoren" &&
+                {(new Date(tournament.datum_pocetka) > new Date() &&
                     localStorage.getItem('access')) ? <EnrollForm tournament = {tournament}/> : null}
 
             </div>
