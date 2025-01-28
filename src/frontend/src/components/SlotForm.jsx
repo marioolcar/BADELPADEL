@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 function SlotForm({termini}){
 
     termini = sortData(termini, "pocetak")
+    //console.log(termini)
     const navigate = useNavigate()
 
     const [paymentType, setPaymentType] = useState("gotovina");
@@ -47,7 +48,7 @@ function SlotForm({termini}){
     }
 
     const onCreateOrder = (data,actions) => {
-        //console.log(price)
+        console.log(price)
         return actions.order.create({
             purchase_units: [
                 {
@@ -66,12 +67,20 @@ function SlotForm({termini}){
         });
     }
 
+    function handleSlotSelect(e) {
+        setSelectedSlot(e.target.value)
+        const id = e.target.value
+        const termin = termini.find((termin) => termin.id == id)
+        //console.log(typeof termin)
+        setPrice(termin.cijena)
+    }
+
     return(
     <>
         <h1>Termini: </h1>
 
         <div className="slot-form">
-            <select onChange={(e) => setSelectedSlot(e.target.value)}>
+            <select onChange={(e) => handleSlotSelect(e)}>
                 <option hidden>--Odaberite termin--</option>
             {termini.map((termin) => {
                 return (

@@ -13,6 +13,15 @@ def run():
         print("Superuser 'admin' created.")
     else:
         print("Superuser 'admin' already exists.")
+    if not User.objects.filter(username='admin1').exists():
+        User.objects.create_superuser(
+            username='admin1',  # Korisničko ime superusera
+            email='admin@example.com',  # Email adresa superusera
+            password='88888888'  # Lozinka superusera
+        )
+        print("Superuser 'admin' created.")
+    else:
+        print("Superuser 'admin' already exists.")
 
 
 def citaj_csv_tablicu(csv_file_path):
