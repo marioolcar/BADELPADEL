@@ -3,6 +3,7 @@ import api from "../api";
 import UserProfile from "./UserProfile";
 import OwnerProfile from "./OwnerProfile";
 import Header from "../components/Header";
+import AdminProfile from "./AdminProfile";
 
 function Profile(){
 
@@ -25,6 +26,9 @@ function Profile(){
     }
     else if (type === "vlasnik"){
         return (<OwnerProfile />)
+    }
+    else if (type === "admin"){
+        return (<AdminProfile />)
     }
     else if(type === ""){
         return (

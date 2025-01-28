@@ -1,5 +1,5 @@
 import "../styles/components/Header.css"
-import logo from "../assets/logo.png"
+import logo from "../assets/logo.jpeg"
 import { ACCESS_TOKEN } from "../constants";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
