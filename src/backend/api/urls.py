@@ -31,6 +31,7 @@ from django.views.generic.base import RedirectView
 urlpatterns = [
 
     path("user/", UserPermissionType.as_view(), name="user-type"),
+    path("user/<int:pk>/", UserDetail.as_view(), name="delete-user"),
 
     path("notes/", NoteListCreate.as_view(), name="note-list"),
     path("notes/delete/<int:pk>/", NoteDelete.as_view(), name="delete-note"),

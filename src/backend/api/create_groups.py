@@ -102,3 +102,5 @@ for permission in vlasnik_permissions:
 for permission in  Permission.objects.all():
     admin.permissions.add(permission)
 
+adminAccount = User.objects.create(username="admin", first_name="BadelPadel", email="badelpadel5@gmail.com", password="pass")
+adminAccount.groups.add(Group.objects.get(name="Admins"))

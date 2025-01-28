@@ -15,10 +15,13 @@ function Tournament({ tournament }) {
     switch(otvorenost){
         case "Otvoren":
             vrijeme = `Počinje ${convertDateTime(tournament.datum_pocetka)}`
+            break;
         case "U tijeku":
             vrijeme = `Završava ${convertDateTime(tournament.datum_kraja)}`
+            break;
         case "Zatvoren":
             vrijeme = `Završio ${convertDateTime(tournament.datum_kraja)}`
+            break;
     }
     
     useEffect(() => {

@@ -82,21 +82,13 @@ function AdminProfile(){
 
     function deleteUser(id){
         api
-            .delete(`/api/igraci/${id}/`)
+            .delete(`/api/user/${id}/`)
             .then((res) => window.location.reload())
             .catch((err) =>
                 console.error(err)
             )
     }
 
-    function deleteOwner(id){
-        api
-            .delete(`/api/vlasnici/${id}/`)
-            .then((res) => window.location.reload())
-            .catch((err) =>
-                console.error(err)
-            )
-    }
     return (
         <>
             <Header />
@@ -124,7 +116,7 @@ function AdminProfile(){
                     {vlasnici.map((vlasnik) => (
                         <div>
                             <Owner owner={vlasnik} key={vlasnik.user.id}/>
-                            <button type="button" onClick={(e) => deleteOwner(vlasnik.user.id)}>Izbrisi</button>
+                            <button type="button" onClick={(e) => deleteUser(vlasnik.user.id)}>Izbrisi</button>
                         </div>
                     ))}
                 </div>
