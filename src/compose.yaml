@@ -7,8 +7,6 @@ services:
     volumes:
       - ./data/backend/db:/db
       - ./data/backend-assets:/app/static
-    ports:
-      - 8000:8000
 
   react:
     build:
@@ -22,5 +20,6 @@ services:
     environment:
       - FRONTEND_URL=react:80
       - BACKEND_URL=django:8000
-    ports:
-      - 80:80
+    labels:
+      - traefik.enable=true
+      - DomainName=badelpadel.duckdns.org
