@@ -10,6 +10,7 @@ import {roundToHour} from "../functions/Utility.jsx"
 function AddField (){
 
     var current_date = roundToHour(new Date())
+    const navigate = useNavigate();
 
     const [grad, setGrad] = useState("");
     const [ulica, setUlica] = useState("");
@@ -53,6 +54,7 @@ function AddField (){
                 })
             
             })
+            .then(navigate('/profile'))
             .catch((err) => console.error(err));
         
     }

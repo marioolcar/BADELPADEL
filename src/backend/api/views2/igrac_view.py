@@ -14,7 +14,7 @@ class IgracRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     """
     queryset = Igrac.objects.all()
     serializer_class = IgracSerializer
-    permission_classes = [IsAuthenticated, IsIgracOrAdmin]
+    permission_classes = [AllowAny]
     lookup_field = "user_id"
 
 

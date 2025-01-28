@@ -17,8 +17,12 @@ function Application({prijava, turnir}){
             .get(`/api/igraci/${prijava.user}/`)
             .then((res) => res.data)
             .then((data) => {
+                //console.log(data)
                 setIgracName(data.user.username)
             })
+            .catch((err) =>
+                console.error(err)
+            )
 
     }, [prijava, turnir])
 

@@ -55,7 +55,7 @@ urlpatterns = [
     path("vlasnici/current/", VlasnikCurrent.as_view(), name="vlasnik-trenutni"),
     
     path("igraci/", IgracListAll.as_view(), name="igrac-list"),
-    path("igraci/<int:user_id>/", IgracListCreate.as_view(), name="igrac-pojedinacno"),
+    path("igraci/<int:user_id>/", IgracRetrieveUpdateDestroy.as_view(), name="igrac-pojedinacno"),
     
     #path za post
     path('post/', PostListCreate.as_view(), name='post-list'),

@@ -49,7 +49,7 @@ function addTournament(){
                     cijena_kotizacije: cijena, datum_pocetka: startDate, datum_kraja: endDate}
                 )
                 .then((response) => {
-                    navigate("/")
+                    navigate("/profile")
                 })
                 .catch((err) => console.error(err))
 

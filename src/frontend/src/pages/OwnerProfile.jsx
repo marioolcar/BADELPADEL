@@ -90,6 +90,17 @@ function OwnerProfile(){
         fetchFieldData();
     },[])
 
+    function deleteTournament(id){
+        api
+            .delete(`/api/turniri/${id}/`)
+            .then((res) => window.location.reload())
+    }
+
+    function deleteField(id){
+        api
+            .delete(`/api/tereni/${id}/`)
+            .then((res) => window.location.reload())
+    }
 
     if (Object.keys(userData).length === 0){
         return (
@@ -129,7 +140,10 @@ function OwnerProfile(){
                         <div className="profile-field-container">
                             {fields.length === 0 ? <p>No fields found</p> :
                                 fields.map((field) => (
-                                    <Field field={field} key={field.id} />
+                                    <div key={field.id}>
+                                        <Field field={field}  />
+                                        <button type="button" onClick={(e) => deleteField(field.id)} style={{position: "relative", right: "0", top: "0"}}>Izbrisi teren</button>
+                                    </div>
                             ))}
                         </div>
 
@@ -149,7 +163,11 @@ function OwnerProfile(){
                         <div className="profile-tournament-container">
                             {tournaments.length === 0 ? <p>No tournaments found</p> :
                             tournaments.map((tournament) => (
-                                <Tournament tournament={tournament} key={tournament.id} />
+                                <div key={tournament.id}>
+                                    <Tournament tournament={tournament} />
+                                    <button type="button" onClick={(e) => deleteTournament(tournament.id)}>Izbrisi turnir</button>
+                                </div>
+
                             ))}
                         </div>
                         {isPublic ? null:
